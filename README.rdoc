@@ -1,7 +1,7 @@
 == Self Assessment
 
 A proof of concept application that manages questionnaires, and the answers
-submitted to them. Answers are compared to rule sets, and a set of pages
+submitted to them. Answers are compared to rule sets, and a set of tabbed urls
 displayed to the user depending upon which rules are matched.
 
 Answers are stored against a session id and therefore are held in memory
