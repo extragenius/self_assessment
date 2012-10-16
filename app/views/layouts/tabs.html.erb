@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SelfAssessment</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= javascript_tag do %>
+    $(function() {
+      showAsTabs('#tabs');
+    });
+  <% end %>
+
+  <div id="tabs">
+    <ul>
+      <li><%= link_to('Questionnaires', '#questionnaires') %></li>
+    <% @rule_sets.each do |rule_set| %>
+      <li><%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %></li>
+    <% end %>
+      <li><%= link_to('Directory', '#directory') %></li>
+    </ul>
+
+    <div id="questionnaires">
+    <%= yield %>
+    </div>
+    
+    <% @rule_sets.each do |rule_set| %>
+    <%= tag_page("rule_set_#{rule_set.id}", rule_set.url) %>
+    <% end %>
+    
+    <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
+  </div>
+
+</body>
+</html>

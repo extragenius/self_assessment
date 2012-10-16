@@ -1,0 +1,26 @@
+.field_with_errors input, .error_explanation {
+  border: #990000 3px solid;
+}
+
+.field_with_errors label, .error_explanation h2 {
+  background-color: #990000;
+  color: #ffffcc;
+  display: inline-block;
+  padding: 4px;
+  margin: 0;
+}
+
+.error_explanation {
+  display: inline-block;
+
+
+  ul {
+    padding: 5px;
+    list-style-type: none;
+  }
+
+  .error_explanation h2 {
+    font-size: 1.2em;
+    padding: 2px 20px;
+  }
+}

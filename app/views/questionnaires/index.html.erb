@@ -1,0 +1,14 @@
+<h1>Questionnaires</h1>
+<p><%= link_to('New Questionnaire', new_questionnaire_path) %></p>
+
+<ul class="selection">
+<% @questionnaires.each do |questionnaire| %>
+  <li>
+    <%= link_to(questionnaire.title, questionnaire_path(questionnaire)) %>
+    <span class="options">
+      <%= link_to('Edit', edit_questionnaire_path(questionnaire)) %>
+      <%= link_to('Delete', delete_questionnaire_path(questionnaire)) %>
+    </span>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,14 @@
+<h1>Rule sets</h1>
+<p><%= link_to('New Rule Set', new_rule_set_path) %></p>
+
+<ul class="selection">
+<% @rule_sets.each do |rule_set| %>
+  <li>
+    <%= link_to(rule_set.title, rule_set_path(rule_set)) %>
+    <span class="options">
+      <%= link_to('Edit', edit_rule_set_path(rule_set)) %>
+      <%= link_to('Delete', delete_rule_set_path(rule_set)) %>
+    </span>
+  </li>
+<% end %>
+</ul>

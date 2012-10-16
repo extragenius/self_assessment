@@ -1,0 +1,43 @@
+<h1><%= %w{new create}.include?(action_name) ? 'New Rule Set' : @rule_set.title %></h1>
+
+<%= form_for(@rule_set) do |form|  %>
+  <%= error_messages_for @rule_set %>
+<p>
+  <%= form.label(:title) %><br/>
+  <%= form.text_field(:title) %>
+</p>
+
+<p>
+  <%= form.label(:description) %><br/>
+  <%= form.text_area(:description, :rows => 3) %>
+</p>
+
+<p>
+  <%= form.label(:url) %><br/>
+  <%= form.text_field(:url) %>
+</p>
+
+<h2>Questions</h2>
+
+<ul class="selection">
+<% @questions.each do |question| %>
+  <li>
+    <%= check_box_tag("questions[id[#{question.id}]]", '1', @rule_set.questions.include?(question)) %>
+    <%= label_tag("questions_id_#{question.id}", question.title) %>
+    <span class="options">
+      <%= answers_radio_buttons(
+            question, 
+            {
+              :options => ['Yes', 'No', "Unsure"],
+            :checked => @rule_set.value_for(question)
+            }
+          ) 
+      %>
+    </span>
+  </li>
+<% end %>
+</ul>
+
+<p><%= form.submit %></p>
+
+<% end %>

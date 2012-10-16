@@ -1,0 +1,47 @@
+@import 'colours';
+
+.ui-widget-header {
+  background: $green ; 
+}
+
+nav {
+  ul {
+    li {
+      display: inline;
+      margin-right: 20px;
+    }
+  }
+}
+
+h1 {
+  background-color: $green;
+  color: $white;
+  padding: 3px 5px;
+}
+
+ul.selection {
+  display: inline-block;
+  margin: 0;
+  
+  li {
+    width: 105%;
+    margin: 3px 0;
+    padding: 0;
+    
+    a {
+      padding: 0 1px;
+      display: inline-block;
+    }
+        
+    span {
+      display: inline-block;
+      float: right;
+      
+      input {
+        margin-right: 12px;
+      }
+      
+    }
+    
+  }
+}

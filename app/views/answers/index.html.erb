@@ -1,0 +1,21 @@
+<h1>Warwickshire Directory</h1>
+
+<% if @rule_sets.present? %>
+<h2>Relevant services</h2>
+<p>
+  From the answers you have submitted to the questionnaires, we suggest
+  that the following will be of interest to you:
+<p>
+<%   @rule_sets.each do |rule_set| %>
+        <%= render rule_set %>
+<%   end %>
+<% end %>
+
+<article class="rule_set_output">
+  <h2>Full listing</h2>
+  <p>
+    <%= link_to("Click here", 'https://directory.warwickshire.gov.uk/') %>
+    to view the full directory.
+  </p>
+</article>
+

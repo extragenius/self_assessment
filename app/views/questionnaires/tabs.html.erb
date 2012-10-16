@@ -1,0 +1,7 @@
+<ul>
+<% @questionnaires.each do |questionnaire| %>
+  <li>
+    <%= link_to(questionnaire.title, tab_questionnaire_path(questionnaire)) %>
+  </li>
+<% end %>
+</ul>

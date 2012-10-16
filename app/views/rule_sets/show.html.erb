@@ -1,0 +1,17 @@
+<h1><%= @rule_set.title %></h1>
+
+<h2>When these rules are matched:</h2>
+
+<ul>
+<% @rule_set.answers.each do |answer| %>
+  <li>
+    '<%= answer.question.title %>'
+    =
+    '<%= answer.value %>'
+  </li>
+<% end %>
+</ul>
+
+<h2>This rule set will output the following:</h2>
+
+<%= render @rule_set %>
