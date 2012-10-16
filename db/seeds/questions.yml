@@ -1,0 +1,349 @@
+Q1: 
+  title: Learning, Training and Employment
+  questions:
+    a:
+      title: Employment
+      question:  Do you need help with Employment	
+      url: https://directory.warwickshire.gov.uk/search.php?keywords=&pc=&dist=0&cc=114&cb=25&ca=3
+  
+    b:
+      title: Education and Learning
+      question: Do you need help with Education and Learning
+      url: https://directory.warwickshire.gov.uk/search.php?keywords=&pc=&dist=0&cc=115&cb=25&ca=3
+    c:
+      title: Skills and Training
+      question: Do you need help with Skills and Training
+      url: https://directory.warwickshire.gov.uk/search.php?keywords=&pc=&dist=0&cc=115&cb=25&ca=3
+    d:
+      title: Special Educational Needs
+      question: Do you need help with Special Educational Needs
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=special+educational+needs&pc=&dist=0
+    e:
+      title: College Courses
+      question: Do you need help with College Courses
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=college&pc=&dist=0
+
+Q2:
+  title: Housing and Accommodation
+  questions:
+    a:
+      title: Care Housing
+      question: Do you need help with Extra Care Housing
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=extra+care+housing&pc=&dist=0
+      
+    b:
+      title: Housing Advice
+      question: Do you need help with Housing Advice
+      url: https://directory.warwickshire.gov.uk/index_op.php?catkey=housing-advice_174
+      
+    c:
+      title: Independant Living
+      question: Do you need help with Independent/Supported Living
+      url: https://directory.warwickshire.gov.uk/index_op.php?catkey=independent-living_174
+      
+    d:
+      title: Residential Care
+      question: Do you need help with Residential Care
+      url: https://directory.warwickshire.gov.uk/index_op.php?catkey=home-for-elderly-people_174
+      
+    e:
+      title: Residential Care with Nursing
+      question: Do you need help with Residential Care with Nursing
+      url: https://directory.warwickshire.gov.uk/index_op.php?catkey=home-for-elderly-people_174
+      
+    f:
+      title: EMI Care
+      question: Do you need help with EMI Residential and Nursing Care
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&keywords=nursing+care&pc=&dist=0
+      
+    g:
+      title: Sheltered Housing
+      question: Do you need help with Sheltered Housing
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=sheltered+housing&pc=&dist=0
+      
+    h:
+      title: Homeless Support
+      question: Do you need help with Support for the Homeless
+      url: https://directory.warwickshire.gov.uk/index_op.php?catkey=support-for-the-homeless_174
+Q3:
+  title: Leisure, Activities and Culture
+  questions:
+    a:  
+      title: Clubs and Groups
+      question: Do you need help with Clubs and Groups
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=clubs&pc=&dist=0
+    
+    b:
+      title: Concessions
+      question: Do you need help with Concessions
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=concessions&pc=&dist=0
+      
+    c:
+      title: Creative Arts
+      question: Do you need help with Creative Arts and Activities
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=creative+arts&pc=&dist=0
+    
+    d:
+      title: Faith Groups
+      question: Do you need help with Faith Groups
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=faith+groups&pc=&dist=0
+      
+    e:
+      title: Libraries, Museums and Galleries
+      question: Do you need help with Libraries, Museums and Galleries
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=libraries&pc=&dist=0
+      
+    f:
+      title: Recreational/Social
+      question: Do you need help with Recreational/Social Activities
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=social+activities&pc=&dist=0
+      
+    g:
+      title: Sport
+      question: Do you need help or advice about sport
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=sports&pc=&dist=0
+      
+    h:
+      title: Volunteering
+      question: Do you need help with Volunteering
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=volunteer&pc=&dist=0
+Q4:
+  title: Money and Legal	
+  questions:
+    a:
+      title: Benefits
+      question: Do you need help with Benefits Advice
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=benefits+advice&pc=&dist=0
+    
+    b:
+      title: Financial
+      question: Do you need help with Financial Advice
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=financial+advice&pc=&dist=0
+      
+    c:
+      title: Legal
+      question: Do you need help with Legal Advice
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=legal+advice&pc=&dist=0
+    
+    d:
+      title: Grants
+      question: Do you need help with Grants and Other Funding
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=grants&pc=&dist=0
+      
+    e:
+      title: Direct Payments
+      question: Do you need help with Direct Payments
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=direct+payments&pc=&dist=0
+      
+    f:
+      title: Financial Appointee
+      question: Do you need help with Financial Appointee Service
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=appointee&pc=&dist=0
+
+Q5:
+  title: Carers
+  questions:
+    a:
+      title: Carers Support Groups
+      question: Do you need help with Carers Support Groups
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=carers+support+group&pc=&dist=0
+      
+    b:
+      title: Carer Support Services
+      question: Do you need help with Carer Support Services
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=carers+support&pc=&dist=0
+      
+    c:
+      title: Emergency Support
+      question: Do you need help with Emergency Support
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=emergency&pc=&dist=0
+      
+    d:
+      title: Respite
+      question: Do you need help with Short Breaks, Respite and Holidays
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=respite&pc=&dist=0
+      
+    e:
+      title: Sitting Service
+      question: Do you need help with Sitting Service
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=sitting+service&pc=&dist=0
+      
+Q6:
+  title: Family and Parenting
+  quesions:
+    a:
+      title: Childcare
+      question: Do you need help with Childcare
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=childcare&pc=&dist=0
+      
+    b:
+      title: Children's Centres
+      question: Do you need help with Children's Centres
+      url: https://directory.warwickshire.gov.uk/search.php?keywords=children%27s+centre+
+      
+    c:
+      title: Parent and Child
+      question: Do you need help with Parent and Child Activities
+      url: https://directory.warwickshire.gov.uk/index_fam.php?catkey=parent-and-child-activities_22
+      
+Q7:
+  title: Health and Wellbeing	
+  questions: 
+    a: 
+      title: Chiropodist
+      question: Do you need help with Chiropodist
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=chiropodist&pc=&dist=0
+      
+    b:
+      title: Counselling and Therapy
+      question: Do you need help with Counselling and Therapy
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=counselling&pc=&dist=0
+      
+    c:
+      title: Drugs, Alcohol and Substance Abuse
+      question: Do you need help with Drugs, Alcohol and Substance Abuse
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=alcohol&pc=&dist=0
+      
+    d:
+      title: Foot Health
+      question: Do you need help with Foot Health
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=foot+health&pc=&dist=0
+      
+    e:
+      title: Health Care
+      question: Do you need help with Health Care Services
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=health+care&pc=&dist=0
+      
+    f:
+      title: Healthy lifestyle
+      question: Do you need help getting a healthy lifestyle
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=healthy+lifestyle&pc=&dist=0
+      
+    g:
+      title: Nutrition
+      question: Do you need help with nutrition
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=healthy+lifestyle&pc=&dist=0
+      
+    h:
+      title: Hairdressers
+      question: Do you need help with Hairdressers
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=hairdresser&pc=&dist=0
+      
+    i:
+      title: Sexual Health
+      question: Do you need help with Sexual Health and Relationships
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=sexual+health&pc=&dist=0
+      
+    j:
+      title: Alternative Therapies
+      question: Do you need help with Alternative Therapies
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=alternative&pc=&dist=0
+      
+    k:
+      title: Dementia
+      question: Do you need help with Dementia
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=dementia&pc=&dist=0
+      
+Q8:
+  title: Transport	
+  questions:
+    a: 
+      title: Hospital Transport
+      question: Do you need help with Hospital Transport
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=transport&pc=&dist=0
+      
+    b:
+      title: Taxi Services
+      question: Do you need help with Taxi Services
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=taxi&pc=&dist=0
+      
+    c:
+      title: Public Transport
+      question: Do you need help with Public Transport
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=public+transport&pc=&dist=0
+      
+Q9:
+  title: Help to Live at Home
+  questions: 
+    a:
+      title: Cleaning and Laundry
+      question: Do you need help with Cleaning and Laundry
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=cleaning&pc=&dist=0
+      
+    b:
+      title: Day Service
+      question: Do you need help with Day Service/Opportunities
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=day+care&pc=&dist=0
+      
+    c:
+      title: Equipment and Adaptations
+      question: Do you need help with Equipment and Adaptations
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=equipment&pc=&dist=0
+      
+    d:
+      title: Food at Home
+      question: Do you need help with Food at Home
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=meals+on+wheels&pc=&dist=0
+      
+    e:
+      title: Gardening
+      question: Do you need help with Gardening
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=gardening&pc=&dist=0
+    
+    f:
+      title: Home Care
+      question: Do you need help with Home Care
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=home+care&pc=&dist=0
+    
+    g:
+      title: Home Maintenance
+      question: Do you need help with Home Maintenance
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=home+maintenance&pc=&dist=0
+    
+    h:
+      title: Personal Assistants
+      question: Do you need help with Personal Assistants
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=personal+assistant&pc=&dist=0
+    
+    i:
+      title: Shopping
+      question: Do you need help with Shopping
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=shopping&pc=&dist=0
+    
+    j:
+      title: Telecare
+      question: Would you like to find out more about the Telecare service which helps people to live at home
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=telecare&pc=&dist=0
+
+Q10:
+  title: Special Needs and Disabilities
+  questions: 
+    a:
+      title: Acquired Brain Injury
+      question: Do you need help or information concerning Acquired Brain Injury
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=acquired+brain+injury&pc=&dist=0
+
+    b:
+      title: Autism and Asperger’s
+      question: Do you need help or information concerning Autism and Asperger’s
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=autism&pc=&dist=0
+    
+    c:
+      title: Local Support Groups
+      question: Would you like to find out about Local Support Groups
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=support+groups&pc=&dist=0
+    
+    d:
+      title: Learning Disability
+      question: Do you need help with a Learning Disability
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=learning+disability&pc=&dist=0
+    
+    e:
+      title: Mental Health
+      question: Do you need help or information concerning Mental Health
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=mental+health&pc=&dist=0
+    
+    f:
+      title: Physical Disability
+      question: Do you need help or information concerning Physical Disability
+      url: https://directory.warwickshire.gov.uk/search.php?ca=0&cb=0&keywords=physical+disability&pc=&dist=0
