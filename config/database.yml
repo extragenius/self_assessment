@@ -14,5 +14,7 @@ test:
   database: self_assessment_test
   
 production:
-  <<: *defaults
-  database: self_assessment
+  adapter: mysql2
+  username: self_assessment
+  password: password
+  host: localhost
