@@ -11,7 +11,7 @@
 <ul class="selection">
 <% @questionnaire.questions.each do |question| %>
   <li>
-    <%= label_tag("answers_question_id_#{question.id}", question.title) %>
+    <%= content_tag('span', label_tag("answers_question_id_#{question.id}", question.title), :class => 'label') %>
     <span class="options">
       <%= answers_radio_buttons(
             question, 
