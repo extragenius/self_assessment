@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+group :production do
+  source 'http://wvtcent1/ruby/gems/'
+end
 
 gem 'rails', '3.2.8'
 
