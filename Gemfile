@@ -1,11 +1,8 @@
-RAILS_ENV=ENV['RAILS_ENV']
-
-if ( RAILS_ENV == "production" )
+if ENV['HOSTNAME'] =~ /wvtcent1\./
   source 'http://wvtcent1/ruby/' 
 else
   source 'https://rubygems.org'
 end
-
 
 gem 'rails', '3.2.8'
 
