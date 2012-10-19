@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_filter :new_questionnaire, :only => [:new, :create]
-  before_filter :get_questionnaire, :except => [:new, :create, :index, :tabs]
+  before_filter :get_questionnaire, :except => [:new, :create, :index, :tabs, :reset]
   before_filter :get_questions, :only => [:new, :create, :edit, :update]
   before_filter :get_questionnaires, :only => [:index, :tabs, :tab, :answer]
   before_filter :get_rule_sets, :only => [:tabs, :tab]
@@ -56,6 +56,12 @@ class QuestionnairesController < ApplicationController
   
   def answer
     add_answers_to_store
+    redirect_to tabs_answers_path
+  end
+  
+  def reset
+    get_answer_store
+    @answer_store.answers.clear
     redirect_to tabs_answers_path
   end
   

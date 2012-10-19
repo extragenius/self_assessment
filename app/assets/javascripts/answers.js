@@ -9,4 +9,11 @@ function showAsTabs(element) {
       });
     }
   });
+  
+  // close icon: removing the tab on click
+  $( "#tabs span.ui-icon-close" ).live( "click", function() {
+      var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+      $( "#" + panelId ).remove();
+      tabs.tabs( "refresh" );
+  });
 }

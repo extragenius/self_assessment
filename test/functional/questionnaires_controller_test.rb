@@ -103,11 +103,20 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
     end
     answer = Answer.last
-    answer_store = AnswerStore.last
+    @answer_store = AnswerStore.last
     assert_equal(@question, answer.question)
-    assert_equal([answer], answer_store.answers)
-    assert_equal(session[:answer_store], answer_store.session_id)
+    assert_equal([answer], @answer_store.answers)
+    assert_equal(session[:answer_store], @answer_store.session_id)
     assert_response :redirect
+  end
+  
+  def test_reset
+    test_answer
+    assert_no_difference 'Answer.count' do
+      get :reset
+      assert_response :redirect
+      assert_equal([], @answer_store.reload.answers)
+    end
   end
 
 end

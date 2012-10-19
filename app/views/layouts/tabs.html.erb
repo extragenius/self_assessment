@@ -18,7 +18,10 @@
     <ul>
       <li><%= link_to('Home', '#questionnaires') %></li>
     <% @rule_sets.each do |rule_set| %>
-      <li><%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %></li>
+      <li>
+        <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
+        <span class="ui-icon ui-icon-close">Remove Tab</span>
+      </li>
     <% end %>
       <li><%= link_to('Directory', '#directory') %></li>
     </ul>
@@ -34,5 +37,6 @@
     <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
   </div>
 
+  <%= content_tag('p', link_to('Clear answers and start again', reset_questionnaires_path)) if @rule_sets.present? %>
 </body>
 </html>
