@@ -1,7 +1,20 @@
 <ul>
 <% @questionnaires.each do |questionnaire| %>
-  <li>
-    <%= link_to(questionnaire.title, tab_questionnaire_path(questionnaire)) %>
+  <li class="questionnaire_button">
+    <%= link_to(
+          image_tag(
+            questionnaire.button_image.url(:link)
+          ), 
+          tab_questionnaire_path(questionnaire),
+          :class => 'image_link'
+        ) 
+    %>
+    <%= link_to(
+          questionnaire.title, 
+          tab_questionnaire_path(questionnaire),
+          :class => 'text_link'
+        ) 
+    %>
   </li>
 <% end %>
 </ul>

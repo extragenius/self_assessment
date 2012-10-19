@@ -1,3 +1,33 @@
 // Place all the styles related to the questionnaires controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tabs ul {
+  width: 90%;   
+}
+
+.questionnaire_button {
+  position: relative;
+  
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  margin: 0 30px 10px 0;
+  
+
+  
+  a {
+    position: absolute;
+  }
+  
+  a.image_link {
+    bottom: 35px;
+  }
+  
+  a.text_link {
+    bottom: 0;
+    padding: 0 5px;
+    text-align: center;
+  }
+  
+}

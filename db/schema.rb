@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009161206) do
+ActiveRecord::Schema.define(:version => 20121019111051) do
 
   create_table "answer_stores", :force => true do |t|
     t.string   "session_id"
@@ -40,8 +40,12 @@ ActiveRecord::Schema.define(:version => 20121009161206) do
   create_table "questionnaires", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "button_image_file_name"
+    t.string   "button_image_content_type"
+    t.integer  "button_image_file_size"
+    t.datetime "button_image_updated_at"
   end
 
   create_table "questionnaires_questions", :id => false, :force => true do |t|
