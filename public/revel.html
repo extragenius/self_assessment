@@ -54,6 +54,20 @@
             $('#next').show();
           };
         };
+        
+        function changeCurrent(){
+          currentArticle.removeClass('current');
+          newCurrentArticle.addClass('current');          
+        };
+        
+        function displayNewCurrent(){
+          if (newCurrentArticle.length) {
+            currentArticle.hide();
+            changeCurrent();
+            newCurrentArticle.show();
+            showRelevantButtons();
+          };          
+        };
 
         $( "#make_bigger" ).click(function(){
           $( ".normal" ).switchClass( "normal", "expanded", 150 );        
@@ -75,35 +89,21 @@
         $( "#next" ).click(function(){
           currentArticle = $('.current');
           newCurrentArticle = currentArticle.next();
-          if (newCurrentArticle.length) {
-            currentArticle.hide();
-            currentArticle.removeClass('current');
-            newCurrentArticle.addClass('current');
-            newCurrentArticle.show();
-            showRelevantButtons();
-          };
-          
+          displayNewCurrent();    
           return false;
         });     
 
         $( "#previous" ).click(function(){
           currentArticle = $('.current');
           newCurrentArticle = currentArticle.prev();
-          if (newCurrentArticle.length) {
-            currentArticle.hide();
-            currentArticle.removeClass('current');
-            newCurrentArticle.addClass('current');
-            newCurrentArticle.show();
-            showRelevantButtons();
-          };
+          displayNewCurrent();
           return false;
         });
         
         $('.article').click(function(){
           currentArticle = $('.current');
           newCurrentArticle = $(this);
-          currentArticle.removeClass('current');
-          newCurrentArticle.addClass('current');
+          changeCurrent();
           showRelevantButtons();
         })
       });
