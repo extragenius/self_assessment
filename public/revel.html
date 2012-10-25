@@ -21,10 +21,10 @@
       .normal .current {
         background-color: #FFFFCC;
       }
-      article {
+      .article {
         padding: 5px 10px;
       }
-      article h2, article p {
+      .article h2, .article p {
         margin: 0;
       }
       #articles.normal {
@@ -41,7 +41,7 @@
 
         $( "#make_bigger" ).click(function(){
           $( ".normal" ).switchClass( "normal", "expanded", 150 );        
-          $('#articles article').hide();
+          $('#articles .article').hide();
           $('#articles .current').show();
           $('nav, #make_smaller').show();
           $('#make_bigger').hide();
@@ -49,7 +49,7 @@
         });
 
         $( "#make_smaller" ).click(function(){
-          $('#articles article').show();
+          $('#articles .article').show();
           $( ".expanded" ).switchClass( "expanded", "normal", 100 );
           $('nav, #make_smaller').hide();
           $('#make_bigger').show();
@@ -89,7 +89,7 @@
           return false;
         });
         
-        $('#articles.normal article').click(function(){
+        $('#articles.normal .article').click(function(){
           currentArticle = $('#articles .current');
           newCurrentArticle = $(this);
           currentArticle.removeClass('current');
@@ -115,7 +115,7 @@
       <a href="#" id="make_smaller" class="ui-state-default ui-corner-all">Too little?</a>
     </header>
     <section id="articles" class="normal">
-      <article class="current">
+      <div class="article current">
         <h2>MARCELLUS</h2>
         <p>
           Horatio says 'tis but our fantasy,
@@ -126,16 +126,16 @@
           That if again this apparition come,
           He may approve our eyes and speak to it.
         </p>
-      </article>
+      </div>
 
-      <article>
+      <div class="article">
         <h2>HORATIO</h2>
         <p>
           Tush, tush, 'twill not appear.
         </p>
-      </article>
+      </div>
 
-      <article>
+      <div class="article">
         <h2>BERNARDO</h2>
         <p>
         Sit down awhile;
@@ -143,17 +143,17 @@
         That are so fortified against our story
         What we have two nights seen.          
         </p>
-      </article>
+      </div>
 
-      <article>
+      <div class="article">
         <h2>HORATIO</h2>
         <p>
         Well, sit we down,
         And let us hear Bernardo speak of this.          
         </p>
-      </article>
+      </div>
 
-      <article>
+      <div class="article">
         <h2>BERNARDO</h2>
         <p>
         Last night of all,
@@ -162,7 +162,7 @@
         Where now it burns, Marcellus and myself,
         The bell then beating one,--          
         </p>
-      </article>
+      </div>
     </section>
     <nav>
       <a href="#" id="previous">Previous</a>
