@@ -41,15 +41,15 @@
 
         $( "#make_bigger" ).click(function(){
           $( ".normal" ).switchClass( "normal", "expanded", 150 );        
-          $('#articles .article').hide();
-          $('#articles .current').show();
+          $('.article').hide();
+          $('.current').show();
           $('nav, #make_smaller').show();
           $('#make_bigger').hide();
           return false;
         });
 
         $( "#make_smaller" ).click(function(){
-          $('#articles .article').show();
+          $('.article').show();
           $( ".expanded" ).switchClass( "expanded", "normal", 100 );
           $('nav, #make_smaller').hide();
           $('#make_bigger').show();
@@ -57,7 +57,7 @@
         });  
 
         $( "#next" ).click(function(){
-          currentArticle = $('#articles .current');
+          currentArticle = $('.current');
           newCurrentArticle = currentArticle.next();
           if (newCurrentArticle.length) {
             currentArticle.hide();
@@ -74,7 +74,7 @@
         });     
 
         $( "#previous" ).click(function(){
-          currentArticle = $('#articles .current');
+          currentArticle = $('.current');
           newCurrentArticle = currentArticle.prev();
           if (newCurrentArticle.length) {
             currentArticle.hide();
@@ -89,8 +89,8 @@
           return false;
         });
         
-        $('#articles.normal .article').click(function(){
-          currentArticle = $('#articles .current');
+        $('.article').click(function(){
+          currentArticle = $('.current');
           newCurrentArticle = $(this);
           currentArticle.removeClass('current');
           newCurrentArticle.addClass('current');
