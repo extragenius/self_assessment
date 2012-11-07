@@ -27,7 +27,8 @@
     </ul>
 
     <div id="questionnaires">
-    <%= yield %>
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
     </div>
     
     <% @rule_sets.each do |rule_set| %>

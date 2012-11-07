@@ -30,3 +30,7 @@ end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
 
+gem 'devise'
+gem 'activeadmin'
+
+gem 'dibber'  # Used in db/seeds
