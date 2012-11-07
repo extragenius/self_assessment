@@ -32,5 +32,9 @@ SelfAssessment::Application.routes.draw do
       get :tabs
     end
   end
+  
+  resources :reckoner
+  
+  resources :calculator
 
 end

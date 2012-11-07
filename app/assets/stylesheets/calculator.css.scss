@@ -1,0 +1,36 @@
+// Place all the styles related to the calculator controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#calculator {
+  
+  div {
+    display: none;
+  }
+  
+  div, h1 {
+    padding: 0 10px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  div#one {
+    display: inherit;
+  }
+  
+  span.spouse {
+    display: none; 
+  }
+  
+  label {
+    display: block;
+  }
+  
+  #output {
+    display: block;
+    padding: 0.25em 1em;
+  }
+  
+}

@@ -1,0 +1,67 @@
+<div id="calculator">
+  
+  <div id="output"></div>
+  
+  <div id="one">
+    <p>
+      Please confirm that you understand that this calculator is not definitive 
+      and it's result will not be considered part of the financial assessment 
+      process used by the council to determine your contribution to 
+      care costs. 
+      <%= check_box_tag(:understand) %>
+    </p>
+  </div>
+
+  <div id="two">
+    <p>
+      Are you married or part of a couple?
+      <%= check_box_tag(:couple) %>
+    </p>
+
+    <p>
+      Do you own the property you live in?
+      <%= check_box_tag(:property) %>
+    </p>
+
+    <p>
+      Do you <span class="spouse">or your spouce/partner</span> have any of the 
+      following savings/capital?
+    </p>
+
+    <p>
+      <%= label_tag(:bank, 'Bank/Building society') %>
+      <%= text_field_tag(:bank) %>
+    </p>
+
+    <p>
+      <%= label_tag(:shares) %>
+      <%= text_field_tag(:shares) %>
+    </p>
+
+    <p>
+      <%= label_tag(:post_office) %>
+      <%= text_field_tag(:post_office) %>
+    </p>
+
+    <p>
+      <%= label_tag(:capital, 'Other Capital/Savings') %>
+      <%= text_field_tag(:capital) %>
+    </p>
+
+    <p>
+      Please enter the total amounts you <span class="spouse"> and your 
+      spouce/partner</span> have for each saving type and click calculate.
+    </p>
+
+    <p>
+      <%= button_tag('Calculate', :id => 'calculate') %>
+    </p>
+  </div>
+  
+  
+
+
+  
+  
+</div>
+  
