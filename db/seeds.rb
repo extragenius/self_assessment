@@ -6,6 +6,7 @@ Seeder.monitor Questionnaire
 Seeder.monitor Question
 Seeder.monitor Answer
 Seeder.monitor RuleSet
+Seeder.process_log.start('first questionnaire questions', 'Questionnaire.count > 0 ? Questionnaire.first.questions.length : 0')
 
 Seeder.objects_from('questions.yml').each do |holder, data|
   questionnaire = Questionnaire.find_or_create_by_title(data['title'])
