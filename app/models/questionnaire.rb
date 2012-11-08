@@ -1,5 +1,5 @@
 class Questionnaire < ActiveRecord::Base
-  attr_accessible :title, :description, :button_image
+  attr_accessible :title, :description, :button_image, :question_ids
   
   has_and_belongs_to_many(
     :questions,
@@ -9,7 +9,8 @@ class Questionnaire < ActiveRecord::Base
   has_attached_file(
     :button_image,
     :styles => {
-      :link => '150x125>'
+      :link => '150x125>',
+      :thumbnail => '50x50>'
     }
   )
   

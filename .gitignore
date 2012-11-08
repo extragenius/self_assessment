@@ -16,3 +16,6 @@
 
 # Ignore project rvmrc
 .rvmrc
+
+/public/system/*.*
+/public/system/**/
