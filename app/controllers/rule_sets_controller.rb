@@ -3,6 +3,8 @@ class RuleSetsController < ApplicationController
   before_filter :get_rule_set, :except => [:new, :create, :index]
   before_filter :get_questions, :only => [:new, :create, :edit, :update]
   
+  before_filter :authenticate_admin_user!
+  
   def index
     @rule_sets = RuleSet.all
   end

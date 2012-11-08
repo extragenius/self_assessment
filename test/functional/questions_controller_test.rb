@@ -3,6 +3,7 @@ require 'test_helper'
 class QuestionsControllerTest < ActionController::TestCase
   def setup
     @question = Question.find(1)
+    sign_in_admin_user
   end
   
   def test_index

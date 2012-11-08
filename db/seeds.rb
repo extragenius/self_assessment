@@ -25,7 +25,7 @@ end
 
 Seeder.monitor AdminUser
 admin_email = 'admin@warwickshire.gov.uk'
-password = 'password'
+password = 'ChangeMeNow!'
 AdminUser.create!(
   :email => admin_email,
   :password => password,

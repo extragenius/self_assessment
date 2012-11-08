@@ -5,6 +5,8 @@ class QuestionnairesController < ApplicationController
   before_filter :get_questionnaires, :only => [:index, :tabs, :tab, :answer]
   before_filter :get_rule_sets, :only => [:tabs, :tab]
   
+  before_filter :authenticate_admin_user!, :except => [:tabs, :tab, :answer, :reset]
+  
   layout 'tabs', :only => [:tabs, :tab, :answer]
   
   def index

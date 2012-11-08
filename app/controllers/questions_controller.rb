@@ -2,6 +2,8 @@ class QuestionsController < ApplicationController
   before_filter :new_question, :only => [:new, :create]
   before_filter :get_question, :except => [:new, :create, :index]
   
+  before_filter :authenticate_admin_user!
+  
   def index
     @questions = Question.all
   end

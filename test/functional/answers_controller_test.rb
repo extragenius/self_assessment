@@ -3,6 +3,7 @@ require 'test_helper'
 class AnswersControllerTest < ActionController::TestCase
   
   def setup
+    sign_in_admin_user
     @answer_store = AnswerStore.find(1)
     @answer_store.save
     @answer = Answer.find(1)
@@ -21,6 +22,7 @@ class AnswersControllerTest < ActionController::TestCase
   end
   
   def test_index_with_answer_store_in_session
+    test_index # Adding authentication caused this test to fail due to a redirect, until I added this
     get :index, {}, {:answer_store => @answer_store.session_id}
     assert_response :success
     assert_equal(@answer_store, assigns('answer_store'))

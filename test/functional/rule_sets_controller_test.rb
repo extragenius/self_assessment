@@ -4,6 +4,7 @@ class RuleSetsControllerTest < ActionController::TestCase
 
   def setup
     @rule_set = RuleSet.find(1)
+    sign_in_admin_user
   end
   
   def test_index

@@ -4,6 +4,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
   def setup
     @questionnaire = Questionnaire.find(1)
     @question = Question.find(1)
+    sign_in_admin_user
   end
   
   def test_index

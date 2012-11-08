@@ -11,3 +11,13 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+  
+  def sign_in_admin_user
+    @admin_user = AdminUser.find(1)
+    sign_in @admin_user
+  end
+end
+
