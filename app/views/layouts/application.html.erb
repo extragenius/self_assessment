@@ -9,7 +9,6 @@
 <body>
   <div id="main">
     <%= render 'shared/flash_messages' %>
-    <%= render 'shared/navigation' if admin_user_signed_in? %>
     <%= yield %>
   </div>
 </body>

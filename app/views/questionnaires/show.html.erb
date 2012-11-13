@@ -6,7 +6,7 @@
 <h2>Questions</h2>
 <% end %>
 
-<%= form_for(@questionnaire, :url => answer_questionnaire_path(@questionnaire), :method => 'post') do |form| %>
+<%= form_for(@questionnaire, :url => questionnaire_path(@questionnaire)) do |form| %>
 
 <ul class="selection">
 <% @questionnaire.questions.each do |question| %>
@@ -26,5 +26,8 @@
 <% end %>
 </ul>
 
-<p><%= form.submit('Submit') %></p>
+<p>
+  <%= form.submit('Submit') %>
+  <%= link_to('Back to the menu', questionnaires_path) %>
+</p>
 <% end %>

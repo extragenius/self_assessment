@@ -1,70 +1,27 @@
 class QuestionnairesController < ApplicationController
-  before_filter :new_questionnaire, :only => [:new, :create]
-  before_filter :get_questionnaire, :except => [:new, :create, :index, :tabs, :reset]
-  before_filter :get_questions, :only => [:new, :create, :edit, :update]
-  before_filter :get_questionnaires, :only => [:index, :tabs, :tab, :answer]
-  before_filter :get_rule_sets, :only => [:tabs, :tab]
+  before_filter :get_questionnaire, :except => [:index, :reset]
+  before_filter :get_rule_sets, :only => [:index, :show]
+  before_filter :get_questionnaires, :only => [:index]
   
-  before_filter :authenticate_admin_user!, :except => [:tabs, :tab, :answer, :reset]
-  
-  layout 'tabs', :only => [:tabs, :tab, :answer]
+  layout 'tabs'
   
   def index
     
   end
   
-  def tabs
-
-  end
 
   def show
   end
-  
-  def tab
-    
-  end
 
-  def new
-    @questionnaire = Questionnaire.new
-  end
-  
-  def create
-    if update_questionnaire
-      redirect_to :action => :show, :id => @questionnaire.id
-    else
-      render :new
-    end
-  end
-  
-  def edit
-    render :new
-  end
-  
   def update
-    if update_questionnaire
-      redirect_to :action => :show, :id => @questionnaire.id
-    else
-      render :new
-    end
-  end
-
-  def delete
-  end
-  
-  def destroy
-    @questionnaire.destroy
-    redirect_to :action => :index
-  end
-  
-  def answer
     add_answers_to_store
-    redirect_to tabs_answers_path
+    redirect_to :action => :index
   end
   
   def reset
     get_answer_store
     @answer_store.answers.clear
-    redirect_to tabs_answers_path
+    redirect_to :action => :index
   end
   
   private

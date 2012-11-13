@@ -1,4 +1,3 @@
-  
 function showAsTabs(element) {
   $(element).tabs({
     beforeLoad: function( event, ui) {
