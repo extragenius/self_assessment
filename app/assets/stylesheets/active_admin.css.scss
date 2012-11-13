@@ -28,7 +28,56 @@
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
 
-body.active_admin a.no_decoration {
-  text-decoration: none;
-  color: $text-color;
+body.active_admin {
+
+  a.no_decoration {
+    text-decoration: none;
+    color: $text-color;
+  }
+
+  form {
+    ul.selection {
+      display: inline-block;
+
+      li:nth-child(odd) {
+        background-color: $table-selected-color;
+      }
+
+      li {
+        width: 835px;
+        margin: 3px 0;
+        padding: 2px 0 4px;
+        position: relative;
+
+        a {
+          padding: 0 1px;
+          display: inline-block;
+        }
+
+        span.options {
+          display: inline-block;
+          position: absolute;
+          right: 2px;
+          top: 3px;
+          width: 180px;
+
+          input {
+            margin-right: 12px;
+            vertical-align: top;
+          }
+
+        }
+
+        label {
+          display: inline-block;
+          width: 580px;
+        }
+
+      }
+    }
+  }
+
+  .rule_set h2{
+    margin-top: 1em;
+  }
 }
