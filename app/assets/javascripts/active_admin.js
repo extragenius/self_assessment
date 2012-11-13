@@ -1,5 +1,7 @@
 //= require active_admin/base
 
 $(function() {
-    $( '#questions' ).tooltip();
+    if (!!$.prototype.tooltip) {
+      $( '#questions' ).tooltip();
+    }
 });
