@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_answer_store
-  
+
   private
   def get_answer_store(create_new = false)
     if session[:answer_store]

@@ -25,12 +25,13 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano'     # Deployment tool
 end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
+gem "ckeditor", "3.7.3"   # Adds rich text editor to input fields
 
-gem 'devise'
-gem 'activeadmin'
+gem 'devise'         # Authentication
+gem 'activeadmin'    # Admin interface
 
 gem 'dibber'  # Used in db/seeds

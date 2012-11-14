@@ -1,7 +1,7 @@
 <h1><%= @questionnaire.title %></h1>
 
 <%  if @questionnaire.description.present? %>
-<%= content_tag('p', @questionnaire.description) %>
+<%= content_tag('div', sanitize(@questionnaire.description), :class => 'admin_input') %>
 <% else %> 
 <h2>Questions</h2>
 <% end %>
