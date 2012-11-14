@@ -124,11 +124,17 @@ $(function() {
     
     var output = '<p>' + calc + '</p>';
     output += '<p>Result - ' + outcome + '</p>';
-    
+    output += '<p><button id="restart">Calculate again</button></p>'
+
     $('#output').html(output);
-//    $('#output').show()
-//    $('#output').show('drop', { direction: "up" });
     $('#output').show("highlight", {color:'#C2EBFF'}, 1500);
+    $('#calculator #two').hide('fade');
+
+    onClickShowAndHide(
+      '#calculator #restart',
+      '#calculator #two',
+      '#calculator #output'
+    );
   }
   
     
@@ -137,5 +143,6 @@ $(function() {
     showOwnsProperty() || showSupported() || showMayBeFunded() || showSelfFund();
 
   });
+
   
 });

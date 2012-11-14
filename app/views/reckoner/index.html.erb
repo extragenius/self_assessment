@@ -1,6 +1,6 @@
-<div class="header"">
+<div class="header">
   <h1>Funding Criteria</h1>
-  <a href="#" id="make_bigger" class="ui-state-default ui-corner-all">Show section at a time</a>
+  <a href="#" id="make_bigger" class="ui-state-default ui-corner-all">Expand this page for easier reading</a>
   <a href="#" id="make_smaller" class="ui-state-default ui-corner-all">Show all</a>
 </div>
 <div id="articles" class="normal">
@@ -44,7 +44,15 @@
       charges. You will need a community care assessment to confirm what your 
       contribution would be.
     </p>
-    <a href="#" class="display_calculator">Display calculator</a>
+
+    <p>
+      <%= link_to('More information about arranging an assessment', 'http://www.warwickshire.gov.uk/assessments') %>
+    </p>
+
+    <p>
+      <%= link_to('Help me calculate my capital and savings', '#', :class => 'display_calculator') %>
+    </p>
+
     <div id="calculator_dialog">
       <iframe src="/calculator" width="600" height="600" seamless="seamless" frameborder="0" allowTransparency="true"></iframe>
     </div>
@@ -89,7 +97,7 @@
       If you are not sure what services will best fulfil your needs, we provide 
       a self-assessment form. This is not the same as a community assessment, 
       but it might help simplify your search. To use a self-assessment form, 
-      click here 
+      <%=  link_to('click here', questionnaires_path) %>
     </p>
   </div>
 
