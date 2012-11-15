@@ -1,0 +1,18 @@
+
+number:
+  id: 1
+  name: number
+  value_type: number
+  value: 3.4
+
+text:
+  id: 2
+  name: text
+  value_type: text
+  value: Hello world
+
+decimal:
+  id: 3
+  name: decimal
+  value_type: decimal
+  value: 5.4
