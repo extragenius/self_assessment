@@ -1,56 +1,44 @@
 <div class="header">
-  <h1>Funding Criteria</h1>
-  <a href="#" id="make_bigger" class="ui-state-default ui-corner-all">Expand this page for easier reading</a>
-  <a href="#" id="make_smaller" class="ui-state-default ui-corner-all">Show all</a>
+  <h1><%= t 'reckoner.header.text' %></h1>
+  <%= link_to(
+        t('reckoner.links.make_bigger'),
+        '#',
+        :id => 'make_bigger',
+        :class => 'ui-state-default ui-corner-all'
+      )
+  %>
+  <%= link_to(
+        t('reckoner.links.make_smaller'),
+        '#',
+        :id => 'make_smaller',
+        :class => 'ui-state-default ui-corner-all'
+      )
+  %>
 </div>
 <div id="articles" class="normal">
   <div class="article current">
-    <h2>Council funded care</h2>
-    <p>
-      People with critical or substantial care needs may be eligible for their 
-      care to be partly or fully funded by Warwickshire County Council. 
-    </p>
-
-    <p>
-      The only way to find out for certain is to arrange a community care 
-      assessment, which is carried out by a Council professional and includes a 
-      financial assessment.
-    </p>
+    <h2><%= t 'reckoner.articles.intro.title' %></h2>
+    <p><%= t 'reckoner.articles.intro.generalise_who_is_funded' %></p>
+    <p><%= t 'reckoner.articles.intro.care_assessment_needed' %></p>
   </div> 
   
   <div class="article">
-    <p>
-      It is likely that you will have to meet the full cost of your care if any 
-      of the following are true:
-    </p>
+    <p><%= t 'reckoner.articles.criteria.list_intro' %></p>
     
     <ul>
-      <li>
-        You have more than £23,250 in capital or savings.
-      </li>
-      <li>
-        You are part of a couple and you and your partner/spouse have joint 
-        saving greater than £46,500.
-      </li>
-      <li>
-        You own a property that you do not live in.
-      </li>
+      <li><%= sanitize t 'reckoner.articles.criteria.list.upper_single_threshold' %></li>
+      <li><%= sanitize t 'reckoner.articles.criteria.list.upper_couple_threshold' %></li>
+      <li><%= t 'reckoner.articles.criteria.list.property_criteria' %></li>
     </ul>
   
+    <p><% sanitize t 'reckoner.articles.criteria.lower_threshold' %></p>
+
     <p>
-      If your capital and savings are above the minimum threshold of &pound;14,250, 
-      or &pound;25,000 for a couple, but below the upper thresholds shown above, 
-      some of your costs might be met by the council, according to a tariff of 
-      charges. You will need a community care assessment to confirm what your 
-      contribution would be.
+      <%= link_to( t('reckoner.links.detailed_assessment'), 'http://www.warwickshire.gov.uk/assessments') %>
     </p>
 
     <p>
-      <%= link_to('More information about arranging an assessment', 'http://www.warwickshire.gov.uk/assessments') %>
-    </p>
-
-    <p>
-      <%= link_to('Help me calculate my capital and savings', '#', :class => 'display_calculator') %>
+      <%= link_to( t('reckoner.links.calculator'), '#', :class => 'display_calculator') %>
     </p>
 
     <div id="calculator_dialog">
@@ -59,52 +47,35 @@
   </div> 
   
   <div class="article">
-    <p>
-      If your needs are critical or substantial, or if you have any doubt about 
-      your condition or eligibility, you should contact our Customer Service 
-      Centre who will be able to arrange a community care assessment.
-    <p>
-
-    <p>
-      If you are not eligible for council funded care, or you prefer the privacy, 
-      speed and choice of self-funding, you might prefer to use our online 
-      self-support facility.
-    <p>
-
-    <p>
-      If you have had a community care assessment and have a personal budget, 
-      you may choose to find providers using our online self-support facility.
-    </p>
+    <p><%= t 'reckoner.articles.caveats.critical_care' %><p>
+    <p><%= t 'reckoner.articles.caveats.not_eligible' %><p>
+    <p><%= t 'reckoner.articles.caveats.personal_budget' %></p>
   </div>
 
   <div class="article">
-    <h2>On-line Self-Support</h2>
-    <p>
-      Warwickshire County Council has a Directory of Services that you can 
-      search to find information and suppliers of care related products and 
-      services.
-    </p>
+    <h2><%= t 'reckoner.articles.self_support.title' %></h2>
+    <p><%= t 'reckoner.articles.self_support.description' %></p>
      
     <p>
-      If you know exactly what services will best fulfil your needs and you are 
-      confident in using search criteria to find the services from our directory, 
-      you can go straight there by clicking here.
+      <%= t 'reckoner.articles.self_support.when_to' %>
+      <%= link_to(
+            t('reckoner.articles.self_support.link_to_directory'),
+            'https://directory.warwickshire.gov.uk/'
+          ) %>
     </p>
   </div> 
   
   <div class="article">
     <p>
-      If you are not sure what services will best fulfil your needs, we provide 
-      a self-assessment form. This is not the same as a community assessment, 
-      but it might help simplify your search. To use a self-assessment form, 
-      <%=  link_to('click here', questionnaires_path) %>
+      <%= t 'reckoner.articles.self_assess.when_to' %>
+      <%=  link_to(t('reckoner.articles.self_assess.link'), questionnaires_path) %>
     </p>
   </div>
 
 
 </div>
 <div class="nav">
-  <a href="#" id="previous">Previous</a>
-  <a href="#" id="next">Next</a>
+  <a href="#" id="previous"><%= t 'reckoner.links.nav.previous' %></a>
+  <a href="#" id="next"><%= t 'reckoner.links.nav.next' %></a>
 </div>   
 

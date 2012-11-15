@@ -29,6 +29,11 @@
   label {
     display: block;
   }
+
+  label.for_check_box {
+    display: inline;
+    line-height: 1.8em;
+  }
   
   #output {
     display: block;

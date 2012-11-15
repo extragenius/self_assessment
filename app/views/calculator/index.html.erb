@@ -4,59 +4,72 @@
   
   <div id="one">
     <p>
-      Please confirm that you understand that this calculator is not definitive 
-      and it's result will not be considered part of the financial assessment 
-      process used by the council to determine your contribution to 
-      care costs. 
+      <%= label_tag(
+            :understand,
+            t('calculator.confirm_understanding'),
+            :class => 'for_check_box'
+          ) %>
       <%= check_box_tag(:understand) %>
     </p>
   </div>
 
   <div id="two">
+    <p><%= t 'calculator.description' %></p>
     <p>
-      This reckoner indicates whether you will be expected to pay for care services
-      you receive through Warwickshire County Council.
-    </p>
-    <p>
-      Click here if you are married or part of a couple
+      <%= label_tag(:couple, t('calculator.labels.couple'), :class => 'for_check_box') %>
       <%= check_box_tag(:couple) %>
-      <br>AND<br>
-      Click here if you own the property you live in?
+      <br><%= t 'calculator.check_box_separator' %><br>
+      <%=  label_tag(:property, t('calculator.labels.property'), :class => 'for_check_box') %>
       <%= check_box_tag(:property) %>
     </p>
 
     <p>
-      Do you <span class="spouse">or your spouce/partner</span> have any of the 
-      following savings/capital?
+      <%= sanitize t(
+            'calculator.do_you_have_savings',
+            :or_spouse => content_tag(
+              'span',
+              t('calculator.or_spouse'),
+              :class => 'spouse'
+            )
+          )
+      %>
     </p>
 
     <p>
-      <%= label_tag(:bank, 'Bank/Building society') %>
+      <%= label_tag(:bank, t('calculator.labels.bank')) %>
       <%= text_field_tag(:bank) %>
     </p>
 
     <p>
-      <%= label_tag(:shares) %>
+      <%= label_tag(:shares, t('calculator.labels.shares')) %>
       <%= text_field_tag(:shares) %>
     </p>
 
     <p>
-      <%= label_tag(:post_office) %>
+      <%= label_tag(:post_office, t('calculator.labels.post_office')) %>
       <%= text_field_tag(:post_office) %>
     </p>
 
     <p>
-      <%= label_tag(:capital, 'Other Capital/Savings') %>
+      <%= label_tag(:capital, t('calculator.labels.capital')) %>
       <%= text_field_tag(:capital) %>
     </p>
 
     <p>
-      Please enter the total amounts you <span class="spouse"> and your 
-      spouce/partner</span> have for each saving type and click calculate.
+      <%=
+         sanitize t(
+           'calculator.instructions',
+           :and_spouse => content_tag(
+             'span',
+             t('calculator.and_spouse'),
+             :class => 'spouse'
+           )
+         )
+      %>
     </p>
 
     <p>
-      <%= button_tag('Calculate', :id => 'calculate') %>
+      <%= button_tag(t('calculator.labels.submit_button'), :id => 'calculate') %>
     </p>
   </div>
   
