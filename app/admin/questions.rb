@@ -1,6 +1,7 @@
 ActiveAdmin.register Question do
 
   index do
+    column :ref
     column :title do |question|
       link_to(question.title, '#', :title => question.description, :class => 'no_decoration')
     end
@@ -9,6 +10,7 @@ ActiveAdmin.register Question do
 
   form do |f|
     f.inputs "Details" do
+      f.input :ref, :label => 'Reference'
       f.input :title
       f.input :description, :input_html => { :rows => 2}
     end
