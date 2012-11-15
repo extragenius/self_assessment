@@ -16,6 +16,6 @@ test:
 production:
   adapter: mysql2
   username: self_assessment
-  password: password
+  password: GTYHdse23B
   host: localhost
   database: self_assessment
