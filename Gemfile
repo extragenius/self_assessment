@@ -35,3 +35,5 @@ gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface
 
 gem 'dibber'  # Used in db/seeds
+
+gem 'i18n-js'  # Allows translation files to be used within JavaScript

@@ -1,5 +1,13 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# This translation is used by both the backend Ruby and the frontend JavaScript.
+# Nothing has to be done for backend methods to see these translations.
+#
+# However, you will need to run the following command to synchronise this file
+# with the JavaScript file at /app/assets/javascripts/i18n/translations.js:
+#
+#   rake i18n:js:export
+#
+# This functionality is provided by the i18n-js gem
+#
 
 en:
   reckoner:
@@ -64,3 +72,15 @@ en:
       post_office: Post Office
       capital: Other Capital/Savings
       submit_button: Calculate
+
+    output:
+      supported: Yes you are eligible for funding by WCC
+      may_be_funded: You may be eligible for some funding by WCC
+      self_fund: You will need to fund the full cost
+      owns_property: You are not eligible for WCC funding because you own property
+      reopen_button: Calculate again
+      prepend_savings: Your capital and savings of &pound;%{total_savings} are %{calc}
+      calc:
+        below_lower_threshold: below the lower limit of &pound;%{amount}
+        between_thresholds: above the lower limit of &pound;%{lower} and below the upper limit of &pound;%{upper}
+        above_upper_threshold: above the upper limit of &pound;%{amount}

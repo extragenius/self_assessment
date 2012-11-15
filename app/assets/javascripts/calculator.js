@@ -67,21 +67,21 @@ $(function() {
     return maxThreashold * coupleFactor();
   }  
   
-  var supported = 'Yes you are eligible for funding by WCC';
+  var supported = I18n.t('calculator.output.supported');
 
-  var mayBeFunded = 'You may be eligible for some funding by WCC';
+  var mayBeFunded = I18n.t('calculator.output.may_be_funded');
   
-  var selfFund = 'You will need to fund the full cost'; 
+  var selfFund = I18n.t('calculator.output.self_fund');
 
   var calc
   
   function ownsProperty() {
-    return $('#property').attr('checked') == 'checked'
+    return $('#property').attr('checked') == 'checked';
   }
   
   function showOwnsProperty() {
     if (ownsProperty()) {
-      calc = 'You are not eligible for WCC funding because you own property';
+      calc = I18n.t('calculator.output.owns_property');
       displayOutput(selfFund, calc);
       return true;
     } else {
@@ -91,7 +91,7 @@ $(function() {
   
   function showSupported() {
     if (totalSavings() < minSavings()) {
-      calc = "below the lower limit of &pound;" + minSavings();
+      calc = I18n.t('calculator.output.calc.below_lower_threshold', {amount: minSavings()});
       displayOutput(supported, prependSavings(calc));
       return true;
     } else {
@@ -101,8 +101,7 @@ $(function() {
   
   function showMayBeFunded() {
     if (totalSavings() < maxSavings()) {
-      calc = "above the lower limit of &pound;" + minSavings();
-      calc += " and below the upper limit of &pound;" + maxSavings();
+      calc = I18n.t('calculator.output.calc.between_thresholds', {lower: minSavings(), upper: maxSavings()})
       displayOutput(mayBeFunded, prependSavings(calc));
       return true;
     } else {
@@ -111,20 +110,20 @@ $(function() {
   }
   
   function showSelfFund() {
-    calc = "above the upper limit of &pound;" + maxSavings();
+    calc = calc = I18n.t('calculator.output.calc.above_upper_threshold', {amount: maxSavings()});
     displayOutput(selfFund, prependSavings(calc));
     return true;
   }
   
   function prependSavings(text) {
-    return "Your capital and savings of &pound;" + totalSavings() + " are " + text;
+    return I18n.t('calculator.output.prepend_savings', {total_savings: totalSavings(), calc: text});
   }
   
   function displayOutput(outcome, calc) {
     
     var output = '<p>' + calc + '</p>';
     output += '<p>Result - ' + outcome + '</p>';
-    output += '<p><button id="restart">Calculate again</button></p>'
+    output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>'
 
     $('#output').html(output);
     $('#output').show("highlight", {color:'#C2EBFF'}, 1500);
