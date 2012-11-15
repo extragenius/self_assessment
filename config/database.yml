@@ -18,4 +18,4 @@ production:
   username: self_assessment
   password: password
   host: localhost
-  database: self_assessment_test
+  database: self_assessment
