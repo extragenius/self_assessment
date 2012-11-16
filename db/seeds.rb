@@ -33,4 +33,6 @@ AdminUser.create!(
   :password_confirmation => password
 ) unless AdminUser.exists?(:email => admin_email)
 
+Seeder.new(Setting, 'settings.yml').build
+
 puts Seeder.report

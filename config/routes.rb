@@ -14,8 +14,10 @@ SelfAssessment::Application.routes.draw do
     end
   end
   
-  resources :reckoner
+  resources :reckoner, :only => [:index]
   
-  resources :calculator
+  resources :calculator, :only => [:index]
+
+  resources :settings, :only => [:show]
 
 end

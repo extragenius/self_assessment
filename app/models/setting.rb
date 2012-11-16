@@ -2,28 +2,33 @@ class Setting < ActiveRecord::Base
 
   attr_accessible :name, :value, :value_type, :description
 
-  VALUE_TYPES = {
-    'text' => String,
-    'number' => Float,
-    'decimal' => BigDecimal
-  }
+  VALUE_TYPES = %w{text number decimal}
 
-  validates :value_type, :presence => true, :inclusion => {:in => VALUE_TYPES.keys}
+
+  validates :value_type, :presence => true, :inclusion => {:in => VALUE_TYPES}
   validates :value, :presence => true
   validates :name, :uniqueness => true, :presence => true
 
   def self.value_types
-    VALUE_TYPES.keys
+    VALUE_TYPES
+  end
+
+  def self.for(name)
+    setting = find_by_name(name)
+    setting.value if setting
   end
 
   def value
-    case value_type
-      when 'number'
-        super.to_f
-      else
-        VALUE_TYPES[value_type].new(super)
-    end if value_type.present?
-
+    if value_type.present?
+      case value_type.to_s
+        when 'number'
+          super.to_f
+        when 'decimal'
+          BigDecimal.new(super)
+        else
+          super
+      end
+    end
   end
 
 end
