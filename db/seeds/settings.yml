@@ -3,12 +3,12 @@ couple_factor:
   value: 2
   description: The number threasholds are multiplied by if the user is part of a couple
 
-min_savings_threshold:
+lower_savings_threshold:
   value_type: decimal
   value: 14250
   description: The amount of savings above which a users is likely to have to pay for SOME services
 
-max_savings_threshold:
+upper_savings_threshold:
   value_type: decimal
   value: 23250
   description: The amount of savings above which a users is likely to have to pay for ALL services

@@ -26,12 +26,34 @@
     <p><%= t 'reckoner.articles.criteria.list_intro' %></p>
     
     <ul>
-      <li><%= sanitize t 'reckoner.articles.criteria.list.upper_single_threshold' %></li>
-      <li><%= sanitize t 'reckoner.articles.criteria.list.upper_couple_threshold' %></li>
+      <li>
+        <%=
+          sanitize t(
+            'reckoner.articles.criteria.list.upper_single_threshold',
+            :amount => @upper_savings_threshold.to_i
+          )
+        %>
+      </li>
+      <li>
+        <%=
+          sanitize t(
+            'reckoner.articles.criteria.list.upper_couple_threshold',
+            :amount => (@upper_savings_threshold * @couple_factor).to_i
+          )
+        %>
+      </li>
       <li><%= t 'reckoner.articles.criteria.list.property_criteria' %></li>
     </ul>
   
-    <p><% sanitize t 'reckoner.articles.criteria.lower_threshold' %></p>
+    <p>
+      <%=
+        sanitize t(
+          'reckoner.articles.criteria.lower_threshold',
+          :single_lower_threshold => @lower_savings_threshold.to_i,
+          :couple_lower_threshold => (@lower_savings_threshold * @couple_factor).to_i
+        )
+      %>
+    </p>
 
     <p>
       <%= link_to( t('reckoner.links.detailed_assessment'), 'http://www.warwickshire.gov.uk/assessments') %>

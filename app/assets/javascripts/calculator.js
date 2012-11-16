@@ -43,27 +43,55 @@ $(function() {
     var capital = valueForField('#capital')
     return bank + shares + post_office + capital;
   }
+
+  function getSettingFromServer(name) {
+    var json = $.ajax({
+      type: "GET",
+      url: '/settings/' + name + '.json',
+      async: false,  // Without this rest of process continues before the data is returned
+      dataType: 'json',
+
+      success: function () {
+        console.log('Successfully retrieved ' + name);
+      },
+      error: function () {
+        console.log('Error retrieving ' + name);
+      }
+    }).responseText;
+
+    var data = $.parseJSON(json);
+    return data.setting_value;
+  }
+
+  var cachedSettings = {};
+
+  function getSetting(name) {
+    if (typeof cachedSettings[name] === "undefined") {
+      cachedSettings[name] = getSettingFromServer(name);
+    }
+    return cachedSettings[name];
+  }
   
   function isCouple() {
     var couple = $('#couple').attr('checked');
-    return couple == 'checked'
+    return couple == 'checked';
   }
   
   function coupleFactor() {
     if (isCouple()) {
-      return 2;
+      return getSetting('couple_factor');
     } else {
       return 1;
     }
   }
-  
-  function minSavings() {   
-    var minThreashold = 14250;
+
+  function minSavings() {
+    var minThreashold = getSetting('lower_savings_threshold');
     return minThreashold * coupleFactor();
   }
   
   function maxSavings() {    
-    var maxThreashold = 23250;
+    var maxThreashold = getSetting('upper_savings_threshold');
     return maxThreashold * coupleFactor();
   }  
   
