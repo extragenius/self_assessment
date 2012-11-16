@@ -1,5 +1,7 @@
 class Setting < ActiveRecord::Base
 
+  attr_accessible :name, :value, :value_type, :description
+
   VALUE_TYPES = {
     'text' => String,
     'number' => Float,
@@ -7,7 +9,7 @@ class Setting < ActiveRecord::Base
   }
 
   validates :value_type, :presence => true, :inclusion => {:in => VALUE_TYPES.keys}
-  validates :value_type, :presence => true
+  validates :value, :presence => true
   validates :name, :uniqueness => true, :presence => true
 
   def self.value_types
@@ -20,7 +22,7 @@ class Setting < ActiveRecord::Base
         super.to_f
       else
         VALUE_TYPES[value_type].new(super)
-    end
+    end if value_type.present?
 
   end
 
