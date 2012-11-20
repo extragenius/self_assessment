@@ -37,3 +37,5 @@ gem 'activeadmin'    # Admin interface
 gem 'dibber'  # Used in db/seeds
 
 gem 'i18n-js'  # Allows translation files to be used within JavaScript
+
+gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
