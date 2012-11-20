@@ -19,5 +19,16 @@ SelfAssessment::Application.routes.draw do
   resources :calculator, :only => [:index]
 
   resources :settings, :only => [:show]
+  
+  namespace :admin do
+    resources :questionnaires do
+      resources :questions, :only => [:move_up, :move_down] do
+        member do
+          get :move_up
+          get :move_down
+        end
+      end
+    end
+  end
 
 end

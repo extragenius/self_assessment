@@ -32,12 +32,10 @@ ActiveAdmin.register Questionnaire do
 
     div do
       h3 'Questions'
-      ul do
-        questionnaire.questions.each do |question|
-          li question.title
-        end
-      end
+      render 'questions', :questionnaire => questionnaire
     end
   end
+  
+
   
 end

@@ -16,5 +16,23 @@ ActiveAdmin.register Question do
     end
     f.buttons
   end
+  
+  controller do
+    
+    def move_up
+      question = Question.find(params[:id])
+      questionnaire = Questionnaire.find(params[:questionnaire_id])
+      questionnaire.move_higher(question)
+      redirect_to admin_questionnaire_path(questionnaire)
+    end
+    
+    def move_down
+      question = Question.find(params[:id])
+      questionnaire = Questionnaire.find(params[:questionnaire_id])
+      questionnaire.move_lower(question)
+      redirect_to admin_questionnaire_path(questionnaire)
+    end
+    
+  end
 
 end
