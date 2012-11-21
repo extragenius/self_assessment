@@ -23,7 +23,7 @@ ActiveAdmin.register Questionnaire do
 
   show do
     div do
-      sanitize(questionnaire.description.html_safe )
+      sanitize(questionnaire.description.html_safe ) if questionnaire.description.present?
     end
 
     div do
