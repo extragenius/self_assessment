@@ -4,8 +4,12 @@ class AddIdsToQuestionnairesQuestions < ActiveRecord::Migration
     add_column qq_table, :position, :integer
     add_column qq_table, :created_at, :datetime
     add_column qq_table, :updated_at, :datetime
-    
-    execute "UPDATE questionnaires_questions SET position = id, created_at = now(), updated_at = now()"
+
+    execute "UPDATE questionnaires_questions SET created_at = now(), updated_at = now();"
+
+    puts "=============================================="
+    puts "Now run 'rake data:reset_positions RAILS_ENV=#{Rails.env}' to set the positions"
+    puts "=============================================="
   end
   
   def down
