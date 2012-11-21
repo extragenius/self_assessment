@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class QuestionnaireTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @questionnaire = Questionnaire.find(1)
+  end
+  
+  # Overriding this method so want to make sure default behaviour still works
+  def test_method_missing
+    assert_raise NoMethodError do
+      @questionnaire.no_such_method
+    end
+  end
 end
