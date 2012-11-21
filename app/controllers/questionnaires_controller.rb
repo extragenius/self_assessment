@@ -6,7 +6,7 @@ class QuestionnairesController < ApplicationController
   layout 'tabs'
   
   def index
-    
+
   end
   
 

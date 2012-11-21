@@ -32,7 +32,7 @@
     </div>
     
     <% @rule_sets.each do |rule_set| %>
-    <%= tag_page("rule_set_#{rule_set.id}", rule_set.url) %>
+    <%= tag_page("rule_set_#{rule_set.id}", rule_set_path(rule_set)) %>
     <% end %>
     
     <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>

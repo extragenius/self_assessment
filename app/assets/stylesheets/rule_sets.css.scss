@@ -1,0 +1,24 @@
+// Place all the styles related to the rule_sets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.rule_set {
+
+  font-size: 1.3em;
+
+  .description {
+    margin: 10px 0;
+  }
+
+  table.answers {
+    margin: 5px;
+    th {
+      text-align: left;
+    }
+    td {
+      padding: 2px 10px;
+    }
+  }
+
+}

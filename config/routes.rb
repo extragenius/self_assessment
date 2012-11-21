@@ -19,6 +19,8 @@ SelfAssessment::Application.routes.draw do
   resources :calculator, :only => [:index]
 
   resources :settings, :only => [:show]
+
+  resources :rule_sets, :only => [:show]
   
   namespace :admin do
     resources :questionnaires do
