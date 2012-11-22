@@ -1,4 +1,13 @@
 <div class="warning">
-  <h2>Warning</h2>
+  <div class="heading">
+    <h2>Warning</h2>
+    <%= link_to('close', '#', :class => "close")  %>
+  </div>
   <p>Coping index exceeded</p>
 </div>
+
+<%= javascript_tag do %>
+  $('.warning .close').click(function() {
+    $(this).closest('.warning').hide();
+  })
+<% end %>
