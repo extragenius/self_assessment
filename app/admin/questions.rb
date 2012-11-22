@@ -5,7 +5,26 @@ ActiveAdmin.register Question do
     column :title do |question|
       link_to(question.title, '#', :title => question.description, :class => 'no_decoration')
     end
+    column :answers do |question|
+      question.answers.count
+    end
     default_actions
+  end
+
+  show do
+    para("References: #{question.ref}") if question.ref.present?
+    para(question.description)
+    h3 "Answers"
+    table do
+      tr do
+        th 'Value'
+      end
+      question.answers.each do |answer|
+        tr do
+          td answer.value
+        end
+      end
+    end
   end
 
   form do |f|
@@ -15,9 +34,20 @@ ActiveAdmin.register Question do
       f.input :description, :input_html => { :rows => 2}
     end
     f.buttons
+
+
+    f.has_many :answers, :as => "Answers" do |answer_form|
+        answer_form.input :value
+    end
+
   end
   
   controller do
+
+    def new
+      @question = Question.new
+      Answer.default_values.each{|value| @question.answers.build(:value => value) }
+    end
     
     def move_up
       question = Question.find(params[:id])

@@ -84,3 +84,9 @@ en:
         below_lower_threshold: below the lower limit of &pound;%{amount}
         between_thresholds: above the lower limit of &pound;%{lower} and below the upper limit of &pound;%{upper}
         above_upper_threshold: above the upper limit of &pound;%{amount}
+
+  activerecord:
+    models:
+      answer:
+        one: Answer
+        other: Answers
