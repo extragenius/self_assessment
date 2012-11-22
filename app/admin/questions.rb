@@ -21,7 +21,7 @@ ActiveAdmin.register Question do
       end
       question.answers.each do |answer|
         tr do
-          td answer.value
+          td link_to(answer.value, admin_answer_path(answer))
         end
       end
     end
@@ -33,13 +33,14 @@ ActiveAdmin.register Question do
       f.input :title
       f.input :description, :input_html => { :rows => 2}
     end
-    f.buttons
 
-
-    f.has_many :answers, :as => "Answers" do |answer_form|
-        answer_form.input :value
+    f.has_many :answers do |answer_form|
+      answer_form.input :value
+      answer_form.input :position
+      answer_form.input :cope_index
     end
 
+    f.buttons
   end
   
   controller do
