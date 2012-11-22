@@ -34,6 +34,16 @@ EOF
     end
   end
 
+  desc "Makes sure all questions have at least the default answers"
+  task :populate_answers => :environment do
+    Question.all.each do |question|
+      next if question.answers.count > 1
+      Answer.default_values.each do |value|
+        question.answers.find_or_create_by_value(value)
+      end
+    end
+  end
+
   desc "Testing environment"
   task :hello => :environment do
     puts "Hello World"
