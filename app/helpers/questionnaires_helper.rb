@@ -2,7 +2,8 @@ module QuestionnairesHelper
   
   def answers_radio_buttons(object, args = {})
     button_name = "answers[#{object.class.to_s.underscore}_id[#{object.id}]]"
-    buttons = args[:options].collect do |option|
+    options = object.answers.collect(&:value)
+    buttons = options.collect do |option|
       button = radio_button_tag(button_name, option, option == args[:checked])
       "#{option.humanize}#{button}".html_safe
     end

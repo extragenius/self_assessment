@@ -27,7 +27,6 @@
         <%= answers_radio_buttons(
               question,
               {
-                :options => ['Yes', 'No', "Unsure"],
                 :checked => @rule_set.value_for(question)
               }
             )

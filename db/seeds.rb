@@ -14,10 +14,8 @@ Seeder.objects_from('questions.yml').each do |holder, data|
   if data['questions']
     data['questions'].values.each do |question_data| 
       question = Question.find_or_create_by_title(question_data['question'])
+      question.create_default_answers
       answer = question.answers.find_or_create_by_value('Yes')
-      Answer.default_values.each do |value|
-        question.answers.find_or_create_by_value(value)
-      end
       rule_set = RuleSet.find_or_initialize_by_title(question_data['title'])
       rule_set.url = question_data['url']
       rule_set.answers = [answer]

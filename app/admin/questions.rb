@@ -46,7 +46,7 @@ ActiveAdmin.register Question do
 
     def new
       @question = Question.new
-      Answer.default_values.each{|value| @question.answers.build(:value => value) }
+      @question.build_default_answers
     end
     
     def move_up

@@ -21,6 +21,9 @@ namespace :data do
 
   desc "Removes duplicates from join tables"
   task :remove_duplicate_joins => :environment do
+    process_log = Dibber::ProcessLog.new
+    process_log.start :time, 'Time.now'
+    process_log.start :questionnaires_questions, 'QuestionnairesQuestion.count'
     sql_commands = <<EOF
 START TRANSACTION;
 CREATE TABLE questionnaires_questions_temp LIKE questionnaires_questions;
@@ -32,16 +35,20 @@ EOF
     sql_commands.each_line do |sql|
       ActiveRecord::Base.connection.execute sql
     end
+    puts process_log.report
   end
 
   desc "Makes sure all questions have at least the default answers"
   task :populate_answers => :environment do
+    process_log = Dibber::ProcessLog.new
+    process_log.start :time, 'Time.now'
+    process_log.start 'questions (should not change)', 'Question.count'
+    process_log.start :answers, 'Answer.count'
     Question.all.each do |question|
-      next if question.answers.count > 1
-      Answer.default_values.each do |value|
-        question.answers.find_or_create_by_value(value)
-      end
+      next if question.answers.count > 2
+      question.create_default_answers
     end
+    puts process_log.report
   end
 
   desc "Testing environment"

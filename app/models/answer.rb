@@ -1,6 +1,8 @@
 class Answer < ActiveRecord::Base
   attr_accessible :value, :question_id, :questionnaire_id
-  
+
+  DEFAULT_VALUES = ['Yes', 'No', 'Unsure']
+
   belongs_to :question
   belongs_to :questionnaire
   
@@ -9,6 +11,6 @@ class Answer < ActiveRecord::Base
   end
 
   def self.default_values
-    ['Yes', 'No', 'Unsure']
+    DEFAULT_VALUES
   end
 end
