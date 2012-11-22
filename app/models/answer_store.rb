@@ -17,6 +17,10 @@ class AnswerStore < ActiveRecord::Base
     current_answer = answer_for(question)
     answers.delete(current_answer) if current_answer
   end
+
+  def cope_index_sum
+    answers.sum(:cope_index)
+  end
   
   private
   

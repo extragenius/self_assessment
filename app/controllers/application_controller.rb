@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_answer_store
+  before_filter :check_cope_index
 
   private
   def get_answer_store(create_new = false)
@@ -49,5 +50,12 @@ class ApplicationController < ActionController::Base
       end
     end
     questions.uniq
+  end
+
+  def check_cope_index
+    if @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
+      @display_cope_index_warning = true
+    end
+
   end
 end

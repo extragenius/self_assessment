@@ -12,3 +12,8 @@ upper_savings_threshold:
   value_type: decimal
   value: 23250
   description: The amount of savings above which a users is likely to have to pay for ALL services
+
+cope_index_threshold:
+  value_type: number
+  value: 20
+  description: The sum of cope_index values at which a customer action occurs

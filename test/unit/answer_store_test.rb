@@ -52,4 +52,16 @@ class AnswerStoreTest < ActiveSupport::TestCase
     end
     test_answers_empty
   end
+
+  def test_cope_index_sum_with_no_answers
+    assert_equal(0, @answer_store.cope_index_sum)
+  end
+
+  def test_cope_index_sum
+    test_add_answer
+    assert_equal(0, @answer_store.cope_index_sum)
+    number = 6
+    @answer_store.answers.first.update_attribute(:cope_index, number)
+    assert_equal(number, @answer_store.cope_index_sum)
+  end
 end
