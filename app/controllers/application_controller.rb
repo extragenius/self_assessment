@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_answer_store
-  before_filter :check_cope_index
 
   private
   def get_answer_store(create_new = false)
@@ -10,6 +9,7 @@ class ApplicationController < ActionController::Base
     elsif create_new
       new_answer_store
     end
+    check_cope_index if @answer_store
   end
   
   def currect_answer_store
