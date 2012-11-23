@@ -31,6 +31,16 @@ SelfAssessment::Application.routes.draw do
         end
       end
     end
+
+    resources :questions do
+      resources :answers, :only => [:move_up, :move_down, :remove] do
+        member do
+          get :move_up
+          get :move_down
+          get :remove
+        end
+      end
+    end
   end
 
 end

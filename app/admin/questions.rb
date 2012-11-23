@@ -15,13 +15,16 @@ ActiveAdmin.register Question do
     para("References: #{question.ref}") if question.ref.present?
     para(question.description)
     h3 "Answers"
-    table do
+    table :class => 'sortable_list' do
       tr do
         th 'Value'
       end
       question.answers.each do |answer|
         tr do
-          td link_to(answer.value, admin_answer_path(answer))
+          td answer.value
+          td(answer.first? ? "&nbsp;".html_safe : link_to('Up', move_up_admin_question_answer_path(question, answer)))
+          td(answer.last? ? "&nbsp;".html_safe : link_to('Down', move_down_admin_question_answer_path(question, answer)))
+          td link_to('Delete', remove_admin_question_answer_path(question, answer))
         end
       end
     end

@@ -80,4 +80,10 @@ body.active_admin {
   .rule_set h2{
     margin-top: 1em;
   }
+
+  table.sortable_list {
+    width: inherit;
+    margin-left: 20px;
+  }
+
 }
