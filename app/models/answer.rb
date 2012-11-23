@@ -8,11 +8,17 @@ class Answer < ActiveRecord::Base
 
   acts_as_list :scope => :question
 
+  validates :value, :presence => true
+
   def self.find_first_or_create(attributes)
     where(attributes).first || create(attributes)
   end
 
   def self.standard_values
     STANDARD_VALUES
+  end
+
+  def self.default_value
+    DEFAULT_VALUE
   end
 end
