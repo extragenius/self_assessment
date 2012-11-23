@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     elsif create_new
       new_answer_store
     end
-    check_cope_index if @answer_store
+    check_cope_index
   end
   
   def currect_answer_store
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_cope_index
-    if @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
+    if @answer_store and @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
       @display_cope_index_warning = true
     end
 

@@ -46,7 +46,7 @@ EOF
     process_log.start :answers, 'Answer.count'
     Question.all.each do |question|
       next if question.answers.count > 2
-      question.create_default_answers
+      question.create_standard_answers
     end
     puts process_log.report
   end

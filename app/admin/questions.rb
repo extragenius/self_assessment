@@ -50,7 +50,7 @@ ActiveAdmin.register Question do
 
     def new
       @question = Question.new
-      @question.build_default_answers
+      @question.build_standard_answers
     end
     
     def move_up

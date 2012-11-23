@@ -10,22 +10,22 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal(0, @question.answers.count)
   end
 
-  def test_build_default_answers
+  def test_build_standard_answers
     assert_no_difference 'Answer.count' do
-      @question.build_default_answers
-      assert_question_has_default_answers
+      @question.build_standard_answers
+      assert_question_has_standard_answers
     end
   end
 
-  def test_create_default_answers
-    assert_difference 'Answer.count', Answer.default_values.length do
-      @question.create_default_answers
-      assert_question_has_default_answers
+  def test_create_standard_answers
+    assert_difference 'Answer.count', Answer.standard_values.length do
+      @question.create_standard_answers
+      assert_question_has_standard_answers
     end
   end
 
   private
-  def assert_question_has_default_answers
-    assert_equal(Answer.default_values, @question.answers.collect(&:value))
+  def assert_question_has_standard_answers
+    assert_equal(Answer.standard_values, @question.answers.collect(&:value))
   end
 end
