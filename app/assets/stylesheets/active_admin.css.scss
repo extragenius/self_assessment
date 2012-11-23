@@ -36,43 +36,15 @@ body.active_admin {
   }
 
   form {
-    ul.selection {
-      display: inline-block;
 
-      li:nth-child(odd) {
+    table.selection {
+      width: inherit;
+      tr:nth-child(odd) {
         background-color: $table-selected-color;
       }
 
-      li {
-        width: 835px;
-        margin: 3px 0;
-        padding: 2px 0 4px;
-        position: relative;
-
-        a {
-          padding: 0 1px;
-          display: inline-block;
-        }
-
-        span.options {
-          display: inline-block;
-          position: absolute;
-          right: 2px;
-          top: 3px;
-          width: 180px;
-
-          input {
-            margin-right: 12px;
-            vertical-align: top;
-          }
-
-        }
-
-        label {
-          display: inline-block;
-          width: 580px;
-        }
-
+      .options input {
+        margin-right: 1em;
       }
     }
   }

@@ -18,23 +18,25 @@
 
     <h2>Questions</h2>
 
-    <ul class="selection">
+    <table class="selection">
       <% Question.all.each do |question| %>
-        <li>
+        <tr>
+          <td>
           <%= check_box_tag("questions[id[#{question.id}]]", '1', @rule_set.questions.include?(question)) %>
           <%= label_tag("questions_id_#{question.id}", question.title) %>
-          <span class="options">
-        <%= answers_radio_buttons(
-              question,
-              {
-                :checked => @rule_set.value_for(question)
-              }
-            )
-        %>
-      </span>
-        </li>
+          </td>
+          <td class="options">
+          <%= answers_radio_buttons(
+                question,
+                {
+                  :checked => @rule_set.value_for(question)
+                }
+              )
+          %>
+          </td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
 
     <p><%= form.submit %></p>
 
