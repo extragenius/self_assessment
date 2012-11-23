@@ -52,10 +52,10 @@ $(function() {
       dataType: 'json',
 
       success: function () {
-        console.log('Successfully retrieved ' + name);
+        //console.log('Successfully retrieved ' + name);
       },
       error: function () {
-        console.log('Error retrieving ' + name);
+        //console.log('Error retrieving ' + name);
       }
     }).responseText;
 
