@@ -16,7 +16,7 @@
       <%= answers_radio_buttons(
             question, 
             {
-              :checked => current_answer_for(question, 'Unsure')
+              :checked => current_answer_for(question, question.answers.last.value)
             }
           ) 
       %>
