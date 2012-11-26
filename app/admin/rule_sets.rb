@@ -5,6 +5,7 @@ ActiveAdmin.register RuleSet do
     column :answers do |rule_set|
       rule_set.answers.count
     end
+    column :rule
     default_actions
   end
 
@@ -28,6 +29,11 @@ ActiveAdmin.register RuleSet do
 
         end
       end
+    end
+    
+    div do
+      h3 'Custom rule'
+      para rule_set.rule
     end
   end
 

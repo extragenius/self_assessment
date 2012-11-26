@@ -57,6 +57,18 @@ class RuleSetTest < ActiveSupport::TestCase
     assert_nil(@rule_set.value_for(question))
   end
   
+  def test_custom_rule
+    create_customer_rule_set('a1 and a2')
+    assert(@rule_set.match([@answer, @other_answer]), "Should match as both answers present")
+    assert(!@rule_set.match([@answer]), "Should not match as other answer missing")  
+  end
+  
+  def test_custom_rule_or
+    create_customer_rule_set('a1 or a2')
+    assert(@rule_set.match([@answer, @other_answer]), "Should match as both answers present")
+    assert(@rule_set.match([@answer]), "Should match as answer present")  
+  end
+  
   private
   def assert_no_rule_set_match(answers = nil)
     assert_nil(@rule_set.match(answers), "should return nil if no match found")
@@ -65,6 +77,10 @@ class RuleSetTest < ActiveSupport::TestCase
   def create_more_rule_sets
     @rule_set_one = RuleSet.create(:title => 'One', :answers => [@answer], :url => 'http://undervale.co.uk')
     @rule_set_two = RuleSet.create(:title => 'Two', :answers => [@other_answer], :url => 'http://undervale.com')
+  end
+  
+  def create_customer_rule_set(rule)
+    @rule_set = RuleSet.create(:title => 'Custom', :rule => rule, :url => 'http://undervale.co.uk')
   end
   
 end
