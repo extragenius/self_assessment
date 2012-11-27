@@ -23,4 +23,18 @@ class AnswerTest < ActiveSupport::TestCase
     end
     assert_equal(new_value, Answer.last.value)
   end
+  
+  def test_destroy
+    rule_set = RuleSet.first
+    answer_store = AnswerStore.first
+    @answer.rule_sets = [rule_set]
+    @answer.answer_stores = [answer_store]
+    assert_difference 'Answer.count', -1 do
+      assert_difference 'rule_set.answers.count', -1 do
+        assert_difference 'answer_store.answers.count', -1 do
+          @answer.destroy
+        end
+      end
+    end
+  end
 end

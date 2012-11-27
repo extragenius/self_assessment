@@ -1,7 +1,11 @@
 class Question < ActiveRecord::Base
   attr_accessible :title, :description, :ref, :answers_attributes
   
-  has_many :answers, :order => 'position'
+  has_many(
+    :answers, 
+    :order => 'position',
+    :dependent => :destroy
+  )
   accepts_nested_attributes_for :answers
   
   has_many :questionnaires_questions
@@ -11,7 +15,7 @@ class Question < ActiveRecord::Base
     :through => :questionnaires_questions, 
     :uniq => true
   )
-  
+    
   validates :title, :presence => true
 
   def build_standard_answers

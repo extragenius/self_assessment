@@ -23,6 +23,15 @@ class QuestionTest < ActiveSupport::TestCase
       assert_question_has_standard_answers
     end
   end
+  
+  def test_destroy
+    test_create_standard_answers
+    assert_difference 'Question.count', -1 do
+      assert_difference 'Answer.count', -(Answer.standard_values.length) do
+        @question.destroy
+      end
+    end
+  end
 
   private
   def assert_question_has_standard_answers

@@ -4,6 +4,9 @@ class Answer < ActiveRecord::Base
   DEFAULT_VALUE = 'Not applicable'
   STANDARD_VALUES = ['Yes', 'No', DEFAULT_VALUE]
 
+  has_and_belongs_to_many :rule_sets
+  has_and_belongs_to_many :answer_stores
+  
   belongs_to :question
 
   acts_as_list :scope => :question
