@@ -5,7 +5,7 @@ ActiveAdmin.register Answer do
   index do
     column :value
     column 'Question (edit answer via question)', :question do |answer|
-      link_to(answer.question.title, edit_admin_question_path(answer.question))
+      link_to(answer.question.title, edit_admin_question_path(answer.question)) if answer.question
     end
     column :position
     column :cope_index
