@@ -50,6 +50,18 @@ EOF
     end
     puts process_log.report
   end
+  
+  desc "Removes answers that have no questions associated with them (should no longer happen as question.destroy now also destroys answer). Association with question stores and rule sets will also be removed."
+  task :remove_orphan_answers => :environment do
+    orphan_answers = Answer.all.select{|a| ! a.question}
+    if orphan_answers.empty?
+      puts "No orphan answers found"
+    else
+      puts "Destroying #{orphan_answers.length} orphan answers"
+      orphan_answers.each{|a| a.destory}
+    end
+  end
+  
 
   desc "Testing environment"
   task :hello => :environment do
