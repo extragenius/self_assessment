@@ -58,7 +58,7 @@ EOF
       puts "No orphan answers found"
     else
       puts "Destroying #{orphan_answers.length} orphan answers"
-      orphan_answers.each{|a| a.destory}
+      orphan_answers.each{|a| a.destroy}
     end
   end
   
