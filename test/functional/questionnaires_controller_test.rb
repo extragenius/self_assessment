@@ -41,6 +41,15 @@ class QuestionnairesControllerTest < ActionController::TestCase
     assert_response :redirect
   end
   
+  def test_rule_set_match_after_update
+    test_update
+    rule_set = RuleSet.first
+    rule_set.answers << @answer_store.answers.first
+    rule_set.save
+    get :index
+    assert_equal([rule_set], assigns['rule_sets'])
+  end
+  
   def test_reset
     test_update
     assert_no_difference 'Answer.count' do

@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
   
   def matching_rule_sets
     if get_answer_store
-      puts 'XXXXXXXXXXXXXXXXx got here'
       RuleSet.matching(@answer_store.answers)
     end
   end
