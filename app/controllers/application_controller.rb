@@ -1,15 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :get_answer_store
+  before_filter :preload_tasks
 
   private
+  def preload_tasks
+    get_answer_store
+    check_cope_index
+  end
+  
   def get_answer_store(create_new = false)
     if session[:answer_store]
       currect_answer_store
     elsif create_new
       new_answer_store
     end
-    check_cope_index
   end
   
   def currect_answer_store
@@ -27,6 +31,7 @@ class ApplicationController < ActionController::Base
   
   def matching_rule_sets
     if get_answer_store
+      puts 'XXXXXXXXXXXXXXXXx got here'
       RuleSet.matching(@answer_store.answers)
     end
   end
