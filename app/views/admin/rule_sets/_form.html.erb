@@ -21,23 +21,30 @@
       <%= form.text_area(:rule, :rows => 3) %>
     </p>
 
+    <h3>Answers available for rule are</h3>
+    <table>
+    <% @rule_set.answers.order(:question_id).each do |answer| %>
+      <tr>
+        <td>a<%= answer.id %></td>
+        <td><%= answer.value %></td> 
+        <td><%= answer.question.title %></td>
+      </tr>
+    <% end %>
+    </table>
+    
     <h2>Questions</h2>
 
     <table class="selection">
       <% Question.all.each do |question| %>
         <tr>
           <td>
-          <%= check_box_tag("questions[id[#{question.id}]]", '1', @rule_set.questions.include?(question)) %>
-          <%= label_tag("questions_id_#{question.id}", question.title) %>
+          <%=  question.title %>
           </td>
           <td class="options">
-          <%= answers_radio_buttons(
-                question,
-                {
-                  :checked => @rule_set.value_for(question)
-                }
-              )
-          %>
+          <% question.answers.each do |answer| %>
+            <%= label_tag "rule_set_answers_ids_#{answer.id}", answer.value %>
+            <%= check_box_tag "rule_set[answer_ids][]", answer.id, @rule_set.answers.include?(answer) %>   
+          <% end %>
           </td>
         </tr>
       <% end %>

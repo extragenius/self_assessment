@@ -19,7 +19,7 @@
 <%    @rule_set.matching_answer_sets.each do |answer_set| %>
   <ul class="matching_answers">
 <%      answer_set.each do |answer| %>
-    <li><strong><%= answer.value %></strong> <em>to :-</em> (a<%= answer.question.id %>) <%= answer.question.title %></li>
+    <li>(a<%= answer.question.id %>) <strong><%= answer.value %></strong> <em>to :-</em> <%= answer.question.title %></li>
 <%      end %>
   </ul>
 <%    end %>
@@ -33,7 +33,7 @@
 <%    @rule_set.blocking_answer_sets.each do |answer_set| %>
   <ul class="matching_answers">
 <%      answer_set.each do |answer| %>
-    <li><strong><%= answer.value %></strong> <em>to :-</em> (a<%= answer.question.id %>) <%= answer.question.title %></li>
+    <li>(a<%= answer.question.id %>) <strong><%= answer.value %></strong> <em>to :-</em> <%= answer.question.title %></li>
 <%      end %>
   </ul>
 <%    end %>

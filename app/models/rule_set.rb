@@ -1,13 +1,14 @@
 require 'array_logic'
 
 class RuleSet < ActiveRecord::Base
-  attr_accessible :title, :description, :answers, :url, :rule
+  attr_accessible :title, :description, :answers, :url, :rule, :answer_ids
   
   before_save :generate_default_rule
   
   DEFAULT_RULE_JOIN = 'or'
   
   has_and_belongs_to_many :answers
+  accepts_nested_attributes_for :answers
   
   has_many(
     :questions,
