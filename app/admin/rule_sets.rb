@@ -9,32 +9,10 @@ ActiveAdmin.register RuleSet do
     default_actions
   end
 
-  form :partial => 'rule_sets/form'
+  form :partial => 'admin/rule_sets/form'
 
   show do
-    div do
-      para rule_set.description
-    end if rule_set.description.present?
-
-    div do
-      h3 'Target url'
-      para link_to rule_set.url
-    end
-
-    div do
-      h3 'Matching answers'
-      ul do
-        rule_set.answers.each do |answer|
-          li "<strong>#{answer.value}</strong> <em>to :-</em> #{answer.question.title}".html_safe
-
-        end
-      end
-    end
-    
-    div do
-      h3 'Custom rule'
-      para rule_set.rule
-    end
+    render :template => 'admin/rule_sets/show'
   end
 
   controller do

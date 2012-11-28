@@ -37,4 +37,8 @@ class AnswerTest < ActiveSupport::TestCase
       end
     end
   end
+  
+  def test_rule_label
+    assert_equal("a#{@answer.id}", @answer.rule_label)
+  end
 end

@@ -22,7 +22,7 @@ class RuleSetTest < ActiveSupport::TestCase
   
   def test_partial_match
     @rule_set.answers << @other_answer
-    assert_no_rule_set_match([@other_answer])
+    assert(@rule_set.match([@other_answer]), "should match as long as answers includes @other_answer")
   end
   
   def test_match_when_no_answers_passed_in
@@ -69,16 +69,39 @@ class RuleSetTest < ActiveSupport::TestCase
     assert(@rule_set.match([@answer]), "Should match as answer present")  
   end
   
+  def test_custom_rule_in
+    create_customer_rule_set('2 in a1 a2')
+    assert(@rule_set.match([@answer, @other_answer]), "Should match as both answers present")
+    assert(!@rule_set.match([@answer]), "Should not match as only one answer present")  
+  end
+  
+  def test_matching_answer_sets
+    create_customer_rule_set('a1 and a2')
+    assert_equal([[@answer, @other_answer]], @rule_set.matching_answer_sets)
+  end
+  
+  def test_blocking_answer_sets
+    create_customer_rule_set('a1 and a2')
+    assert_equal([[@answer], [@other_answer]], @rule_set.blocking_answer_sets)
+  end
+  
+  def test_default_rules_created_from_answers_on_create
+    rule_set = RuleSet.create(:title => 'One', :answers => [@answer], :url => 'http://undervale.co.uk')
+    assert_equal(@answer.rule_label, rule_set.rule)
+    rule_set = RuleSet.create(:title => 'Two', :answers => [@answer, @other_answer], :url => 'http://undervale.co.uk')
+    assert_equal("#{@answer.rule_label} #{RuleSet::DEFAULT_RULE_JOIN} #{@other_answer.rule_label}", rule_set.rule)
+  end
+  
   private
   def assert_no_rule_set_match(answers = nil)
-    assert_nil(@rule_set.match(answers), "should return nil if no match found")
+    assert(!@rule_set.match(answers), "should not return true if no match found")
   end
   
   def create_more_rule_sets
     @rule_set_one = RuleSet.create(:title => 'One', :answers => [@answer], :url => 'http://undervale.co.uk')
     @rule_set_two = RuleSet.create(:title => 'Two', :answers => [@other_answer], :url => 'http://undervale.com')
   end
-  
+    
   def create_customer_rule_set(rule)
     @rule_set = RuleSet.create(:title => 'Custom', :rule => rule, :url => 'http://undervale.co.uk')
   end

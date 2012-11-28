@@ -24,4 +24,12 @@ class Answer < ActiveRecord::Base
   def self.default_value
     DEFAULT_VALUE
   end
+  
+  def self.rule_label_prefix
+    @rule_label_prefix ||= to_s.first.downcase
+  end
+  
+  def rule_label
+    "#{self.class.rule_label_prefix}#{self.id}"
+  end
 end

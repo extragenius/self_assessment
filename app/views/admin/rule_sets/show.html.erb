@@ -1,0 +1,43 @@
+<div>
+  <%= content_tag('p', @rule_set.description) if @rule_set.description.present? %>
+</div>
+
+<div>
+  <h3>Target url</h3>
+  <p><%= link_to @rule_set.url %></p>
+</div>
+
+<div>
+  <h3>The rule</h3>
+  <p><%= @rule_set.rule %></p>
+</div>
+
+<%  if @rule_set.matching_answer_sets.present? %>
+<div>
+  <h3>Sample matching answer sets</h3>
+  <p>The following combinations of answers would pass</p>
+<%    @rule_set.matching_answer_sets.each do |answer_set| %>
+  <ul class="matching_answers">
+<%      answer_set.each do |answer| %>
+    <li><strong><%= answer.value %></strong> <em>to :-</em> (a<%= answer.question.id %>) <%= answer.question.title %></li>
+<%      end %>
+  </ul>
+<%    end %>
+</div>
+<%  end %>
+    
+<%  if @rule_set.blocking_answer_sets.present? %>
+<div>
+  <h3>Sample blocking answer sets</h3>
+  <p>The following combinations of answers would not pass</p>
+<%    @rule_set.blocking_answer_sets.each do |answer_set| %>
+  <ul class="matching_answers">
+<%      answer_set.each do |answer| %>
+    <li><strong><%= answer.value %></strong> <em>to :-</em> (a<%= answer.question.id %>) <%= answer.question.title %></li>
+<%      end %>
+  </ul>
+<%    end %>
+</div>
+<%  end %>
+ 
+

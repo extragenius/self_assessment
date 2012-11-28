@@ -57,5 +57,14 @@ body.active_admin {
     width: inherit;
     margin-left: 20px;
   }
+  
+  ul.matching_answers {
+    border: black 1px solid;
+    padding: 10px;
+    
+    li {
+      list-style: none;
+    }
+  }
 
 }

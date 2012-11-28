@@ -3,6 +3,10 @@ require 'array_logic'
 class RuleSet < ActiveRecord::Base
   attr_accessible :title, :description, :answers, :url, :rule
   
+  before_save :generate_default_rule
+  
+  DEFAULT_RULE_JOIN = 'or'
+  
   has_and_belongs_to_many :answers
   
   has_many(
@@ -19,11 +23,8 @@ class RuleSet < ActiveRecord::Base
   
   def match(answers_to_check = nil)
     return unless answers_to_check
-    if answers.present?
-      true if (answers - answers_to_check).empty?
-    else
-      logic.match(answers_to_check)
-    end
+    generate_default_rule && save
+    logic.match(answers_to_check)
   end
   
   def value_for(question)
@@ -35,10 +36,28 @@ class RuleSet < ActiveRecord::Base
     @logic ||= get_logic
   end
   
+  def matching_answer_sets
+    if logic.combinations_that_match
+      logic.combinations_that_match.collect{|ids| Answer.where(:id => ids)} 
+    end
+  end
+  
+  def blocking_answer_sets
+    if logic.combinations_that_do_not_match
+      logic.combinations_that_do_not_match.collect{|ids| Answer.where(:id => ids)} 
+    end
+  end
+  
   private
   def get_logic
     array_logic_rule = ArrayLogic::Rule.new
     array_logic_rule.rule = rule
     return array_logic_rule
   end
+  
+  def generate_default_rule
+    if (!self.rule or self.rule.empty?) and answers.length > 0
+      self.rule = answers.collect(&:rule_label).join(" #{DEFAULT_RULE_JOIN} ")
+    end
+  end  
 end
