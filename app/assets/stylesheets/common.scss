@@ -15,7 +15,7 @@ ul.selection {
   
   li {
     width: 700px;
-    margin: 3px 0 20px;
+    margin: 3px 0 10px;
     padding: 0;
     position: relative;
     
@@ -38,10 +38,24 @@ ul.selection {
       
     }
     
+    ul.options {
+      padding: 5px 5px 5px 25px;
+      
+      li {
+        margin: 0;
+      }
+      
+      input {
+        margin-right: 12px;
+      }
+    }
+    
     label {
         display: inline-block;
         width: 450px;
     }
+    
+    
     
   }
 }
