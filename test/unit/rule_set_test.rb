@@ -77,12 +77,12 @@ class RuleSetTest < ActiveSupport::TestCase
   
   def test_matching_answer_sets
     create_customer_rule_set('a1 and a2')
-    assert_equal([[@answer, @other_answer]], @rule_set.matching_answer_sets)
+    assert_equal([[1, 2]], @rule_set.matching_answer_sets)
   end
   
   def test_blocking_answer_sets
     create_customer_rule_set('a1 and a2')
-    assert_equal([[@answer], [@other_answer]], @rule_set.blocking_answer_sets)
+    assert_equal([[1], [2]], @rule_set.blocking_answer_sets)
   end
   
   def test_default_rules_created_from_answers_on_create

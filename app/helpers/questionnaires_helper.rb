@@ -5,7 +5,7 @@ module QuestionnairesHelper
     options = object.answers.collect(&:value)
     buttons = options.collect do |option|
       button = radio_button_tag(button_name, option, option == args[:checked])
-      "#{option.humanize}#{button}".html_safe
+      content_tag('li', "#{button}#{option.humanize}".html_safe)
     end
     buttons.join.html_safe
   end

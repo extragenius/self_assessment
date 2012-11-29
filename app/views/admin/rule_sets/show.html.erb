@@ -15,11 +15,17 @@
 <%  if @rule_set.matching_answer_sets.present? %>
 <div>
   <h3>Sample matching answer sets</h3>
+<%    if @rule_set.matching_answer_sets.length > 1 %>
+  <p>
+    There are at least <%= @rule_set.matching_answer_sets.length %> combinations 
+    of answers that would pass this test.
+  </p>
+<%    end %>
   <p>The following combinations of answers would pass</p>
 <%    @rule_set.matching_answer_sets.each do |answer_set| %>
   <ul class="matching_answers">
-<%      answer_set.each do |answer| %>
-    <li>(a<%= answer.id %>) <%=  question_summary(answer) %></li>
+<%      answer_set.each do |answer_id| %>
+    <li>(a<%= answer_id %>) <%=  question_summary_for(answer_id) %></li>
 <%      end %>
   </ul>
 <%    end %>
@@ -32,8 +38,8 @@
   <p>The following combinations of answers would not pass</p>
 <%    @rule_set.blocking_answer_sets.each do |answer_set| %>
   <ul class="matching_answers">
-<%      answer_set.each do |answer| %>
-    <li>(a<%= answer.question.id %>) <strong><%= answer.value %></strong> <em>to :-</em> <%= answer.question.title %></li>
+<%      answer_set.each do |answer_id| %>
+    <li>(a<%= answer_id %>) <%=  question_summary_for(answer_id) %></li>
 <%      end %>
   </ul>
 <%    end %>

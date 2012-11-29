@@ -34,10 +34,11 @@ gem "ckeditor", "3.7.3"   # Adds rich text editor to input fields
 gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface
 
-gem 'dibber'  # Used in db/seeds
+gem 'dibber'  # Used in db/seeds to handle data retrieval from yml files
 
 gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-gem 'array_logic', '>= 0.0.4' # Used in rule_sets
+gem 'array_logic', '>= 0.0.4' # Used to identify patterns in RuleSet Answers
+

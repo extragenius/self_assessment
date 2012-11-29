@@ -38,15 +38,11 @@ class RuleSet < ActiveRecord::Base
   end
   
   def matching_answer_sets
-    if logic.combinations_that_match
-      logic.combinations_that_match.collect{|ids| Answer.where(:id => ids)} 
-    end
+    @matching_answer_sets ||= logic.combinations_that_match 
   end
   
   def blocking_answer_sets
-    if logic.combinations_that_do_not_match
-      logic.combinations_that_do_not_match.collect{|ids| Answer.where(:id => ids)} 
-    end
+    @blocking_answer_set ||= logic.combinations_that_do_not_match 
   end
   
   private

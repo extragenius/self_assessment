@@ -1,2 +1,24 @@
 module RuleSetsHelper
+
+  def question_summary(answer) 
+    value = content_tag(:strong, answer.value)
+    separator = content_tag(:em, 'to :-')
+    sanitize [value, separator, answer.question.title].join(" ")
+  end
+  
+  def question_summary_for(answer_id)
+    question_summaries[answer_id] ||= add_answer_to_question_summaries(answer_id)
+  end
+  
+  def question_summaries
+    @question_summaries ||= Hash.new
+  end
+  
+  def add_answer_to_question_summaries(answer_id)
+    if Answer.exists?(answer_id)
+      answer = Answer.find(answer_id)
+      question_summaries[answer_id] = question_summary(answer)
+    end
+  end
+  
 end
