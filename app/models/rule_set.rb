@@ -3,7 +3,7 @@ require 'array_logic'
 class RuleSet < ActiveRecord::Base
   attr_accessible :title, :description, :answers, :url, :rule, :answer_ids
   
-  before_save :generate_default_rule
+  before_save :keep_answers_in_step_with_rule
   
   DEFAULT_RULE_JOIN = 'or'
   ANSWERS_LIMIT = 10
@@ -27,11 +27,6 @@ class RuleSet < ActiveRecord::Base
     return unless answers_to_check
     generate_default_rule && save
     logic.match(answers_to_check)
-  end
-  
-  def value_for(question)
-    answer = answers.where(:question_id => question.id).first
-    answer.value if answer
   end
   
   def logic
@@ -62,4 +57,9 @@ class RuleSet < ActiveRecord::Base
       self.rule = default_rule
     end
   end  
+  
+  def keep_answers_in_step_with_rule
+    generate_default_rule
+    self.answers = get_logic.object_ids_used.collect{|id| Answer.find(id)}
+  end
 end

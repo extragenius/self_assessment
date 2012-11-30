@@ -48,19 +48,10 @@ class RuleSetTest < ActiveSupport::TestCase
     assert_equal([@rule_set], rule_sets)
   end
   
-  def test_current_value_for
-    assert_equal(@answer.value, @rule_set.value_for(@answer.question))
-  end
-  
-  def test_current_value_for_when_no_matching_answer
-    question = Question.create(:title => 'test for current value for')
-    assert_nil(@rule_set.value_for(question))
-  end
-  
   def test_custom_rule
     create_custom_rule_set('a1 and a2')
     assert(@rule_set.match([@answer, @other_answer]), "Should match as both answers present")
-    assert(!@rule_set.match([@answer]), "Should not match as other answer missing")  
+    assert(!@rule_set.match([@answer]), "Should not match as other answer missing") 
   end
   
   def test_custom_rule_or
@@ -97,6 +88,24 @@ class RuleSetTest < ActiveSupport::TestCase
     @rule_set.answers << @other_answer
     expected = "#{@answer.rule_label} #{RuleSet::DEFAULT_RULE_JOIN} #{@other_answer.rule_label}"
     assert_equal(expected, @rule_set.default_rule)
+  end
+  
+  def test_answers_populated_by_rules
+    test_custom_rule
+    assert_equal([@answer, @other_answer], @rule_set.answers)
+  end
+  
+  def test_answers_shrink_when_answer_removed_from_rule
+    test_answers_populated_by_rules
+    @rule_set.rule = 'a1'
+    @rule_set.save
+    assert_equal([@answer], @rule_set.answers)
+  end
+  
+  def test_answers_expand_when_answer_added_to_rule
+    @rule_set.rule = 'a1 and a2'
+    @rule_set.save
+    assert_equal([@answer, @other_answer], @rule_set.answers)
   end
   
   private
