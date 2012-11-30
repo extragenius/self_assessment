@@ -1,3 +1,19 @@
+<% if @rule_set.answers.length > RuleSet::ANSWERS_LIMIT %>
+<div class="warn">
+  <div class = "header">
+    <h3>Too many answers</h3>
+  </div>
+  <p>You currently have <%= @rule_set.answers.length %> answers selected.</p>
+  <p>
+    Once you get above <%= RuleSet::ANSWERS_LIMIT %> answers in any rule, it 
+    becomes difficult to show you the possible combination of answers that
+    would match this rule set. This tool becomes slow, and your rule set will
+    be too complex to be sure of its behaviour.
+  </p>
+  <p>It is recommended that you reduce the number of answers used in this rule</p>
+</div>
+<% end %>
+
 <table>
   <tr>
     <th>Rule id</th>

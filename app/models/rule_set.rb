@@ -6,6 +6,7 @@ class RuleSet < ActiveRecord::Base
   before_save :generate_default_rule
   
   DEFAULT_RULE_JOIN = 'or'
+  ANSWERS_LIMIT = 10
   
   has_and_belongs_to_many :answers, :uniq => true
   accepts_nested_attributes_for :answers

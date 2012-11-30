@@ -70,5 +70,23 @@ body.active_admin {
   .rule_example {
     margin: 10px 20px 30px;
   }
+  
+  div.warn {
+    border: red solid 2px;
+    padding: 0;
+    margin: 10px;
+    
+    h3 {
+      background-color: red;
+      margin: 0;
+      padding: 5px 10px;
+      color: white;
+    }
+    
+    p {
+      padding: 5px 10px;
+      font-size: 1.2em;
+    }
+  }
 
 }
