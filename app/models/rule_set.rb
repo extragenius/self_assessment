@@ -38,11 +38,11 @@ class RuleSet < ActiveRecord::Base
   end
   
   def matching_answer_sets
-    @matching_answer_sets ||= logic.combinations_that_match 
+    @matching_answer_sets ||= logic.matching_combinations 
   end
   
   def blocking_answer_sets
-    @blocking_answer_set ||= logic.combinations_that_do_not_match 
+    @blocking_answer_set ||= logic.blocking_combinations
   end
   
   private

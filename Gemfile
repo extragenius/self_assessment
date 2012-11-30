@@ -40,5 +40,5 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-gem 'array_logic', '>= 0.0.4' # Used to identify patterns in RuleSet Answers
+gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
 
