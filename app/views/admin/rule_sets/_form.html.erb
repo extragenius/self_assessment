@@ -21,16 +21,16 @@
       <%= form.text_area(:rule, :rows => 3) %>
     </p>
 
-    <h3>Answers available for rule are</h3>
-    <table>
-    <% @rule_set.answers.order(:question_id).each do |answer| %>
-      <tr>
-        <td>a<%= answer.id %></td>
-        <td><%= answer.value %></td> 
-        <td><%= answer.question.title %></td>
-      </tr>
-    <% end %>
-    </table>
+    <h3>Answers in rule format</h3>
+    <p>
+      Below is a list of answers with their identifiers as they should be used
+      within the a rule. To add to this list, select the answer in the Questions
+      list below.
+    </p>
+    
+    <div id="selected_rule_set_answers">
+      <%= render :partial => 'selected_rule_set_answers' %>
+    </div>
     
     <h2>Questions</h2>
 

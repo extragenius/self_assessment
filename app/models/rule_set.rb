@@ -7,7 +7,7 @@ class RuleSet < ActiveRecord::Base
   
   DEFAULT_RULE_JOIN = 'or'
   
-  has_and_belongs_to_many :answers
+  has_and_belongs_to_many :answers, :uniq => true
   accepts_nested_attributes_for :answers
   
   has_many(
@@ -45,6 +45,10 @@ class RuleSet < ActiveRecord::Base
     @blocking_answer_set ||= logic.blocking_combinations
   end
   
+  def default_rule
+    answers.collect(&:rule_label).join(" #{DEFAULT_RULE_JOIN} ")
+  end
+  
   private
   def get_logic
     array_logic_rule = ArrayLogic::Rule.new
@@ -54,7 +58,7 @@ class RuleSet < ActiveRecord::Base
   
   def generate_default_rule
     if (!self.rule or self.rule.empty?) and answers.length > 0
-      self.rule = answers.collect(&:rule_label).join(" #{DEFAULT_RULE_JOIN} ")
+      self.rule = default_rule
     end
   end  
 end

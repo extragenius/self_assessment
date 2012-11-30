@@ -41,6 +41,15 @@ SelfAssessment::Application.routes.draw do
         end
       end
     end
+    
+    resources :rule_sets do
+      resources :answers, :only => [:add, :delete] do
+        member do
+          put :add
+          put :delete
+        end
+      end
+    end
   end
 
 end

@@ -30,6 +30,18 @@ ActiveAdmin.register Answer do
       @answer.destroy
       redirect_to_answer_show
     end
+    
+    def add
+      answer = Answer.find(params[:id])
+      @rule_set = RuleSet.find(params[:rule_set_id])
+      @rule_set.answers << answer
+    end
+    
+    def delete
+      answer = Answer.find(params[:id])
+      @rule_set = RuleSet.find(params[:rule_set_id])
+      @rule_set.answers.delete(answer)
+    end
 
     private
     def get_question_and_answer

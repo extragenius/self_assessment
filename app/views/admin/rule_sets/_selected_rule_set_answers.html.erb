@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Rule id</th>
+    <th>Answer</th>
+    <th>Question</th>
+<% @rule_set.answers.order(:question_id).each do |answer| %>
+  <tr>
+    <td>a<%= answer.id %></td>
+    <td><%= answer.value %></td> 
+    <td><%= answer.question.title %></td>
+  </tr>
+<% end %>
+</table>
+<p>
+  If the Rule is blank, the following rule will be created when this rule set 
+  is saved:
+<p>
+<p class="rule_example"><%= @rule_set.default_rule %></p>
