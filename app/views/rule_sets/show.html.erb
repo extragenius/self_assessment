@@ -7,7 +7,7 @@
       <th>We asked:</th>
       <th>You answered:</th>
     </tr>
-<% @rule_set.answers.each do |answer| %>
+<% @answers.each do |answer| %>
     <tr>
       <td><%= answer.question.title %></td>
       <td><%= answer.value %></td>
