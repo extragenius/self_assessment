@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126152146) do
+ActiveRecord::Schema.define(:version => 20121203150555) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -113,9 +113,10 @@ ActiveRecord::Schema.define(:version => 20121126152146) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "ref"
+    t.boolean  "multi_answer"
   end
 
   create_table "rule_sets", :force => true do |t|

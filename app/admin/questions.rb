@@ -8,6 +8,9 @@ ActiveAdmin.register Question do
     column :answers do |question|
       question.answers.count
     end
+    column :multi_answer do |question|
+      question.multi_answer? ? 'Any' : 'One'
+    end
     default_actions
   end
 
@@ -15,6 +18,8 @@ ActiveAdmin.register Question do
     para("References: #{question.ref}") if question.ref.present?
     para(question.description)
     h3 "Answers"
+    para "User can select one#{' or many' if question.multi_answer?} of:"
+
     table :class => 'sortable_list' do
       tr do
         th 'Value'
@@ -35,6 +40,7 @@ ActiveAdmin.register Question do
       f.input :ref, :label => 'Reference'
       f.input :title
       f.input :description, :input_html => { :rows => 2}
+      f.input :multi_answer, :label => 'User may select more than one answer to this question?'
     end
 
     f.has_many :answers do |answer_form|

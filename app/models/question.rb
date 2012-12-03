@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :title, :description, :ref, :answers_attributes
+  attr_accessible :title, :description, :ref, :answers_attributes, :multi_answer
   
   has_many(
     :answers, 
