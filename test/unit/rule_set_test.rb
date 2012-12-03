@@ -108,6 +108,12 @@ class RuleSetTest < ActiveSupport::TestCase
     assert_equal([@answer, @other_answer], @rule_set.answers)
   end
   
+  def test_rule_validation
+    @rule_set.rule = 'invalid'
+    @rule_set.save
+    assert(@rule_set.errors[:rule].present?, "there should be an error against the rule field")
+  end
+  
   private
   def assert_no_rule_set_match(answers = nil)
     assert(!@rule_set.match(answers), "should not return true if no match found")

@@ -16,8 +16,11 @@ class RuleSet < ActiveRecord::Base
     :through => :answers
   )
   
+  validate :check_rule_is_valid
+  
   validates :title, :presence => true
   validates :url, :presence => true
+  
   
   def self.matching(answers)
     all.collect{|rule_set| rule_set if rule_set.match(answers)}.compact
@@ -61,5 +64,15 @@ class RuleSet < ActiveRecord::Base
   def keep_answers_in_step_with_rule
     generate_default_rule
     self.answers = get_logic.object_ids_used.collect{|id| Answer.find(id)}
+  end
+  
+  def check_rule_is_valid
+    if rule.present?
+      begin
+      logic.send :check_rule
+      rescue => e
+        errors.add(:rule, "error: #{e.message}")
+      end
+    end
   end
 end
