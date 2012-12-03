@@ -5,7 +5,7 @@ $(function() {
     $( '#questions' ).tooltip();
   }
   
-  $(".selection :checkbox").change(function(event) {
+  $(".associated_questions :checkbox").change(function(event) {
     
     var action = event.target.checked ? 'add' : 'delete';
     

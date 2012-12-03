@@ -16,6 +16,7 @@
       <%= form.text_field(:url) %>
     </p>
     
+    <% if @rule_set.id.present? %>
     <p>
       <%= form.label(:rule) %><br/>
       <%= form.text_area(:rule, :rows => 3) %>
@@ -31,10 +32,19 @@
     <div id="selected_rule_set_answers">
       <%= render :partial => 'selected_rule_set_answers' %>
     </div>
+    <% else %>
+    <h2>Rule</h2>
+    <p>
+      On creation, a default rule will be generated. This will join with
+      '<%= RuleSet::DEFAULT_RULE_JOIN %>'
+      the answers you select below. You can then customise the rule via the
+      edit option.
+    </p>
+    <% end %>
     
     <h2>Questions</h2>
 
-    <table class="selection">
+    <table class="selection <%= 'associated_questions' if @rule_set.id.present? %>">
       <% Question.all.each do |question| %>
         <tr>
           <td>
