@@ -24,7 +24,7 @@ class RuleSet < ActiveRecord::Base
   end
   
   def match(answers_to_check = nil)
-    return unless answers_to_check
+    return unless answers_to_check and !answers_to_check.empty?
     generate_default_rule && save
     logic.match(answers_to_check)
   end
