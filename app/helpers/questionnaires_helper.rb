@@ -1,11 +1,12 @@
 module QuestionnairesHelper
   
-  def answers_radio_buttons(object, args = {})
-    button_name = "answers[#{object.class.to_s.underscore}_id[#{object.id}]]"
-    options = object.answers.collect(&:value)
-    buttons = options.collect do |option|
-      button = radio_button_tag(button_name, option, option == args[:checked])
-      content_tag('li', "#{button}#{option.humanize}".html_safe)
+  def answers_radio_buttons(question)
+    button_name = "question_id[#{question.id}][answer_ids][]"
+    answers = question.answers
+    buttons = answers.collect do |answer|
+      
+      button = radio_button_tag(button_name, answer.id)
+      content_tag('li', "#{button}#{answer.value.humanize}".html_safe)
     end
     buttons.join.html_safe
   end

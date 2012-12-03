@@ -9,20 +9,16 @@
 <%= form_for(@questionnaire, :url => questionnaire_path(@questionnaire)) do |form| %>
 
 <ul class="selection">
-<% @questionnaire.questions.each do |question| %>
+<%=   form.fields_for(@questionnaire.answers, Answer) do |answer_form| %>
+<%      @questionnaire.questions.each do |question| %>
   <li>
-    <%= content_tag('span', label_tag("answers_question_id_#{question.id}", question.title), :class => 'label') %>
+    <%= content_tag('span', question.title, :class => 'label') %>
     <ul class="options">
-      <%= answers_radio_buttons(
-            question, 
-            {
-              :checked => current_answer_for(question, question.answers.last.value)
-            }
-          ) 
-      %>
+      <%= answers_radio_buttons(question) %>
     </ul>
   </li>
-<% end %>
+<%       end %>
+<%    end %>
 </ul>
 
 <p>

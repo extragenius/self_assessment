@@ -20,26 +20,67 @@ class QuestionnairesControllerTest < ActionController::TestCase
 
 
   def test_update
-    assert_difference 'Answer.count' do
-      assert_difference 'AnswerStore.count' do
-        put(
-          :update,
-          :id => @questionnaire.id,
-          :answers => {
-            :question_id => {
-              @question.id.to_s.to_sym => 'Yes'
-            }
+    answer = @question.answers.first
+    assert_difference 'AnswerStore.count' do
+      put(
+        :update,
+        :id => @questionnaire.id,
+        :question_id => {
+          @question.id.to_s => {
+            :answer_ids => [answer.id.to_s]
           }
-        )
-      end
+        }
+      )
     end
-    answer = Answer.last
     @answer_store = AnswerStore.last
     assert_equal(@question, answer.question)
     assert_equal([answer], @answer_store.answers)
     assert_equal(session[:answer_store], @answer_store.session_id)
     assert_response :redirect
   end
+  
+  def test_update_add_multiple_answers
+    answer = @question.answers.first
+    other_question = Question.find(2)
+    other_question.create_standard_answers
+    other_answer = other_question.answers.last
+    assert_difference 'AnswerStore.count' do
+      put(
+        :update,
+        :id => @questionnaire.id,
+        :question_id => {
+          @question.id.to_s => {
+            :answer_ids => [answer.id.to_s]
+          },
+          other_question.id.to_s => {
+            :answer_ids => [other_answer.id.to_s]
+          }
+        }
+      )
+    end
+    @answer_store = AnswerStore.last
+
+    assert_equal([answer, other_answer], @answer_store.answers)
+  end
+  
+  def test_update_add_multiple_answers_for_same_question
+    answer = @question.answers.first
+    other_answer = @question.answers.last
+    assert_difference 'AnswerStore.count' do
+      put(
+        :update,
+        :id => @questionnaire.id,
+        :question_id => {
+          @question.id.to_s => {
+            :answer_ids => [answer.id.to_s, other_answer.id.to_s]
+          }
+        }
+      )
+    end
+    @answer_store = AnswerStore.last
+
+    assert_equal([answer, other_answer], @answer_store.answers)
+  end  
   
   def test_rule_set_match_after_update
     test_update

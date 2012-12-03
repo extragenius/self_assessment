@@ -42,15 +42,9 @@ class QuestionnairesController < ApplicationController
   
   def add_answers_to_store
     get_answer_store(true)
-    if params[:answers]
-      params[:answers][:question_id].each do |question_id, value|
-        attributes = {
-          :question_id => question_id, 
-          :value => value
-        }
-        answer = Answer.find_first_or_create(attributes)
-        @answer_store.add_answer(answer)
-      end
+    answers = params[:question_id].values.collect do |question_values|
+      question_values[:answer_ids].collect{|id| Answer.find(id)}
     end
+    @answer_store.answers = answers.flatten
   end
 end

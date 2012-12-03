@@ -13,6 +13,13 @@ class Questionnaire < ActiveRecord::Base
     :order => 'position'
   )
   
+  has_many(
+    :answers,
+    :through => :questions,
+    :uniq => true
+  )
+  accepts_nested_attributes_for :answers
+  
   has_attached_file(
     :button_image,
     :styles => {
