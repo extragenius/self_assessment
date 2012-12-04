@@ -1,7 +1,8 @@
 ActiveAdmin.register Setting do
 
+  actions :all, :except => [:destroy]
+
   index do
-    column :name
     column :description
     column :value
     default_actions
@@ -9,13 +10,13 @@ ActiveAdmin.register Setting do
 
   form do |f|
     f.inputs "Details" do
-      f.input :name
+      f.input :name if action_name == 'new'
       f.input :value
       f.input(
         :value_type,
         :as => :select,
         :collection => Setting.value_types.collect{|t| [t.humanize, t]}
-      )
+      ) if action_name == 'new'
       f.input :description
     end
     f.buttons
