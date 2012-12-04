@@ -15,6 +15,12 @@
       <%= form.label(:url) %><br/>
       <%= form.text_field(:url) %>
     </p>
+
+    <p>
+      <%= form.label(:link_text) %><br/>
+      <%= form.text_field(:link_text) %><br/>
+      When left blank: <em><%= t('rule_set.default_url_text') %></em>
+    </p>
     
     <% if @rule_set.id.present? %>
     <p>

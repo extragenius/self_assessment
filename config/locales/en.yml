@@ -90,3 +90,6 @@ en:
       answer:
         one: Answer
         other: Answers
+        
+  rule_set:
+    default_url_text: Click here to find suppliers who can provide relevant products and services

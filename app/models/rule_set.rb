@@ -1,7 +1,7 @@
 require 'array_logic'
 
 class RuleSet < ActiveRecord::Base
-  attr_accessible :title, :description, :answers, :url, :rule, :answer_ids
+  attr_accessible :title, :description, :answers, :url, :rule, :answer_ids, :link_text
   
   before_save :keep_answers_in_step_with_rule
   

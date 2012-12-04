@@ -4,7 +4,10 @@
 
 <div>
   <h3>Target url</h3>
-  <p><%= link_to @rule_set.url %></p>
+  <p>
+    <%= link_to @rule_set.url %><br/>
+    "<%= @rule_set.link_text? ? @rule_set.link_text : t('rule_set.default_url_text') %>"
+  </p>
 </div>
 
 <div>
