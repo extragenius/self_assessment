@@ -18,50 +18,15 @@ class AnswerStoreTest < ActiveSupport::TestCase
     assert_equal 15, answer_store.session_id.length
   end
   
-  def test_add_answer
-    @answer_store.add_answer(@answer)
-    assert_equal([@answer], @answer_store.answers)
-  end
-  
-  def test_add_answers_does_not_create_duplicates
-    @answer_store.add_answer(@answer)
-    test_add_answer
-  end
-  
-  def test_add_answer_removes_conflicting_answers_to_same_question
-    assert_equal(@answer.question, @other_answer.question)
-    @answer_store.add_answer(@other_answer)
-    test_add_answer
-  end
-  
-  def test_answer_for
-    test_add_answer
-    assert_equal(@answer, @answer_store.answer_for(@answer.question))
-  end
-  
-  def test_remove_answer_for
-    test_add_answer
-    @answer_store.remove_answer_for(@answer.question)
-    test_answers_empty
-    assert Answer.exists?(@answer.id), '@answer should not be deleted from database'
-  end
-  
-  def test_remove_answer_for_when_no_answer
-    assert_nothing_raised do
-      @answer_store.remove_answer_for(@answer.question)
-    end
-    test_answers_empty
-  end
-
   def test_cope_index_sum_with_no_answers
     assert_equal(0, @answer_store.cope_index_sum)
   end
 
   def test_cope_index_sum
-    test_add_answer
+    @answer_store.answers = [@answer]
     assert_equal(0, @answer_store.cope_index_sum)
     number = 6
-    @answer_store.answers.first.update_attribute(:cope_index, number)
+    @answer.update_attribute(:cope_index, number)
     assert_equal(number, @answer_store.cope_index_sum)
   end
 end

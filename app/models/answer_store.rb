@@ -4,20 +4,6 @@ class AnswerStore < ActiveRecord::Base
   
   before_save :generate_session_id
   
-  def add_answer(answer)
-    remove_answer_for(answer.question)
-    answers << answer
-  end
-  
-  def answer_for(question)
-    answers.where(:question_id => question.id).first
-  end
-  
-  def remove_answer_for(question)
-    current_answer = answer_for(question)
-    answers.delete(current_answer) if current_answer
-  end
-
   def cope_index_sum
     answers.sum(:cope_index)
   end
