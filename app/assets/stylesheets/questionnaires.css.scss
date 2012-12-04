@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colours';
+
 .ui-state-default .ui-icon {
   position: absolute;
   right: 0;
@@ -20,7 +22,7 @@
   position: relative;
   
   display: inline-block;
-  height: 160px;
+  height: 165px;
   width: 160px;
   margin: 0 30px 10px 0;
     
@@ -39,8 +41,12 @@
   }
   
   a.text_link {
-    top: 125px;
+    top: 130px;
     text-align: center;
+  }
+  
+  &.visited {
+    background-color: $visited; 
   }
   
 }

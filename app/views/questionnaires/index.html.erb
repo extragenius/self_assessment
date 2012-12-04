@@ -1,10 +1,12 @@
 <ul>
 <% @questionnaires.each do |questionnaire| %>
-  <li class="questionnaire_button">
+  <%= content_tag(
+        'li',
+        :class => questionnaire_button_classes(questionnaire)
+      ) do %>
+  
     <%= link_to(
-          image_tag(
-            questionnaire.button_image.url(:link)
-          ), 
+          image_tag(questionnaire.button_image.url(:link)), 
           questionnaire_path(questionnaire),
           :class => 'image_link'
         ) 
@@ -15,6 +17,7 @@
           :class => 'text_link'
         ) 
     %>
-  </li>
+  
+  <% end %>
 <% end %>
 </ul>
