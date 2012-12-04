@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203150555) do
+ActiveRecord::Schema.define(:version => 20121204082213) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(:version => 20121203150555) do
 
   create_table "answer_stores_answers", :id => false, :force => true do |t|
     t.integer "answer_id"
+    t.integer "answer_store_id"
+  end
+
+  create_table "answer_stores_questionnaires", :id => false, :force => true do |t|
+    t.integer "questionnaire_id"
     t.integer "answer_store_id"
   end
 

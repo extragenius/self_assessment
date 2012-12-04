@@ -28,6 +28,8 @@ class Questionnaire < ActiveRecord::Base
     }
   )
   
+  has_and_belongs_to_many :answer_stores, :uniq => true
+  
   validates :title, :presence => true
   
   private

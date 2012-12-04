@@ -6,6 +6,10 @@ class QuestionnairesControllerTest < ActionController::TestCase
     @question = Question.find(1)
   end
   
+  def test_setup
+    assert_equal(2, @question.answers.count)
+  end
+  
   def test_index
     get :index
     assert_response :success
@@ -64,9 +68,9 @@ class QuestionnairesControllerTest < ActionController::TestCase
   end
   
   def test_update_add_multiple_answers_for_same_question
-    answer = @question.answers.first
-    other_answer = @question.answers.last
-    assert_difference 'AnswerStore.count' do
+    answer, other_answer = @question.answers[0..1]
+    assert_not_equal(answer, other_answer)
+    assert_difference 'AnswerStore.count', 1 do
       put(
         :update,
         :id => @questionnaire.id,
@@ -97,7 +101,13 @@ class QuestionnairesControllerTest < ActionController::TestCase
       get :reset
       assert_response :redirect
       assert_equal([], @answer_store.reload.answers)
+      assert_equal([], @answer_store.reload.questionnaires)
     end
+  end
+  
+  def test_update_adds_questionnaire_to_answer_store
+    test_update
+    assert_equal([@questionnaire], @answer_store.questionnaires)
   end
 
 end
