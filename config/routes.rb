@@ -1,5 +1,7 @@
 SelfAssessment::Application.routes.draw do
   
+  get "warning/index"
+
   mount Ckeditor::Engine => '/ckeditor'
 
   ActiveAdmin.routes(self)

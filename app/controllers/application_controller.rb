@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   
   def get_answer_store(create_new = false)
     if session[:answer_store]
-      currect_answer_store
+      current_answer_store
     elsif create_new
       new_answer_store
     end
   end
   
-  def currect_answer_store
+  def current_answer_store
     @answer_store = AnswerStore.find_by_session_id(session[:answer_store])
   end
   
@@ -57,9 +57,12 @@ class ApplicationController < ActionController::Base
   end
 
   def check_cope_index
-    if @answer_store and @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
+    if @answer_store and coping_score_exceeded?
       @display_cope_index_warning = true
     end
+  end
 
+  def coping_score_exceeded?
+    @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
   end
 end
