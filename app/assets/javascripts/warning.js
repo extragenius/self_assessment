@@ -8,8 +8,24 @@ $(function() {
   });
 
   $('.warning .hide_options').click(function() {
+    send_data_to_server($(this).attr('href'));
     $(this).closest('.options').hide('fade');
     $('.hide_at_start').show('fade');
+    return false;
   });
+
+  function send_data_to_server(url) {
+    $.ajax({
+      type: "PUT",
+      url: url,
+
+      success: function (data) {
+        // console.log(data);
+      },
+      error: function () {
+        // console.log('Error updating');
+      }
+    })
+  }
 
 })

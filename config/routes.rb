@@ -1,7 +1,5 @@
 SelfAssessment::Application.routes.draw do
   
-  get "warning/index"
-
   mount Ckeditor::Engine => '/ckeditor'
 
   ActiveAdmin.routes(self)
@@ -23,6 +21,8 @@ SelfAssessment::Application.routes.draw do
   resources :settings, :only => [:show]
 
   resources :rule_sets, :only => [:show]
+
+  resources :warning, :only => [:update]
   
   namespace :admin do
     resources :questionnaires do

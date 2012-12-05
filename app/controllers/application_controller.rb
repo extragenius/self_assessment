@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_cope_index
-    if @answer_store and coping_score_exceeded?
+    if @answer_store and coping_score_exceeded? and user_has_not_accepted_warning?
       @display_cope_index_warning = true
     end
   end
@@ -65,4 +65,13 @@ class ApplicationController < ActionController::Base
   def coping_score_exceeded?
     @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
   end
+
+  def user_has_not_accepted_warning?
+    ! user_has_accepted_warning?
+  end
+
+  def user_has_accepted_warning?
+    session[:warning_cope_index] == 'hide'
+  end
+
 end

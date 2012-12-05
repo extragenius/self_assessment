@@ -19,15 +19,27 @@
       </li>
 
       <li>
-        <%= link_to(t('warning.cope_index.actions.had_care_assessment'), '#', :class => "hide_options") %>
+        <%= link_to(
+              t('warning.cope_index.actions.had_care_assessment'),
+              '/warning/cope_index/?set=hide',
+              :class => "hide_options"
+            ) %>
       </li>
 
       <li>
-        <%= link_to(t('warning.cope_index.actions.had_financial_assessment'), '#', :class => "hide_options") %>
+        <%= link_to(
+              t('warning.cope_index.actions.had_financial_assessment'),
+              '/warning/cope_index/?set=hide',
+              :class => "hide_options"
+            ) %>
       </li>
 
       <li>
-        <%= link_to(t('warning.cope_index.actions.prefer_self_funding'), '#', :class => "hide_options") %>
+        <%= link_to(
+              t('warning.cope_index.actions.prefer_self_funding'),
+              '/warning/cope_index/?set=hide',
+              :class => "hide_options"
+            ) %>
       </li>
     </ul>
 

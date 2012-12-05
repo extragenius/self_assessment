@@ -3,6 +3,7 @@ ActiveAdmin.register Answer do
   actions :all, :except => [:edit]
 
   index do
+    column :id
     column :value
     column 'Question (edit answer via question)', :question do |answer|
       link_to(answer.question.title, edit_admin_question_path(answer.question)) if answer.question

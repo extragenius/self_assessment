@@ -22,12 +22,30 @@ class RuleSetsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_coping_index
+  def test_cope_index_warning_not_shown
+    test_show
     assert(!assigns('display_cope_index_warning'), "coping index warning should not be displayed")
-    cope_index_threshold = Setting.for(:cope_index_threshold)
+  end
+
+  def test_coping_index
     @answer.update_attribute(:cope_index, (cope_index_threshold + 1))
     test_show
     assert_equal(true, assigns('display_cope_index_warning'))
+  end
+
+  def test_warning_cope_index_not_set
+    test_show
+    assert_nil(session[:warning_cope_index], "cope_index warning settings should not appear in session")
+  end
+
+  def test_coping_index_not_shown_if_session_set_to_hide
+    @answer.update_attribute(:cope_index, (cope_index_threshold + 1))
+    get :show, {:id => @rule_set.id}, {:warning_cope_index => 'hide', :answer_store => @answer_store.session_id}
+    assert_not_equal(true, assigns('display_cope_index_warning'))
+  end
+
+  def cope_index_threshold
+    Setting.for(:cope_index_threshold)
   end
 
 end
