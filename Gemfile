@@ -29,7 +29,8 @@ group :development do
 end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
-gem "ckeditor", "3.7.3"   # Adds rich text editor to input fields
+gem "ckeditor", "3.7.2"   # Adds rich text editor to input fields
+#gem 'ckeditor_rails'
 
 gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface
