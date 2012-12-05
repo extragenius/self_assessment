@@ -16,3 +16,6 @@ function showAsTabs(element) {
       tabs.tabs( "refresh" );
   });
 }
+$(function(){
+  $(".tooltip").tipTip({defaultPosition:'right'});
+});

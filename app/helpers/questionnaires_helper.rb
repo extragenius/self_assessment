@@ -46,5 +46,5 @@ module QuestionnairesHelper
     classes << 'visited' if @answer_store and @answer_store.questionnaires.include? questionnaire
     classes.join(" ")
   end
-  
+
 end

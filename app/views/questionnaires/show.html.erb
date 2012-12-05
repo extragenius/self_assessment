@@ -12,7 +12,7 @@
 <%=   form.fields_for(@questionnaire.answers, Answer) do |answer_form| %>
 <%      @questionnaire.questions.each do |question| %>
   <li>
-    <%= content_tag('span', question.title, :class => 'label') %>
+    <%= content_tag('span', question.title, :class => "label#{' tooltip' if question.description?}", :title => question.description) %>
     <ul class="options">
       <%= answers_radio_buttons(question) %>
     </ul>
