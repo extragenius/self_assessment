@@ -22,8 +22,6 @@ SelfAssessment::Application.routes.draw do
 
   resources :rule_sets, :only => [:show]
 
-  resources :warning, :only => [:update]
-  
   namespace :admin do
     resources :questionnaires do
       resources :questions, :only => [:move_up, :move_down] do

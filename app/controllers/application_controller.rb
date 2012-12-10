@@ -66,12 +66,4 @@ class ApplicationController < ActionController::Base
     @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
   end
 
-  def user_has_not_accepted_warning?
-    ! user_has_accepted_warning?
-  end
-
-  def user_has_accepted_warning?
-    session[:warning_cope_index] == 'hide'
-  end
-
 end
