@@ -16,7 +16,7 @@ group :assets do
   gem 'coffee-script'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', '0.10.2', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
   
@@ -43,5 +43,5 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 
 gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
 
-gem 'ominous'  # Controls the display of warnings
+gem 'ominous', '>= 0.0.2' # Controls the display of warnings
 

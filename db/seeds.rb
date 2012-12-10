@@ -43,14 +43,14 @@ Seeder.new(Setting, 'settings.yml').build
 
 Seeder.monitor Ominous::Warning
 Seeder.monitor Ominous::Closer
-Seeder.monitor AdminUser
+Seeder.monitor Ominous::WarningCloser
 Seeder.objects_from("ominous/warnings.yml").each do |warning, closers|
   warning = Ominous::Warning.find_or_create_by_name(warning)
   
   closers.each do |name, attributes|
     closer = Ominous::Closer.find_or_initialize_by_name(name)
     closer.update_attributes(attributes)
-    warning.closers << closer
+    warning.closers << closer unless warning.closers.include? closer
   end
   
 end

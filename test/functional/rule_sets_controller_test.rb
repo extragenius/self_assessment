@@ -22,19 +22,4 @@ class RuleSetsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_cope_index_warning_not_shown
-    test_show
-    assert_warning_is_not_displayed
-  end
-
-  def test_coping_index
-    @answer.update_attribute(:cope_index, (cope_index_threshold + 1))
-    test_show
-    assert_warning_displayed
-  end
-
-  def cope_index_threshold
-    Setting.for(:cope_index_threshold)
-  end
-
 end
