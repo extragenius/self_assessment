@@ -20,5 +20,13 @@ class ActionController::TestCase
     @admin_user = AdminUser.find(1)
     sign_in @admin_user
   end
+  
+  def assert_warning_displayed
+    assert_tag :tag => "div", :attributes => { :class => "ominous_warnings" }
+  end
+  
+  def assert_warning_is_not_displayed
+    assert_no_tag :tag => "div", :attributes => { :class => "ominous_warnings" }
+  end
 end
 

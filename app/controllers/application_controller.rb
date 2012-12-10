@@ -57,9 +57,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_cope_index
-#    if @answer_store and coping_score_exceeded? and user_has_not_accepted_warning?
-#      @display_cope_index_warning = true
-#    end
+    if @answer_store and coping_score_exceeded?
+      Ominous::Warning.trigger :coping_index_threashold_exceeded
+    end
   end
 
   def coping_score_exceeded?

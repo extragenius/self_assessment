@@ -17,8 +17,3 @@ cope_index_threshold:
   value_type: number
   value: 20
   description: The sum of cope_index values at which a customer action occurs
-
-community_care_assessment_url:
-  value_type: text
-  value: http://www.warwickshire.gov.uk/yoursocialcareneed
-  description: Destination users sent to if they select a link to information on a getting a community care assessment

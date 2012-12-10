@@ -1,0 +1,5 @@
+one:
+  id: 1
+  name: closure_one
+  closure_method: close_and_dismiss_warning
+  start_hidden: false

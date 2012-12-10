@@ -43,3 +43,5 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 
 gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
 
+gem 'ominous'  # Controls the display of warnings
+

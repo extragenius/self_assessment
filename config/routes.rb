@@ -1,6 +1,7 @@
 SelfAssessment::Application.routes.draw do
   
   mount Ckeditor::Engine => '/ckeditor'
+  mount Ominous::Engine => "/ominous"
 
   ActiveAdmin.routes(self)
 

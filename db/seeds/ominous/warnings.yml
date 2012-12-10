@@ -1,0 +1,17 @@
+coping_index_threashold_exceeded:
+  go_to_care_assessment_page:
+    url: http://www.warwickshire.gov.uk/yoursocialcareneed
+    closure_method: redirect
+    
+  had_care_assessment:
+    closure_method: reveal_hidden
+    
+  had_financial_assessment:
+    closure_method: reveal_hidden
+    
+  prefer_self_funding:
+    closure_method: reveal_hidden
+    
+  close_dialog:
+    closure_method: close_and_dismiss_warning
+    start_hidden: true
