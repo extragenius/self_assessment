@@ -1,7 +1,7 @@
 require 'array_logic'
 
 class RuleSet < ActiveRecord::Base
-  attr_accessible :title, :description, :answers, :url, :rule, :answer_ids, :link_text
+  attr_accessible :title, :description, :answers, :url, :rule, :answer_ids, :link_text, :warning_id
   
   before_save :keep_answers_in_step_with_rule
   
@@ -14,6 +14,11 @@ class RuleSet < ActiveRecord::Base
   has_many(
     :questions,
     :through => :answers
+  )
+  
+  belongs_to(
+    :warning,
+    :class_name => 'Ominous::Warning'
   )
   
   validate :check_rule_is_valid

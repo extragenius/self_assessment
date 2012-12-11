@@ -22,6 +22,11 @@
       When left blank: <em><%= t('rule_set.default_url_text') %></em>
     </p>
     
+    <p>
+      <%= form.label(:warning_id) %><br/>
+      <%= form.select(:warning_id, Ominous::Warning.all.collect{|w| [w.name, w.id]}, :include_blank => 'None') %>
+    </p>
+    
     <% if @rule_set.id.present? %>
     <p>
       <%= form.label(:rule) %><br/>
@@ -48,6 +53,8 @@
     </p>
     <% end %>
     
+    <p><%= form.submit %></p>
+    
     <h2>Questions</h2>
 
     <table class="selection <%= 'associated_questions' if @rule_set.id.present? %>">
@@ -65,8 +72,6 @@
         </tr>
       <% end %>
     </table>
-
-    <p><%= form.submit %></p>
 
   <% end %>
 </div>

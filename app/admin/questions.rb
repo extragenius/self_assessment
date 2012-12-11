@@ -43,10 +43,12 @@ ActiveAdmin.register Question do
       f.input :multi_answer, :label => 'User may select more than one answer to this question?'
     end
 
-    f.has_many :answers do |answer_form|
-      answer_form.input :value
-      answer_form.input :position
-      answer_form.input :cope_index
+    f.inputs do
+      f.has_many :answers do |answer_form|
+        answer_form.input :value
+        answer_form.input :position
+        answer_form.input :cope_index
+      end
     end
 
     f.buttons

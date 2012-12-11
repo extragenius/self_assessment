@@ -122,8 +122,28 @@ class QuestionnairesControllerTest < ActionController::TestCase
     assert_warning_displayed
   end
 
+  def test_warning
+    warning = Ominous::Warning.find(1)
+    rule_set = RuleSet.first
+    rule_set.rule = 'a1'
+    rule_set.warning = warning
+    rule_set.save
+    test_update
+    get :index
+#    p session
+    assert_warning_displayed
+  end
+  
+  def test_warning_not_normally_shown
+    test_show
+    assert_warning_is_not_displayed
+  end
+  
+  private
   def cope_index_threshold
     Setting.for(:cope_index_threshold)
   end
+  
+  
 
 end

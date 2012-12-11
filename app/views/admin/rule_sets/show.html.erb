@@ -10,6 +10,17 @@
   </p>
 </div>
 
+<% if @rule_set.warning.present? %>
+<div>
+  <h3>Warning: <%= @rule_set.warning.name.humanize %></h3>
+  <p>
+    When this rule set is match, the <%= @rule_set.warning.name %> will be 
+    triggered and the user will see a warning message (unless they have already
+    dismissed this warning).
+  </p>
+</div>
+<% end %>
+
 <div>
   <h3>The rule</h3>
   <p><%= @rule_set.rule %></p>

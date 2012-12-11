@@ -56,18 +56,29 @@ ActiveAdmin.register Ominous::Warning do
       f.input :name
     end
     
-    f.has_many :closers do |closer_form|
-      closer_form.input :name, :label => 'Name used in locale file'
-      closer_form.input :url, :label => 'Url: Only for redirects'
-      closer_form.input(
-        :closure_method, 
-        :as => :select, 
-        :collection => Ominous::Closer.closure_methods.keys.collect{|m| [m.to_s.humanize, m]}
-      )
-      closer_form.input :start_hidden
+    f.inputs do
+      f.has_many :closers do |closer_form|
+        closer_form.input :name, :label => 'Name used in locale file'
+        closer_form.input :url, :label => 'Url: Only for redirects'
+        closer_form.input(
+          :closure_method, 
+          :as => :select, 
+          :collection => Ominous::Closer.closure_methods.keys.collect{|m| [m.to_s.humanize, m]}
+        )
+        closer_form.input :start_hidden
+      end
     end
     
     f.buttons
   end
+  
+#  controller do
+#    
+#    def new
+#      @ominous_warning = Ominous::Warning.new
+#      @ominous_warning.closers = [Ominous::Closer.new]
+#    end
+#    
+#  end
   
 end
