@@ -2,6 +2,8 @@ ActiveAdmin.register Ominous::Warning do
   
   actions :all, :except => [:destroy]
   
+  menu :label => "Warnings", :parent => "Under the bonnet"
+  
   index do
     column :name
     column :closers do |warning|
@@ -60,7 +62,7 @@ ActiveAdmin.register Ominous::Warning do
       closer_form.input(
         :closure_method, 
         :as => :select, 
-        :collection => Ominous::Closer.closure_methods.keys
+        :collection => Ominous::Closer.closure_methods.keys.collect{|m| [m.to_s.humanize, m]}
       )
       closer_form.input :start_hidden
     end

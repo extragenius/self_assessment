@@ -1,6 +1,8 @@
 ActiveAdmin.register Setting do
 
   actions :all, :except => [:destroy]
+  
+  menu :label => "Settings", :parent => "Under the bonnet"
 
   index do
     column :description

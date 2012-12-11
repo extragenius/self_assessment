@@ -1,4 +1,7 @@
-ActiveAdmin.register AdminUser do     
+ActiveAdmin.register AdminUser do
+  
+  menu :label => "Admin users", :parent => "Under the bonnet"
+  
   index do                            
     column :email                     
     column :current_sign_in_at        
