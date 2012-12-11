@@ -46,6 +46,10 @@ GEM
     arel (3.0.2)
     array_logic (0.0.6)
     bcrypt-ruby (3.0.1)
+    better_errors (0.2.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
+    binding_of_caller (0.6.8)
     bourbon (3.0.1)
       sass (>= 3.2.0)
       thor
@@ -60,6 +64,7 @@ GEM
       mime-types
       orm_adapter
     cocaine (0.4.2)
+    coderay (1.0.8)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -116,7 +121,7 @@ GEM
     net-ssh (2.6.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    ominous (0.0.2)
+    ominous (0.0.3)
       acts_as_list
       jquery-rails
       rails (~> 3.2.8)
@@ -188,6 +193,8 @@ DEPENDENCIES
   activeadmin
   acts_as_list
   array_logic (>= 0.0.6)
+  better_errors
+  binding_of_caller
   capistrano
   ckeditor (= 3.7.2)
   coffee-script
@@ -197,7 +204,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   mysql2
-  ominous (>= 0.0.2)
+  ominous (>= 0.0.3)
   paperclip (~> 3.0)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)

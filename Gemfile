@@ -26,6 +26,8 @@ end
 
 group :development do
   gem 'capistrano'     # Deployment tool
+  gem "better_errors"       # Enhances standard rails error pages
+  gem "binding_of_caller"   # Add lists of current variable to better_errors output
 end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
@@ -43,5 +45,6 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 
 gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
 
-gem 'ominous', '>= 0.0.2' # Controls the display of warnings
+# gem 'ominous', :path => "~/web/ominous" 
+gem 'ominous', '>= 0.0.3' # Controls the display of warnings
 
