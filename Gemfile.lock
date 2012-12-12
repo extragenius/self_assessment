@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/svenfuchs/i18n-active_record.git
+  revision: b631b05a96d578b6c01c4751cc1a0ba8a84406af
+  specs:
+    i18n-active_record (0.0.2)
+      i18n (>= 0.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -200,6 +207,7 @@ DEPENDENCIES
   coffee-script
   devise
   dibber
+  i18n-active_record!
   i18n-js
   jquery-rails
   jquery-ui-rails
