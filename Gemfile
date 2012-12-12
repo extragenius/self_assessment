@@ -43,7 +43,7 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
+gem 'array_logic', '~> 0.1.0' # Used to identify patterns in RuleSet Answers
 
 # gem 'ominous', :path => "~/web/ominous" 
 gem 'ominous', '>= 0.0.3' # Controls the display of warnings
