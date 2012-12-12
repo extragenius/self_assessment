@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
   end
   
   def new_answer_store
-    @answer_store = AnswerStore.create
+    set_answer_store AnswerStore.create
+  end
+  
+  def set_answer_store(answer_store)
+    @answer_store = answer_store
     session[:answer_store] = @answer_store.session_id
   end
   
