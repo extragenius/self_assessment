@@ -18,37 +18,50 @@
   width: 90%;   
 }
 
-.questionnaire_button {
-  position: relative;
+.questionnaire_buttons {
+
+  $button_width: 190px;
+  $button_margin_left: 0;
+  $button_margin_right: 30px;
+  $button_margin_width: $button_margin_left + $button_margin_right;
+  $buttons_per_line: 4;
   
-  display: inline-block;
-  height: 165px;
-  width: 160px;
-  margin: 0 30px 10px 0;
-    
-  a {
-    position: absolute;
-    width: 100%;
-  }
+  max-width: ($button_width * $buttons_per_line) + $button_margin_width;
   
-  a.image_link {
-    bottom: 35px;
-    
-    img {
-      display: block;
-      margin: 0 auto;
+  margin: 0 auto;
+  
+  .button {
+    position: relative;
+
+    display: inline-block;
+    height: 165px;
+    width: $button_width - $button_margin_width;
+    margin: 0 $button_margin_right 10px $button_margin_left;
+
+    a {
+      position: absolute;
+      width: 100%;
     }
+
+    a.image_link {
+      bottom: 35px;
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    a.text_link {
+      top: 130px;
+      text-align: center;
+    }
+
+    &.visited {
+      background-color: $visited; 
+    }
+
   }
-  
-  a.text_link {
-    top: 130px;
-    text-align: center;
-  }
-  
-  &.visited {
-    background-color: $visited; 
-  }
-  
 }
 
 .tooltip {
