@@ -2,7 +2,7 @@ if ENV['HOSTNAME'] =~ /wvtcent1\./
   source 'http://wvtcent1/ruby/' 
 else
   source 'https://rubygems.org'
-end
+end 
 
 gem 'rails', '3.2.8'
 
@@ -50,7 +50,7 @@ gem 'ominous', '>= 0.0.3' # Controls the display of warnings
 
 gem(
   'i18n-active_record',
-  :git => 'https://github.com/svenfuchs/i18n-active_record.git',
+  :path => File.expand_path("../vendor/local_gem_store/", __FILE__),
   :require => 'i18n/active_record'
 ) # Allows translations to be stored in database
 
