@@ -1,0 +1,21 @@
+en:
+  ominous:
+    warning:
+      coping_index_threashold_exceeded:
+        title: Warning
+        description: You have identified several areas of need, which suggests that a community care assessment might be appropriate if you have not already had one.
+        go_to_care_assessment_page: 
+          message: Option one
+          link: I would like to see details of how to arrange a community care assessment
+        had_care_assessment: 
+          message: Option two
+          link: I have received a community care assessment from Warwickshire County Council and I am using a personal budget to buy care products or services
+        had_financial_assessment: 
+          message: Option three
+          link: I have had a financial assessment from Warwickshire County Council and I am self-funding because I have to pay for my care services
+        prefer_self_funding: 
+          message: Option four
+          link: I understand that I have several areas of need and I am entitled to a community care assessment, but I prefer self-funding for its speed, simplicity and privacy
+        close_dialog:
+          message: You have chosen to continue using on-line self-support.
+          link: Click here to hide this alert.
