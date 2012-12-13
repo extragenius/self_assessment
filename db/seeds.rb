@@ -55,4 +55,20 @@ Seeder.objects_from("ominous/warnings.yml").each do |warning, closers|
   
 end
 
+Seeder.monitor Translation
+attributes = TranslationExtractor.to_language_attributes(
+  Seeder.objects_from('translations.yml')
+)
+attributes.each do |attr|
+  next if Translation.exists?(
+    locale: attr[:locale],
+    key: attr[:key]
+  )
+  Translation.create(
+    locale: attr[:locale],
+    key: attr[:key],
+    value: attr[:value]    
+  )
+end
+
 puts Seeder.report

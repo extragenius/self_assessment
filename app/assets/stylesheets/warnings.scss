@@ -1,0 +1,31 @@
+@import 'colours';
+
+.ominous_warnings {
+  .warning {
+    background-color: $white;
+    border: $warning solid 3px;
+    font-size: 1.2em;
+
+    .heading {
+
+      h2 {
+        background-color: $warning;
+        color: $white;
+        margin: 0;
+      }
+
+    }
+
+    h2, .description, .closers {
+      padding: 5px;
+    }
+
+    .closer {
+      margin: 0 0 1em;
+      p {
+        margin: 0;         
+      }
+    }
+
+  }
+}

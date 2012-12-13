@@ -38,7 +38,7 @@ class RuleSet < ActiveRecord::Base
   end
   
   def logic
-    @logic ||= get_logic
+    @logic || get_logic
   end
   
   def matching_answer_sets
@@ -55,9 +55,7 @@ class RuleSet < ActiveRecord::Base
   
   private
   def get_logic
-    array_logic_rule = ArrayLogic::Rule.new
-    array_logic_rule.rule = rule
-    return array_logic_rule
+    @logic = ArrayLogic::Rule.new rule
   end
   
   def generate_default_rule

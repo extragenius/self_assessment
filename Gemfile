@@ -25,7 +25,7 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'     # Deployment tool
+  gem 'capistrano', '2.13.4'     # Deployment tool
   gem "better_errors"       # Enhances standard rails error pages
   gem "binding_of_caller"   # Add lists of current variable to better_errors output
 end
@@ -43,8 +43,14 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-gem 'array_logic', '>= 0.0.6' # Used to identify patterns in RuleSet Answers
+gem 'array_logic', '~> 0.1.0' # Used to identify patterns in RuleSet Answers
 
 # gem 'ominous', :path => "~/web/ominous" 
 gem 'ominous', '>= 0.0.3' # Controls the display of warnings
+
+gem(
+  'i18n-active_record',
+  :git => 'https://github.com/svenfuchs/i18n-active_record.git',
+  :require => 'i18n/active_record'
+) # Allows translations to be stored in database
 

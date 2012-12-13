@@ -14,6 +14,10 @@ class AnswerStore < ActiveRecord::Base
     questionnaires.clear
   end
   
+  def to_param
+    session_id
+  end
+  
   private
   
   def generate_session_id

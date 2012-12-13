@@ -1,0 +1,12 @@
+<h1>Restore previous settings</h1>
+<p>
+  Continuing will remove your current answers and replace them with those stored
+  on <%= @answer_store.updated_at.to_s(:date) %>.
+</p>
+<p>
+  Are you sure you wish to continue?
+</p>
+<%= form_for(@answer_store) do |form| %>
+  <%= form.submit('Yes') %>
+  <%= link_to('No', root_path) %>
+<% end %>
