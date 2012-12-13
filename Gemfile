@@ -50,7 +50,7 @@ gem 'ominous', '>= 0.0.3' # Controls the display of warnings
 
 gem(
   'i18n-active_record',
-  :git => 'git://github.com/svenfuchs/i18n-active_record.git',
+  :git => 'https://github.com/svenfuchs/i18n-active_record.git',
   :require => 'i18n/active_record'
 ) # Allows translations to be stored in database
 
