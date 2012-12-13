@@ -54,7 +54,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
-    capistrano (2.13.5)
+    capistrano (2.13.4)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -195,7 +195,7 @@ DEPENDENCIES
   array_logic (>= 0.0.6)
   better_errors
   binding_of_caller
-  capistrano
+  capistrano (= 2.13.4)
   ckeditor (= 3.7.2)
   coffee-script
   devise

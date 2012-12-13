@@ -25,7 +25,7 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'     # Deployment tool
+  gem 'capistrano', '2.13.4'     # Deployment tool
   gem "better_errors"       # Enhances standard rails error pages
   gem "binding_of_caller"   # Add lists of current variable to better_errors output
 end
