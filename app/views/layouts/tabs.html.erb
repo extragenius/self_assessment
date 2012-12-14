@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>SelfAssessment</title>
+  <%= render 'shared/wcc_head' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,33 +14,43 @@
       showAsTabs('#tabs');
     });
   <% end %>
-
-  <%= ominous_warnings %>
-
-  <div id="tabs">
-    <ul>
-      <li><%= link_to('Home', '#questionnaires') %></li>
-    <% @rule_sets.each do |rule_set| %>
-      <li>
-        <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
-        <span class="ui-icon ui-icon-close">Remove Tab</span>
-      </li>
-    <% end %>
-      <li><%= link_to('Directory', '#directory') %></li>
-    </ul>
-
-    <div id="questionnaires">
-      <%= render 'shared/flash_messages' %>
-      <%= yield %>
-    </div>
     
-    <% @rule_sets.each do |rule_set| %>
-    <%= tag_page("rule_set_#{rule_set.id}", rule_set_path(rule_set)) %>
-    <% end %>
+  <%= ominous_warnings %>  
+  
+  <div id="wrapper">
     
-    <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
+    <%= render 'shared/wcc_top_nav' %> 
+    
+    <div id="body-wrapper">
+     
+      <div id="tabs">
+        <ul>
+          <li><%= link_to('Home', '#questionnaires') %></li>
+        <% @rule_sets.each do |rule_set| %>
+          <li>
+            <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
+            <span class="ui-icon ui-icon-close">Remove Tab</span>
+          </li>
+        <% end %>
+          <li><%= link_to('Directory', '#directory') %></li>
+        </ul>
+
+        <div id="questionnaires">
+          <%= render 'shared/flash_messages' %>
+          <%= yield %>
+        </div>
+
+        <% @rule_sets.each do |rule_set| %>
+        <%= tag_page("rule_set_#{rule_set.id}", rule_set_path(rule_set)) %>
+        <% end %>
+
+        <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
+      </div>
+
+    <%= content_tag('p', link_to('Clear answers and start again', reset_questionnaires_path)) if @rule_sets.present? %>
+    
+    </div>  
+    <%= render 'shared/wcc_footer' %>  
   </div>
-
-  <%= content_tag('p', link_to('Clear answers and start again', reset_questionnaires_path)) if @rule_sets.present? %>
 </body>
 </html>

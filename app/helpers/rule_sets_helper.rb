@@ -23,7 +23,7 @@ module RuleSetsHelper
   
   def link_to_rule_set_url(rule_set)
     text = rule_set.link_text? ? rule_set.link_text : t('rule_set.default_url_text')
-    link_to(text, rule_set.url)
+    link_to(text, rule_set.url, :target => '_top')
   end
   
 end
