@@ -74,7 +74,7 @@ $(function() {
   $( "#calculator_dialog" ).dialog({
     autoOpen: false,
     modal: true,
-    height: 700,
+    height: 600,
     width: 700,
     title: 'Calculator' 
   });
