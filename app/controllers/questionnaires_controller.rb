@@ -50,7 +50,7 @@ class QuestionnairesController < ApplicationController
     answers = params[:question_id].values.collect do |question_values|
       question_values[:answer_ids].collect{|id| Answer.find(id)}
     end
-    @answer_store.answers = answers.flatten
+    @answer_store.answers = (@answer_store.answers | answers.flatten)
   end
   
   def add_questionnaire_to_answer_store
