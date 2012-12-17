@@ -80,11 +80,12 @@ en:
       submit_button: Calculate
 
     output:
-      supported: Yes you are eligible for funding by WCC
-      may_be_funded: You may be eligible for some funding by WCC
-      self_fund: You will need to fund the full cost
-      owns_property: You are not eligible for WCC funding because you own property
+      supported: The details you have given indicate that your capital and savings are below the minimum thresholds to be eligible for Warwickshire County Council funding. In this case some or all of the cost of your care would be met by Warwickshire County Council.
+      may_be_funded: The details you have given indicate that your capital and savings are between the minimum and maximum thresholds to be eligible for Warwickshire County Council funding. In this case you would be expected to contribute some or all of the cost of your care, according to a tariff.
+      self_fund: The details you have given indicate that your capital and savings are above the maximum threshold to be eligible for Warwickshire County Council funding, so you may have to pay the full cost of your care.
+      owns_property: You are not eligible for WCC funding because you own property.
       reopen_button: Calculate again
+      disclaimer: This result is only an indication based on a few simple questions. There are other factors that can affect your contribution, such as essential expenses, but the rules are complex, so the calculations cannot be made instantly on-line.
       prepend_savings: Your capital and savings of &pound;%{total_savings} are %{calc}
       calc:
         below_lower_threshold: below the lower limit of &pound;%{amount}

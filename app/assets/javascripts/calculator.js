@@ -103,6 +103,8 @@ $(function() {
   var mayBeFunded = I18n.t('calculator.output.may_be_funded');
   
   var selfFund = I18n.t('calculator.output.self_fund');
+  
+  var disclaimer = I18n.t('calculator.output.disclaimer');
 
   var calc
   
@@ -153,7 +155,8 @@ $(function() {
   function displayOutput(outcome, calc) {
     
     var output = '<p>' + calc + '</p>';
-    output += '<p>Result - ' + outcome + '</p>';
+    output += '<p>' + outcome + '</p>';
+    output += '<p>' + disclaimer + '</p>';
     output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>'
 
     $('#output').html(output);
