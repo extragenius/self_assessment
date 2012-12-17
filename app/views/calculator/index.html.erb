@@ -34,26 +34,15 @@
           )
       %>
     </p>
+    
+<% @saving_types.each do |saving_type| %>
 
-    <p>
-      <%= label_tag(:bank, t('calculator.labels.bank')) %>
-      <%= text_field_tag(:bank) %>
+    <p class="saving_type_input">
+      <%= label_tag(saving_type, t("calculator.labels.#{saving_type}")) %>
+      <%= text_field_tag(saving_type) %>
     </p>
 
-    <p>
-      <%= label_tag(:shares, t('calculator.labels.shares')) %>
-      <%= text_field_tag(:shares) %>
-    </p>
-
-    <p>
-      <%= label_tag(:post_office, t('calculator.labels.post_office')) %>
-      <%= text_field_tag(:post_office) %>
-    </p>
-
-    <p>
-      <%= label_tag(:capital, t('calculator.labels.capital')) %>
-      <%= text_field_tag(:capital) %>
-    </p>
+<% end %>
 
     <p>
       <%=

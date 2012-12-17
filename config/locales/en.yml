@@ -69,10 +69,14 @@ en:
     labels:
       couple: Click here if you are married or part of a couple
       property: Click here if you own the property you live in?
-      bank: Bank/Building society
-      shares: Shares
-      post_office: Post Office
-      capital: Other Capital/Savings
+      bank: Money in the Bank
+      building_society: Money in Building Societies
+      savings_account: Money in savings accounts
+      isa_tessa: Money in ISAs or TESSAs
+      cash: Cash
+      premium_bonds: Value of Premium Bonds
+      builings_and_land: Value of buildings and land you own
+      other: Other capital or savings
       submit_button: Calculate
 
     output:

@@ -30,3 +30,5 @@ class ActionController::TestCase
   end
 end
 
+puts "Run 'rake jasmine' to test JavaScript"
+

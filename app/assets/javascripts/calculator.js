@@ -1,6 +1,72 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+var calculator = {
+  valueForField: function(field) {
+    return parseInt(field.val()) || 0;
+  },
+  
+  totalSavings: function() {
+    var sum = 0;
+    $('.saving_type_input input').each(function(index, value) {
+      sum += calculator.valueForField($(value));
+    });
+    return sum;
+  },
+  
+  getSettingFromServer: function(name) {
+    var json = $.ajax({
+      type: "GET",
+      url: '/settings/' + name + '.json',
+      async: false,  // Without this rest of process continues before the data is returned
+      dataType: 'json',
+
+      success: function () {
+        //console.log('Successfully retrieved ' + name);
+      },
+      error: function () {
+        //console.log('Error retrieving ' + name);
+      }
+    }).responseText;
+
+    var data = $.parseJSON(json);
+    return data.setting_value;
+  },
+  
+  cachedSettings: {},
+  
+  getSetting: function(name) {
+    if (typeof calculator.cachedSettings[name] === "undefined") {
+      calculator.cachedSettings[name] = calculator.getSettingFromServer(name);
+    }
+    return calculator.cachedSettings[name];
+  },
+  
+  isCouple: function() {
+    var couple = $('#couple').attr('checked');
+    return couple == 'checked';
+  },
+  
+  coupleFactor: function() {
+    if (calculator.isCouple()) {
+      return calculator.getSetting('couple_factor');
+    } else {
+      return 1;
+    }
+  },
+  
+  minSavings: function() {
+    var minThreashold = calculator.getSetting('lower_savings_threshold');
+    return minThreashold * calculator.coupleFactor();
+  },
+  
+  maxSavings: function() {    
+    var maxThreashold = calculator.getSetting('upper_savings_threshold');
+    return maxThreashold * calculator.coupleFactor();
+  } 
+}
+
+
 $(function() {
   
   function onClickShowAndHide(clickOn, reveal, remove) {
@@ -32,69 +98,6 @@ $(function() {
     '#calculator .spouse'
   );
   
-  function valueForField(field){
-    return parseInt($(field).val()) || 0;
-  }
-  
-  function totalSavings() {
-    var bank = valueForField('#bank');
-    var shares = valueForField('#shares');
-    var post_office = valueForField('#post_office');
-    var capital = valueForField('#capital')
-    return bank + shares + post_office + capital;
-  }
-
-  function getSettingFromServer(name) {
-    var json = $.ajax({
-      type: "GET",
-      url: '/settings/' + name + '.json',
-      async: false,  // Without this rest of process continues before the data is returned
-      dataType: 'json',
-
-      success: function () {
-        //console.log('Successfully retrieved ' + name);
-      },
-      error: function () {
-        //console.log('Error retrieving ' + name);
-      }
-    }).responseText;
-
-    var data = $.parseJSON(json);
-    return data.setting_value;
-  }
-
-  var cachedSettings = {};
-
-  function getSetting(name) {
-    if (typeof cachedSettings[name] === "undefined") {
-      cachedSettings[name] = getSettingFromServer(name);
-    }
-    return cachedSettings[name];
-  }
-  
-  function isCouple() {
-    var couple = $('#couple').attr('checked');
-    return couple == 'checked';
-  }
-  
-  function coupleFactor() {
-    if (isCouple()) {
-      return getSetting('couple_factor');
-    } else {
-      return 1;
-    }
-  }
-
-  function minSavings() {
-    var minThreashold = getSetting('lower_savings_threshold');
-    return minThreashold * coupleFactor();
-  }
-  
-  function maxSavings() {    
-    var maxThreashold = getSetting('upper_savings_threshold');
-    return maxThreashold * coupleFactor();
-  }  
-  
   var supported = I18n.t('calculator.output.supported');
 
   var mayBeFunded = I18n.t('calculator.output.may_be_funded');
@@ -118,8 +121,8 @@ $(function() {
   }
   
   function showSupported() {
-    if (totalSavings() < minSavings()) {
-      calc = I18n.t('calculator.output.calc.below_lower_threshold', {amount: minSavings()});
+    if (calculator.totalSavings() < calculator.minSavings()) {
+      calc = I18n.t('calculator.output.calc.below_lower_threshold', {amount: calculator.minSavings()});
       displayOutput(supported, prependSavings(calc));
       return true;
     } else {
@@ -128,8 +131,8 @@ $(function() {
   }
   
   function showMayBeFunded() {
-    if (totalSavings() < maxSavings()) {
-      calc = I18n.t('calculator.output.calc.between_thresholds', {lower: minSavings(), upper: maxSavings()})
+    if (calculator.totalSavings() < calculator.maxSavings()) {
+      calc = I18n.t('calculator.output.calc.between_thresholds', {lower: calculator.minSavings(), upper: calculator.maxSavings()})
       displayOutput(mayBeFunded, prependSavings(calc));
       return true;
     } else {
@@ -138,13 +141,13 @@ $(function() {
   }
   
   function showSelfFund() {
-    calc = calc = I18n.t('calculator.output.calc.above_upper_threshold', {amount: maxSavings()});
+    calc = calc = I18n.t('calculator.output.calc.above_upper_threshold', {amount: calculator.maxSavings()});
     displayOutput(selfFund, prependSavings(calc));
     return true;
   }
   
   function prependSavings(text) {
-    return I18n.t('calculator.output.prepend_savings', {total_savings: totalSavings(), calc: text});
+    return I18n.t('calculator.output.prepend_savings', {total_savings: calculator.totalSavings(), calc: text});
   }
   
   function displayOutput(outcome, calc) {
@@ -170,6 +173,8 @@ $(function() {
     showOwnsProperty() || showSupported() || showMayBeFunded() || showSelfFund();
 
   });
+  
+
 
   
 });
