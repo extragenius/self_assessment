@@ -10,7 +10,7 @@ module QuestionnairesHelper
       else
         button = radio_button_tag(button_name, answer.id, answer_checked(answer))
       end
-      content_tag('li', "#{button}#{answer.value.humanize}".html_safe)
+      content_tag('li', "#{button}#{answer.value}".html_safe)
     end
     buttons.join.html_safe
   end
