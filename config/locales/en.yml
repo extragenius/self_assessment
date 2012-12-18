@@ -52,8 +52,8 @@ en:
         link_to_directory: clicking here
 
       self_assess:
-        when_to: If you are not sure what services will best fulfil your needs, we provide a self-assessment form. This is not the same as a community assessment, but it might help simplify your search. To use a self-assessment form,
-        link: click here
+        when_to: If you are not sure what services will best fulfil your needs, we provide a Self-Assessment tool. This is not the same as a community assessment, but it might help simplify your search.
+        link: Go to Self-Assessment
 
   calculator:
     confirm_understanding: Please confirm that you understand that this calculator is not definitive and it's result will not be considered part of the financial assessment process used by the council to determine your contribution to care costs.
