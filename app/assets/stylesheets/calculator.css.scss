@@ -4,7 +4,7 @@
 
 #calculator {
 
-  div {
+  .hide_at_start {
     display: none;
   }
   
@@ -16,8 +16,15 @@
     margin: 0;
   }
   
-  div#one {
-    display: inherit;
+  
+  div.column_pair {
+     display: inline-block;
+     margin: 5px 30px;
+     
+     label {
+       font-weight: bold;
+     }
+     
   }
   
   span.spouse {

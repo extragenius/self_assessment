@@ -74,13 +74,16 @@ $(function() {
   $( "#calculator_dialog" ).dialog({
     autoOpen: false,
     modal: true,
-    height: 600,
-    width: 700,
+//    height: 640,
+    width: 740,
     title: 'Calculator' 
   });
   
   $('.display_calculator').click(function() {
+    
+//    $( "#calculator_dialog" ).dialog({ width: '700px', resizable: false });
     $( "#calculator_dialog" ).dialog( "open" );
     return false;
   })
+  
 });

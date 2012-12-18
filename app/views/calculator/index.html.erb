@@ -13,7 +13,7 @@
     </p>
   </div>
 
-  <div id="two">
+  <div id="two" class="hide_at_start">
     <p><%= t 'calculator.description' %></p>
     <p>
       <%= label_tag(:couple, t('calculator.labels.couple'), :class => 'for_check_box') %>
@@ -34,15 +34,21 @@
           )
       %>
     </p>
-    
-<% @saving_types.each do |saving_type| %>
+  
+    <div class="columns">
+<% @saving_types.each_slice(@saving_types.length / 2 + @saving_types.length % 2) do |column| %> 
+      <div class ="column_pair">
+<%   column.each do |saving_type| %>
 
-    <p class="saving_type_input">
-      <%= label_tag(saving_type, t("calculator.labels.#{saving_type}")) %>
-      <%= text_field_tag(saving_type) %>
-    </p>
+        <p class="saving_type_input">
+          <%= label_tag(saving_type, t("calculator.labels.#{saving_type}")) %>
+          <%= text_field_tag(saving_type) %>
+        </p>
 
+<%   end %>
+      </div>
 <% end %>
+    </div>
 
     <p>
       <%=

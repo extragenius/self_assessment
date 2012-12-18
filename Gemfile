@@ -54,5 +54,5 @@ gem(
   :require => 'i18n/active_record'
 ) # Allows translations to be stored in database
 
-gem 'jasmine', :group => [:development, :test]
+gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 

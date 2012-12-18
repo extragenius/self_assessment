@@ -71,8 +71,8 @@ $(function() {
   
   function onClickShowAndHide(clickOn, reveal, remove) {
     $(clickOn).click(function(){
-      $(remove).hide('drop', {direction:'up'}, 300);
-      $(reveal).show('fade');
+      $(remove).hide();
+      $(reveal).show();
     })
   }
   
@@ -81,7 +81,7 @@ $(function() {
       if (this.checked) {
         $(reveal).show("highlight", {color:'#C2EBFF'}, 1500)
       } else {
-        $(reveal).hide('fade', {}, 500);
+        $(reveal).hide();
       }
       
     })
@@ -160,7 +160,7 @@ $(function() {
     output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>'
 
     $('#output').html(output);
-    $('#output').show("highlight", {color:'#C2EBFF'}, 1500);
+    $('#output').show("highlight", {color:'#C2EBFF'});
     $('#calculator #two').hide('fade');
 
     onClickShowAndHide(
