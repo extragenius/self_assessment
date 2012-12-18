@@ -1,5 +1,5 @@
 <div>
-  <%= content_tag('p', @rule_set.description) if @rule_set.description.present? %>
+  <%= content_tag('p', sanitize(@rule_set.description)) if @rule_set.description.present? %>
 </div>
 
 <div>

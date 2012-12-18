@@ -1,6 +1,6 @@
 <div class="rule_set">
 
-  <%= content_tag('div', @rule_set.description, :class => :description) if @rule_set.description.present? %>
+  <%= content_tag('div', sanitize(@rule_set.description), :class => :description) if @rule_set.description.present? %>
 
   <table class="answers">
     <tr>
