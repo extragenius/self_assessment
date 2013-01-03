@@ -56,3 +56,5 @@ gem(
 
 gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
+gem 'gchartrb' # Google Charts tool used to create graphs
+

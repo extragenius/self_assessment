@@ -1,5 +1,9 @@
 SelfAssessment::Application.routes.draw do
   
+  get "reports/index"
+
+  get "reports/show"
+
   mount Ckeditor::Engine => '/ckeditor'
   mount Ominous::Engine => "/ominous"
 
