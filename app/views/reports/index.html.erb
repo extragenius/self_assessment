@@ -1,5 +1,11 @@
+<h1>Reports</h1>
+
+<div class ="reports"">         
 <% @charts.each do |name, chart| %>
-<div class="chart">
-  <%= link_to image_tag(chart.to_url), report_path(name) %>
-</div>
+  <div class="report">
+    <%= link_to image_tag(chart.to_url), report_path(name) %>
+  </div>
 <% end %>
+</div>
+
+Bar width: <%= @bar_widths %>

@@ -1,3 +1,22 @@
-// Place all the styles related to the reports controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.reports {
+
+  $report_width: 300px;
+  $report_margin_left: 0;
+  $report_margin_right: 30px;
+  $report_margin_width: $report_margin_left + $report_margin_right;
+  $reports_per_line: 2;
+  
+  max-width: ($report_width * $reports_per_line) + $report_margin_width;
+  
+  margin: 0 auto;
+  
+  .report {
+    position: relative;
+
+    display: inline-block;
+    height: 165px;
+    width: $report_width - $report_margin_width;
+    margin: 0 $report_margin_right 10px $report_margin_left;
+
+  }
+}
