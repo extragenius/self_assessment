@@ -2,23 +2,26 @@ class ReportsController < ApplicationController
   require 'google_chart'
   
   def index
-    max_labels = 2
     @charts = Hash.new
-    charts.keys.each{|chart| @charts[chart] = chart_for(chart, :label_control => label_every(charts[chart].length / max_labels))}
+    charts.keys.each do|chart| 
+      interval = interval_for_max_labels chart, 5
+      label_control = label_every(interval)
+      @charts[chart] = chart_for(chart, :label_control => label_control)
+      
+    end
   end
-
+  
   def show
-    
     chart = params[:id].respond_to?(:to_sym) ? params[:id].to_sym : nil
     
     if chart
-      @chart = chart_for(chart, :width => 600, :height => 400)
+      interval = interval_for_max_labels chart, 10
+      label_control = label_every(interval)
+      @chart = chart_for(chart, :width => 600, :label_control => label_control)
     else
       flash[:alert] = "Chart '#{params[:id]}' not found"
       redirect_to :action => :index
     end
-
-    
   end
   
   private
@@ -44,12 +47,13 @@ class ReportsController < ApplicationController
     size = args[:size] || "#{width}x#{height}"
     label_control = args[:label_control] || all_labels
     GoogleChart::BarChart.new(size, name.to_s.humanize, :vertical, false) do |chart|
-      chart.data "Line green", charts[name].values, '00ff00'
-      chart.axis :x, :labels => charts[name].keys.collect(&label_control), :font_size => 12, :alignment => :center
+      data = charts[name]
+      chart.data "Line green", data.values, '00ff00'
+      chart.axis :x, :labels => data.keys.collect(&label_control), :font_size => 12, :alignment => :center
+      chart.axis :y, :range => [0, data.values.max]
       chart.show_legend = false
-      bar_width = (width / charts[name].values.length) - 5
-      @bar_widths ||= []
-      @bar_widths << bar_width
+      chart_margin = 20
+      bar_width = ((width - chart_margin) / data.values.length) - 5
       chart.width_spacing_options(:bar_width => bar_width.to_i, :bar_spacing => 1, :group_spacing => 1)
     end
   end
@@ -63,6 +67,12 @@ class ReportsController < ApplicationController
   end
   
   def label_every(points)
+    return all_labels if points == 0
+    
     lambda {|k| @a ||= 0; @a += 1; (@a % points) == 0 ? k : nil }
   end
+  
+  def interval_for_max_labels(chart_name, max_labels)
+    ((charts[chart_name].length - 1)/ max_labels) + 1
+  end  
 end
