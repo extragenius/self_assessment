@@ -3,12 +3,20 @@ class ReportsController < ApplicationController
   
   def index
     
-    @charts = charts.keys.collect{|name| chart_for(name)}
-
+    @charts = Hash.new
+    charts.keys.each{|chart| @charts[chart] = chart_for(chart)}
   end
 
   def show
     
+    chart = params[:id].respond_to?(:to_sym) ? params[:id].to_sym : nil
+    
+    if chart
+      @chart = chart_for(chart, '600x400')
+    else
+      flash[:alert] = "Chart '#{params[:id]}' not found"
+      redirect_to :action => :index
+    end
 
     
   end
@@ -30,7 +38,7 @@ class ReportsController < ApplicationController
     AnswerStore.joins(:questionnaires).group("DATE_FORMAT(answer_stores.updated_at, '%d%b%y')").count
   end
   
-  def chart_for(name, size = "400x200")
+  def chart_for(name, size = "300x150")
     GoogleChart::BarChart.new(size, name.to_s.humanize, :vertical, false) do |chart|
       chart.data "Line green", charts[name].values, '00ff00'
       chart.axis :x, :labels => charts[name].keys.collect{|k| @a ||= 0; @a += 1; (@a % 2) == 0 ? k : nil }, :font_size => 12

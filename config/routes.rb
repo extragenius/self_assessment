@@ -1,9 +1,5 @@
 SelfAssessment::Application.routes.draw do
   
-  get "reports/index"
-
-  get "reports/show"
-
   mount Ckeditor::Engine => '/ckeditor'
   mount Ominous::Engine => "/ominous"
 
@@ -28,6 +24,8 @@ SelfAssessment::Application.routes.draw do
   resources :settings, :only => [:show]
 
   resources :rule_sets, :only => [:show]
+  
+  resources :reports, :only => [:show, :index]
 
   namespace :admin do
     resources :questionnaires do

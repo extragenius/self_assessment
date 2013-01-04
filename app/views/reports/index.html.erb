@@ -1,5 +1,5 @@
-<% @charts.each do |chart| %>
+<% @charts.each do |name, chart| %>
 <div class="chart">
-  <%=image_tag chart.to_url %>
+  <%= link_to image_tag(chart.to_url), report_path(name) %>
 </div>
 <% end %>
