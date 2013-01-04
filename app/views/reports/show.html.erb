@@ -1,5 +1,11 @@
 <h1><%= params[:id].humanize %></h1>
 
 <div class="reports">
-<%= image_tag(@chart.to_url) %>
+<%   if @chart.respond_to? :to_url %>
+    <%= image_tag(@chart.to_url) %>
+<%   else %>
+    <table>
+      <%= @chart.collect{|c| content_tag('tr', content_tag('td', c))}.join("\n").html_safe %>
+    </table>
+<%   end %>
 </div>

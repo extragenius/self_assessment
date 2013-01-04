@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
     charts.keys.each do|chart| 
       interval = interval_for_max_labels chart, 5
       label_control = label_every(interval)
-      @charts[chart] = chart_for(chart, :label_control => label_control)
+      @charts[chart] = report_for(chart, :label_control => label_control)
       
     end
   end
@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
     if chart
       interval = interval_for_max_labels chart, 10
       label_control = label_every(interval)
-      @chart = chart_for(chart, :width => 600, :label_control => label_control)
+      @chart = report_for(chart, :width => 600, :label_control => label_control)
     else
       flash[:alert] = "Chart '#{params[:id]}' not found"
       redirect_to :action => :index
@@ -28,7 +28,9 @@ class ReportsController < ApplicationController
   def charts
     {
       :questionnaires_per_session => questionnaires_per_session,
-      :answers_per_session => answer_per_session
+      :answers_per_session => answer_per_session,
+      :most_used_questionnaires => most_used_questionnaires,
+      :most_used_answers => most_used_answers
     }
   end
   
@@ -39,6 +41,30 @@ class ReportsController < ApplicationController
   
   def questionnaires_per_session
     AnswerStore.joins(:questionnaires).group("DATE_FORMAT(answer_stores.updated_at, '%d%b%y')").count
+  end
+  
+  def most_used_answers
+    answers = Answer.joins(:answer_stores).group('answers.id').order('COUNT(*) DESC').limit(10).count
+    answers.keys.collect do |id|
+      answer = Answer.find(id)
+      "[#{answers[id]}] #{answer.value} :- '#{answer.question.title}'"
+    end
+  end
+  
+  def most_used_questionnaires
+    questionnaires = Questionnaire.joins(:answer_stores).group('questionnaires.id').order('COUNT(*) DESC').limit(10).count
+    questionnaires.keys.collect do |id|
+      questionnaire = Questionnaire.find(id)
+      "[#{questionnaires[id]}] #{questionnaire.title}"
+    end
+  end
+  
+  def report_for(chart, args = {})
+    if charts[chart].kind_of? Hash
+      chart_for(chart, args)
+    else
+      charts[chart]
+    end
   end
   
   def chart_for(name, args = {})
