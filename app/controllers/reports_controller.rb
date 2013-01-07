@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   def index
     @charts = charts
     @max_labels = 5
-    
+    @max_list_items = 4
   end
   
   def show

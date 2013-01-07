@@ -12,7 +12,7 @@
       <tr>
         <%= chart.headings.collect{|h| content_tag('th', h)}.join.html_safe %>
       <tr>
-<%      chart.data[0..3].each do |line| %>
+<%      chart.data[0...@max_list_items].each do |line| %>
       <tr>
         <%= line.collect{|col| content_tag('td', col)}.join.html_safe %>
       </tr>
