@@ -9,7 +9,7 @@ module ReportsHelper
           f.options[:title] = {text: link_to(chart.title, report_path(chart.name))}
           f.options[:chart][:type] = "column"
           f.options[:chart][:height] = args[:height]
-          f.series(:name => chart.x_axis_label, :data => chart.data.values)
+          f.series(:name => chart.y_axis_label, :data => chart.data.values)
           f.options[:xAxis] = {
             categories: chart.data.keys,
             labels: { 
@@ -17,8 +17,8 @@ module ReportsHelper
               align: 'left'
             }
           }
-          f.options[:yAxis][:title] = {text: chart.y_axis_label} if chart.y_axis_label
-          f.options[:xAxis][:title] = {text: chart.x_axis_label} if chart.x_axis_label
+          f.options[:yAxis][:title] = {text: chart.y_axis_title} if chart.y_axis_title
+          f.options[:xAxis][:title] = {text: chart.x_axis_title} if chart.x_axis_title
           f.options[:legend][:enabled] = false
 
         end
