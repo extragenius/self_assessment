@@ -2,7 +2,7 @@ require_relative 'base'
 module Report
   class DataList < Base
 
-    attr_reader :title, :data, :headings
+    attr_reader :headings
     
     ITEMS_TO_RETURN = 10
 

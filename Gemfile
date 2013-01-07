@@ -56,5 +56,5 @@ gem(
 
 gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
-gem 'gchartrb' # Google Charts tool used to create graphs
+ gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 

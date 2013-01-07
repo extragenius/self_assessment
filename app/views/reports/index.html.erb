@@ -4,7 +4,7 @@
 <% @charts.each do |name, chart| %>
   <div class="report">
 <%   if chart.kind_of? Report::Chart %>
-    <%= link_to image_tag(chart.graph(:max_labels => @max_labels).to_url), report_path(name) %>
+       <%= graph_for chart, height: 200 %>
 <%   else %>
     
     <table>
@@ -21,4 +21,5 @@
 <%   end %>
   </div>
 <% end %>
+     <p>Click on report title to hide other reports</p>
 </div>

@@ -1,8 +1,6 @@
-<h1><%= @chart.title %></h1>
-
 <div class="reports">
 <%   if @chart.kind_of? Report::Chart %>
-    <%= image_tag(@chart.graph(:max_labels => @max_labels, :width => @width).to_url) %>
+  <%= graph_for(@chart) %>     
 <%   else %>
     <table>
       <tr>
