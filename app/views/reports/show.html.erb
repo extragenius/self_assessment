@@ -1,11 +1,18 @@
-<h1><%= params[:id].humanize %></h1>
+<h1><%= @chart.title %></h1>
 
 <div class="reports">
-<%   if @chart.respond_to? :to_url %>
-    <%= image_tag(@chart.to_url) %>
+<%   if @chart.kind_of? Report::Chart %>
+    <%= image_tag(@chart.graph(:max_labels => @max_labels, :width => @width).to_url) %>
 <%   else %>
     <table>
-      <%= @chart.collect{|c| content_tag('tr', content_tag('td', c))}.join("\n").html_safe %>
+      <tr>
+        <%= @chart.headings.collect{|h| content_tag('th', h)}.join.html_safe %>
+      <tr>
+<%     @chart.data.each do |line| %>
+      <tr>
+        <%= line.collect{|col| content_tag('td', col)}.join.html_safe %>
+      </tr>
+<%     end %>
     </table>
 <%   end %>
 </div>

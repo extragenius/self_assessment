@@ -3,14 +3,20 @@
 <div class ="reports"">         
 <% @charts.each do |name, chart| %>
   <div class="report">
-<%   if chart.respond_to? :to_url %>
-    <%= link_to image_tag(chart.to_url), report_path(name) %>
+<%   if chart.kind_of? Report::Chart %>
+    <%= link_to image_tag(chart.graph(:max_labels => @max_labels).to_url), report_path(name) %>
 <%   else %>
+    
     <table>
+      <caption><%= link_to chart.title, report_path(name) %></caption>
       <tr>
-        <th><%= link_to name.to_s.humanize, report_path(name) %></th>
+        <%= chart.headings.collect{|h| content_tag('th', h)}.join.html_safe %>
+      <tr>
+<%      chart.data[0..3].each do |line| %>
+      <tr>
+        <%= line.collect{|col| content_tag('td', col)}.join.html_safe %>
       </tr>
-      <%= chart[0...4].collect{|c| content_tag('tr', content_tag('td', content_tag('small', c)))}.join("\n").html_safe %>
+<%     end %>
     </table>
 <%   end %>
   </div>
