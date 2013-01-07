@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   def index
     @charts = charts
     @max_labels = 5
-    @max_list_items = 4
+    @max_list_items = 3
   end
   
   def show
@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
   private
   def charts
     {
-      :questionnaires_per_session => Report::Chart.new(:questionnaires_per_session),
+      :questionnaires_per_day => Report::Chart.new(:questionnaires_per_day),
       :answers_per_session => Report::Chart.new(:answers_per_session),
       :most_used_questionnaires => Report::DataList.new(:most_used_questionnaires),
       :most_used_answers => Report::DataList.new(:most_used_answers)

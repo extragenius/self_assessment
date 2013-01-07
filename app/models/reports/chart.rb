@@ -27,11 +27,15 @@ module Report
     private
 
     def answers_per_session
+      @x_axis_label = 'Occurances'
+      @y_axis_label = 'Answers in session'
       answers_per_session = AnswerStore.joins(:answers).group('answer_stores.id').count.values
       Hash[answers_per_session.uniq.sort.collect{|n| [n, answers_per_session.count(n)]}]
     end
 
-    def questionnaires_per_session
+    def questionnaires_per_day
+      @x_axis_label = 'Questionnaires'
+      @y_axis_label = 'Day'
       AnswerStore.joins(:questionnaires).group("DATE_FORMAT(answer_stores.updated_at, '%d%b%y')").count
     end
 

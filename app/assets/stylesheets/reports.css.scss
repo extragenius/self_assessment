@@ -14,7 +14,7 @@
     position: relative;
 
     display: inline-block;
-    height: 165px;
+    vertical-align: top;
     width: $report_width - $report_margin_width;
     margin: 0 $report_margin_right 10px $report_margin_left;
 
