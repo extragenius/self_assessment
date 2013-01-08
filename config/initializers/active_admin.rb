@@ -138,11 +138,11 @@ ActiveAdmin.setup do |config|
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', :media => :print
   #
-  # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
-
-  # Enable ckeditor for text editing
-  config.register_javascript 'ckeditor/init.js'
+  # Load application.js to remove jQuery conflicts (so jquery is only loaded in application.js):
+  current_javascripts = config.javascripts.clone
+  config.clear_javascripts! 
+  config.register_javascript 'application.js'
+  current_javascripts.reverse.each{|j| config.register_javascript j}
 
   # == CSV options
   #
