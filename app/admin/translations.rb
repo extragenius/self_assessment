@@ -10,6 +10,7 @@ ActiveAdmin.register Translation, :as => 'Translations' do
       translation.key.gsub(/\./, ".<br/>").html_safe
     end
     column :value
+    default_actions
   end
   
   form do |f|
