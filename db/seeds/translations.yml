@@ -3,7 +3,7 @@ en:
     warning:
       coping_index_threashold_exceeded:
         title: Warning
-        description: You have identified several areas of need, which suggests that a community care assessment might be appropriate if you have not already had one.
+        description: You have identified multiple or substantial needs, which indicates that a community care assessment might be appropriate if you have not already had one.
         go_to_care_assessment_page: 
           message: Option one
           link: I would like to see details of how to arrange a community care assessment
