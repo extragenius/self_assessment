@@ -46,7 +46,7 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 gem 'array_logic', '~> 0.1.0' # Used to identify patterns in RuleSet Answers
 
 # gem 'ominous', :path => "~/web/ominous" 
-gem 'ominous', '>= 0.0.3' # Controls the display of warnings
+gem 'ominous', '>= 0.0.4' # Controls the display of warnings
 
 gem(
   'i18n-active_record',
