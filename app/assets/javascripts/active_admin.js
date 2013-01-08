@@ -1,4 +1,4 @@
-//= require active_admin/application
+//= require active_admin/base
 
 $(function() {
   if (!!$.prototype.tooltip) {
