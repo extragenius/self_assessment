@@ -24,7 +24,7 @@ class Setting < ActiveRecord::Base
         when 'number'
           super.to_f
         when 'decimal'
-          BigDecimal.new(super)
+          BigDecimal.new(super.to_s)
         else
           super
       end
