@@ -1,3 +1,4 @@
+require 'ckeditor'
 # Use this hook to configure ckeditor
 if Object.const_defined?("Ckeditor")
   Ckeditor.setup do |config|
