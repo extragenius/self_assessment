@@ -17,7 +17,7 @@ module Report
       @x_axis_label = 'Answer'
       @y_axis_title = 'Occurances'
       @x_axis_title = 'Answers per session'
-      answers_per_session = AnswerStore.joins(:answers).group('answer_stores.id').count.values
+      answers_per_session = AnswerStore.joins(:answers).group('qwester_answer_stores.id').count.values
       Hash[answers_per_session.uniq.sort.collect{|n| [n, answers_per_session.count(n)]}]
     end
 
@@ -26,7 +26,7 @@ module Report
       @x_axis_label = 'Day'
       @y_axis_title = 'Questionnaires'
       @x_axis_rotation = 90
-      AnswerStore.joins(:questionnaires).group("DATE_FORMAT(answer_stores.updated_at, '%d-%b-%y')").count
+      AnswerStore.joins(:questionnaires).group("DATE_FORMAT(qwester_answer_stores.updated_at, '%d-%b-%y')").count
     end
      
   end

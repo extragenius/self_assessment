@@ -56,5 +56,7 @@ gem(
 
 gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
- gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
+gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
+
+gem 'qwester', :path => '~/web/qwester'
 

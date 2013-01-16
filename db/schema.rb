@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212091711) do
+ActiveRecord::Schema.define(:version => 20130116135143) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,36 +45,6 @@ ActiveRecord::Schema.define(:version => 20121212091711) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
-
-  create_table "answer_stores", :force => true do |t|
-    t.string   "session_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "answer_stores_answers", :id => false, :force => true do |t|
-    t.integer "answer_id"
-    t.integer "answer_store_id"
-  end
-
-  create_table "answer_stores_questionnaires", :id => false, :force => true do |t|
-    t.integer "questionnaire_id"
-    t.integer "answer_store_id"
-  end
-
-  create_table "answers", :force => true do |t|
-    t.integer  "question_id"
-    t.string   "value"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "position"
-    t.integer  "cope_index",  :default => 0
-  end
-
-  create_table "answers_rule_sets", :id => false, :force => true do |t|
-    t.integer "answer_id"
-    t.integer "rule_set_id"
-  end
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -115,7 +85,37 @@ ActiveRecord::Schema.define(:version => 20121212091711) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "questionnaires", :force => true do |t|
+  create_table "qwester_answer_stores", :force => true do |t|
+    t.string   "session_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "qwester_answer_stores_answers", :id => false, :force => true do |t|
+    t.integer "answer_id"
+    t.integer "answer_store_id"
+  end
+
+  create_table "qwester_answer_stores_questionnaires", :id => false, :force => true do |t|
+    t.integer "questionnaire_id"
+    t.integer "answer_store_id"
+  end
+
+  create_table "qwester_answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "value"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "position"
+    t.integer  "cope_index",  :default => 0
+  end
+
+  create_table "qwester_answers_rule_sets", :id => false, :force => true do |t|
+    t.integer "answer_id"
+    t.integer "rule_set_id"
+  end
+
+  create_table "qwester_questionnaires", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",                :null => false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20121212091711) do
     t.datetime "button_image_updated_at"
   end
 
-  create_table "questionnaires_questions", :force => true do |t|
+  create_table "qwester_questionnaires_questions", :force => true do |t|
     t.integer  "questionnaire_id"
     t.integer  "question_id"
     t.integer  "position"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20121212091711) do
     t.datetime "updated_at"
   end
 
-  create_table "questions", :force => true do |t|
+  create_table "qwester_questions", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "parent_id"
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(:version => 20121212091711) do
     t.boolean  "multi_answer"
   end
 
-  create_table "rule_sets", :force => true do |t|
+  create_table "qwester_rule_sets", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.string   "url"

@@ -4,6 +4,15 @@ PATH
     i18n-active_record (0.0.2)
       i18n (>= 0.5.0)
 
+PATH
+  remote: ~/web/qwester
+  specs:
+    qwester (0.0.1)
+      acts_as_list
+      array_logic
+      paperclip (~> 3.0)
+      rails (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -249,6 +258,7 @@ DEPENDENCIES
   mysql2
   ominous (>= 0.0.4)
   paperclip (~> 3.0)
+  qwester!
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   therubyracer (= 0.10.2)
