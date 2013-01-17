@@ -149,5 +149,5 @@ ActiveAdmin.setup do |config|
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
   
-  config.load_paths << Qwester.active_admin_load_path
+  config.load_paths = [Qwester.active_admin_load_path] + config.load_paths
 end
