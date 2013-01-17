@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
   
   def trigger_any_warnings_associated_with_rule_sets
-#    @rule_sets.each{|r| Ominous::Warning.trigger(r.warning.name) if r.warning}
+    @rule_sets.each{|r| Ominous::Warning.trigger(r.warning.name) if r.warning}
   end
   
   def matching_rule_sets
