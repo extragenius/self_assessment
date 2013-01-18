@@ -23,9 +23,9 @@ class AnswerStoresTest < ActionDispatch::IntegrationTest
         }
       )
     end
-    @answer_store = AnswerStore.last
-    assert_equal([@answer], @answer_store.answers)
-    assert_equal(session[:answer_store], @answer_store.session_id)
+    @qwester_answer_store = AnswerStore.last
+    assert_equal([@answer], @qwester_answer_store.answers)
+    assert_equal(session[:qwester_answer_store], @qwester_answer_store.session_id)
   end
   
   def test_multiple_questionnaire_inputs
@@ -40,8 +40,8 @@ class AnswerStoresTest < ActionDispatch::IntegrationTest
         }
       )
     end 
-    @answer_store.reload
-    assert_equal([@answer, @other_answer], @answer_store.answers, "answer_store should contain answers for both questionnaire submissions")
+    @qwester_answer_store.reload
+    assert_equal([@answer, @other_answer], @qwester_answer_store.answers, "answer_store should contain answers for both questionnaire submissions")
   end
   
   

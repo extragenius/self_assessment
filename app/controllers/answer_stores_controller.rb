@@ -7,7 +7,7 @@ class AnswerStoresController < ApplicationController
   end
   
   def update
-    set_answer_store(@answer_store)
+    set_qwester_answer_store(@answer_store)
     redirect_to root_path
   end
 
