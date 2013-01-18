@@ -1,3 +1,5 @@
+require "#{Rails.root}/app/decorators/models/qwester/rule_set_decorator"
+
 # map existing constants to Qwester versions
 
 Answer = Qwester::Answer
