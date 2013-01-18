@@ -58,5 +58,6 @@ gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
 gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 
-gem 'qwester', :path => '~/web/qwester'
+# gem 'qwester', :path => '~/web/qwester'
+gem 'qwester'  # Adds questionnaires, questions, answers and rule sets.
 
