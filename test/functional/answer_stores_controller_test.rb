@@ -9,16 +9,16 @@ class AnswerStoresControllerTest < ActionController::TestCase
   
   
   def test_show
-    get :show, {:id => @answer_store.session_id}, {:answer_store => @current_answer_store.session_id}
+    get :show, {:id => @answer_store.session_id}, {:qwester_answer_store => @current_answer_store.session_id}
     assert_response :success
     assert_equal(@answer_store, assigns('answer_store'))
-    assert_equal(@current_answer_store.session_id, session['answer_store'])
+    assert_equal(@current_answer_store.session_id, session['qwester_answer_store'])
   end
   
   def test_update
-    put :update, {:id => @answer_store.session_id}, {:answer_store => @current_answer_store.session_id}
+    put :update, {:id => @answer_store.session_id}, {:qwester_answer_store => @current_answer_store.session_id}
     assert_response :redirect
-    assert_equal(@answer_store.session_id, session['answer_store'])
+    assert_equal(@answer_store.session_id, session['qwester_answer_store'])
   end
 
   def test_new

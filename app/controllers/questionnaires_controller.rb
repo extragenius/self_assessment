@@ -14,13 +14,13 @@ class QuestionnairesController < ApplicationController
   end
 
   def update
-    update_answer_store
+    update_qwester_answer_store
     redirect_to :action => :index
   end
   
   def reset
     get_answer_store
-    @answer_store.reset
+    @qwester_answer_store.reset
     redirect_to :action => :index
   end
   
@@ -38,22 +38,5 @@ class QuestionnairesController < ApplicationController
     @questionnaire.attributes = params[:questionnaire]
     @questionnaire.questions = extract_questions_from_params
     @questionnaire.save
-  end
-  
-  def update_answer_store
-    get_answer_store(true)
-    add_answers_to_answer_store
-    add_questionnaire_to_answer_store
-  end
-  
-  def add_answers_to_answer_store
-    answers = params[:question_id].values.collect do |question_values|
-      question_values[:answer_ids].collect{|id| Answer.find(id)}
-    end
-    @answer_store.answers = (@answer_store.answers | answers.flatten)
-  end
-  
-  def add_questionnaire_to_answer_store
-    @answer_store.questionnaires << @questionnaire
   end
 end

@@ -36,10 +36,10 @@ class QuestionnairesControllerTest < ActionController::TestCase
         }
       )
     end
-    @answer_store = AnswerStore.last
+    @qwester_answer_store = AnswerStore.last
     assert_equal(@question, @answer.question)
-    assert_equal([@answer], @answer_store.answers)
-    assert_equal(session[:answer_store], @answer_store.session_id)
+    assert_equal([@answer], @qwester_answer_store.answers)
+    assert_equal(session[:qwester_answer_store], @qwester_answer_store.session_id)
     assert_response :redirect
   end
   
@@ -61,9 +61,9 @@ class QuestionnairesControllerTest < ActionController::TestCase
         }
       )
     end
-    @answer_store = AnswerStore.last
+    @qwester_answer_store = AnswerStore.last
 
-    assert_equal([@answer, other_answer], @answer_store.answers)
+    assert_equal([@answer, other_answer], @qwester_answer_store.answers)
   end
   
   def test_update_add_multiple_answers_for_same_question
@@ -80,15 +80,15 @@ class QuestionnairesControllerTest < ActionController::TestCase
         }
       )
     end
-    @answer_store = AnswerStore.last
+    @qwester_answer_store = AnswerStore.last
 
-    assert_equal([answer, other_answer], @answer_store.answers)
+    assert_equal([answer, other_answer], @qwester_answer_store.answers)
   end  
   
   def test_rule_set_match_after_update
     test_update
     rule_set = RuleSet.first
-    rule_set.answers << @answer_store.answers.first
+    rule_set.answers << @qwester_answer_store.answers.first
     rule_set.save
     get :index
     assert_equal([rule_set], assigns['rule_sets'])
@@ -99,14 +99,14 @@ class QuestionnairesControllerTest < ActionController::TestCase
     assert_no_difference 'Answer.count' do
       get :reset
       assert_response :redirect
-      assert_equal([], @answer_store.reload.answers)
-      assert_equal([], @answer_store.reload.questionnaires)
+      assert_equal([], @qwester_answer_store.reload.answers)
+      assert_equal([], @qwester_answer_store.reload.questionnaires)
     end
   end
   
   def test_update_adds_questionnaire_to_answer_store
     test_update
-    assert_equal([@questionnaire], @answer_store.questionnaires)
+    assert_equal([@questionnaire], @qwester_answer_store.questionnaires)
   end
   
   def test_cope_index_warning_not_shown
