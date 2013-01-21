@@ -10,7 +10,7 @@ Seeder.process_log.start('first questionnaire questions', 'Questionnaire.count >
 
 if Questionnaire.count > 2
   puts "**** Bypassing questionnaire, question, answer and rule set population"
-  puts "**** as there are already #{Question.count} questionnaires in the system"
+  puts "**** as there are already #{Questionnaire.count} questionnaires in the system"
 else
   Seeder.objects_from('questions.yml').each do |holder, data|
     questionnaire = Questionnaire.find_or_create_by_title(data['title'])

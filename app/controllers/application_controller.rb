@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :preload_tasks
-
+  
   private
   def preload_tasks
     get_answer_store
@@ -9,27 +9,10 @@ class ApplicationController < ActionController::Base
   end
   
   def get_answer_store(create_new = false)
-    if session[:answer_store]
-      current_answer_store
-    elsif create_new
-      new_answer_store
-    end
+    get_qwester_answer_store(create_new)
   end
   
-  def current_answer_store
-    @answer_store = AnswerStore.find_by_session_id(session[:answer_store])
-  end
-  
-  def new_answer_store
-    set_answer_store AnswerStore.create
-  end
-  
-  def set_answer_store(answer_store)
-    @answer_store = answer_store
-    session[:answer_store] = @answer_store.session_id
-  end
-  
-  def get_rule_sets
+    def get_rule_sets
     @rule_sets = matching_rule_sets || []
     trigger_any_warnings_associated_with_rule_sets
   end
@@ -40,7 +23,7 @@ class ApplicationController < ActionController::Base
   
   def matching_rule_sets
     if get_answer_store
-      RuleSet.matching(@answer_store.answers)
+      RuleSet.matching(@qwester_answer_store.answers)
     end
   end
   
@@ -66,13 +49,13 @@ class ApplicationController < ActionController::Base
   end
 
   def check_cope_index
-    if @answer_store and coping_score_exceeded?
+    if @qwester_answer_store and coping_score_exceeded?
       Ominous::Warning.trigger :coping_index_threashold_exceeded
     end
   end
 
   def coping_score_exceeded?
-    @answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
+    @qwester_answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
   end
 
 end
