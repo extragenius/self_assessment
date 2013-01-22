@@ -4,6 +4,15 @@ PATH
     i18n-active_record (0.0.2)
       i18n (>= 0.5.0)
 
+PATH
+  remote: ~/web/disclaimer
+  specs:
+    disclaimer (0.0.2)
+      acts_as_list
+      jquery-rails
+      jquery-ui-rails
+      rails (~> 3.2.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -245,6 +254,7 @@ DEPENDENCIES
   coffee-script
   devise
   dibber
+  disclaimer!
   i18n-active_record!
   i18n-js
   jasmine
