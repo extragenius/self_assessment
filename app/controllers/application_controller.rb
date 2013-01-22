@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :preload_tasks
   
+  disclaimer(:demo) if Disclaimer::Document.exists?(:name => :demo)
+  
   private
   def preload_tasks
     get_answer_store

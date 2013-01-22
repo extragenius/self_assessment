@@ -71,4 +71,6 @@ attributes.each do |attr|
   )
 end
 
+Seeder.new(Disclaimer::Document, 'disclaimer/documents.yml').build
+
 puts Seeder.report

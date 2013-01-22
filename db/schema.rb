@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116135143) do
+ActiveRecord::Schema.define(:version => 20130121134841) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,31 @@ ActiveRecord::Schema.define(:version => 20130116135143) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
+  create_table "disclaimer_documents", :force => true do |t|
+    t.string   "title"
+    t.string   "name"
+    t.text     "header"
+    t.text     "footer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "disclaimer_segment_holders", :force => true do |t|
+    t.integer  "document_id"
+    t.integer  "segment_id"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "disclaimer_segments", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "ominous_closers", :force => true do |t|
     t.string   "name"
