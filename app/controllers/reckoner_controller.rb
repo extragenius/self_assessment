@@ -1,4 +1,7 @@
 class ReckonerController < ApplicationController
+  
+  disclaimer(:demo) if Disclaimer::Document.exists?(:name => :demo)
+  
   def index
     @couple_factor = Setting.for(:couple_factor) || 0
     @lower_savings_threshold = Setting.for(:lower_savings_threshold)  || 0
