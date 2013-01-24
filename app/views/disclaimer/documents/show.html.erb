@@ -1,0 +1,20 @@
+<div class="disclaimer">
+  <div class="header">
+    <h1><%= @document.title %></h1>
+    <%= sanitize @document.header %>
+  </div>
+  <div class="articles">
+  <% @document.segments.each do |segment| %>
+
+      <h3><%= segment.title %></h3>
+      <div><%= sanitize segment.body %></div>
+
+  <% end %>
+  </div>
+  <div class="footer">
+    <%= sanitize @document.footer %>
+    <%= form_for(@document, :url => accept_document_path(@document), :method => 'post') do |form| %>
+      <%= form.submit('Accept') %>
+    <% end %>
+  </div>
+</div>

@@ -18,20 +18,24 @@ ActiveAdmin.register Disclaimer::Document do
   
   show do
     h2 disclaimer_document.title
-    div disclaimer_document.header
+    div sanitize(disclaimer_document.header)
     disclaimer_document.segments.each do |s|
       div do
-        "#{content_tag(:strong, s.title)}<br>#{s.body}".html_safe
+        "#{content_tag(:strong, s.title)}<br>#{sanitize(s.body)}".html_safe
       end
     end
-    div disclaimer_document.footer
+    div sanitize(disclaimer_document.footer)
   end
   
   form do |f|
     f.inputs do
       f.input :name
       f.input :title
-      f.input :header
+      if defined?(Ckeditor)
+        f.input :header, :input_html => { :class => "ckeditor", :height => 100  }
+      else
+        f.input :header, :input_html => { :rows => 3}
+      end
      
       f.input(
           :segments, 
@@ -39,7 +43,11 @@ ActiveAdmin.register Disclaimer::Document do
           :collection => Disclaimer::Segment.all
       ) if Disclaimer::Segment.exists?
     
-      f.input :footer
+      if defined?(Ckeditor)
+        f.input :footer, :input_html => { :class => "ckeditor", :height => 100  }
+      else
+        f.input :footer, :input_html => { :rows => 3}
+      end
     end
     
     f.buttons
