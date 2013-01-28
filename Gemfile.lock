@@ -159,7 +159,7 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
-    qwester (0.0.3)
+    qwester (0.0.4)
       acts_as_list
       array_logic
       paperclip (~> 3.0)
@@ -254,7 +254,7 @@ DEPENDENCIES
   mysql2
   ominous (>= 0.0.4)
   paperclip (~> 3.0)
-  qwester
+  qwester (>= 0.0.4)
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   therubyracer (= 0.10.2)
