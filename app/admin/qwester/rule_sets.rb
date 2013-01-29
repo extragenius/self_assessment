@@ -13,9 +13,16 @@ module Qwester
         else
           f.input :description, :input_html => { :rows => 3}
         end
+      end
+      
+      f.inputs "Output Link" do
         f.input :url
-        f.input :rule, :input_html => { :rows => 3}
+        f.input :link_text        
+      end
+      
+      f.inputs "Logic" do
         f.input :warning,  :as => :select,      :collection => Ominous::Warning.all
+        f.input :rule, :input_html => { :rows => 3}
       end
       
       f.buttons
