@@ -4,6 +4,15 @@ PATH
     i18n-active_record (0.0.2)
       i18n (>= 0.5.0)
 
+PATH
+  remote: ~/web/ominous
+  specs:
+    ominous (0.0.5)
+      acts_as_list
+      jquery-rails
+      rails (~> 3.2.8)
+      sass-rails (~> 3.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,11 +153,6 @@ GEM
     net-ssh (2.6.3)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    ominous (0.0.4)
-      acts_as_list
-      jquery-rails
-      rails (~> 3.2.8)
-      sass-rails (~> 3.2.3)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -252,7 +256,7 @@ DEPENDENCIES
   jquery-ui-rails
   lazy_high_charts
   mysql2
-  ominous (= 0.0.4)
+  ominous!
   paperclip (~> 3.0)
   qwester (>= 0.0.4)
   rails (= 3.2.11)

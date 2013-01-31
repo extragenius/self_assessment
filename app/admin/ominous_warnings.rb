@@ -17,6 +17,18 @@ ActiveAdmin.register Ominous::Warning do
   end
   
   show do
+    div :style => 'border:red solid 2px;padding:10px;margin-bottom:10px;' do
+      h2 ominous_warning.title
+      div sanitize ominous_warning.description
+
+      ominous_warning.closers.each do |closer|
+        div :style => 'border:silver solid 2px;padding:10px;' do
+          div sanitize closer.message
+          para link_to closer.link_text, closer.url
+        end
+      end
+    end
+    
     h3 'Closers'
     
     table :class => 'sortable_list' do
@@ -32,13 +44,11 @@ ActiveAdmin.register Ominous::Warning do
           td closer.name
           td closer.closure_method.humanize
           td (closer.start_hidden? ? 'true' : 'false')        
-          td t("ominous.warning.#{ominous_warning.name}.#{closer.name}.message")
-          td t("ominous.warning.#{ominous_warning.name}.#{closer.name}.link")
+          td closer.message
+          td closer.link_text
         end
       end
     end
-    
-    para 'Text and link text defined in locale file (e.g. /config/locales/en.yml)'
     
     h3 'Closure method behaviours'
     table do
@@ -54,11 +64,23 @@ ActiveAdmin.register Ominous::Warning do
   form do |f|
     f.inputs "Warning" do
       f.input :name
+      f.input :title
+      if defined?(Ckeditor)
+        f.input :description, :input_html => { :class => "ckeditor", :height => 66  }
+      else
+        f.input :description, :input_html => { :rows => 2}
+      end
     end
     
     f.inputs do
       f.has_many :closers do |closer_form|
-        closer_form.input :name, :label => 'Name used in locale file'
+        closer_form.input :name
+        if defined?(Ckeditor)
+          closer_form.input :message, :input_html => { :class => "ckeditor", :height => 66  }
+        else
+          closer_form.input :message, :input_html => { :rows => 2}
+        end
+        closer_form.input :link_text
         closer_form.input :url, :label => 'Url: Only for redirects'
         closer_form.input(
           :closure_method, 

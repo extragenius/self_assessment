@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125082336) do
+ActiveRecord::Schema.define(:version => 20130131150206) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(:version => 20130125082336) do
     t.boolean  "start_hidden",                 :default => false
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
+    t.string   "link_text"
+    t.text     "message"
   end
 
   create_table "ominous_warning_closers", :force => true do |t|
@@ -106,8 +108,10 @@ ActiveRecord::Schema.define(:version => 20130125082336) do
 
   create_table "ominous_warnings", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "qwester_answer_stores", :force => true do |t|
