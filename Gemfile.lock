@@ -252,7 +252,7 @@ DEPENDENCIES
   jquery-ui-rails
   lazy_high_charts
   mysql2
-  ominous (>= 0.0.4)
+  ominous (= 0.0.4)
   paperclip (~> 3.0)
   qwester (>= 0.0.4)
   rails (= 3.2.11)
