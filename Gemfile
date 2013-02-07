@@ -32,7 +32,6 @@ end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
 gem "ckeditor", "3.7.2"   # Adds rich text editor to input fields
-#gem 'ckeditor_rails'
 
 gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface
@@ -45,8 +44,8 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 
 gem 'array_logic', '~> 0.1.0' # Used to identify patterns in RuleSet Answers
 
-gem 'ominous', :path => "~/web/ominous" 
-#gem 'ominous', '0.0.4' # Controls the display of warnings
+#gem 'ominous', :path => "~/web/ominous" 
+gem 'ominous'
 
 gem(
   'i18n-active_record',
@@ -61,6 +60,6 @@ gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 # gem 'qwester', :path => '~/web/qwester'
 gem 'qwester', ">= 0.0.4"  # Adds questionnaires, questions, answers and rule sets.
 
-#gem 'disclaimer', :path => '~/web/disclaimer'
+#gem 'disclaimer', :path => '~/web/Disclaimer'
 gem 'disclaimer' # Used for 'this is a test site disclaimer
 
