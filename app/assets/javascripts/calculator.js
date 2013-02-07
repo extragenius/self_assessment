@@ -3,7 +3,13 @@
 
 var calculator = {
   valueForField: function(field) {
-    return parseInt(field.val()) || 0;
+    var value = /\d[\,\d+]*(\.d+)?/.exec(field.val());
+    if (value) {
+      value = value[0].replace(/\,/g, '');
+      return parseInt(value);
+    } else {
+      return 0;
+    }
   },
   
   totalSavings: function() {

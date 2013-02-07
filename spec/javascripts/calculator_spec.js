@@ -39,6 +39,20 @@ describe("calculator", function() {
       field = $('#input_three');
       expect(calculator.valueForField(field)).toEqual(0);
     });
+    
+    it("should return the value in a field from within text", function() {
+      loadFixtures("calculator.html");
+      field = $('#input_one');
+      field.val('a12.445 bns')
+      expect(calculator.valueForField(field)).toEqual(12);
+    });
+    
+    it("should return the value in a field ignoring commas", function() {
+      loadFixtures("calculator.html");
+      field = $('#input_one');
+      field.val('12,445')
+      expect(calculator.valueForField(field)).toEqual(12445);
+    });
   
   })
   
@@ -46,6 +60,11 @@ describe("calculator", function() {
     
     it("should return the sum of values in 'saving_type_input' inputs", function() {
       expect(calculator.totalSavings()).toEqual(6);
+    });
+    
+    it("should return the sum of values ignoring prepended currency string", function() {
+      $('#input_one').val('£3')
+      expect(calculator.totalSavings()).toEqual(5);
     });
     
   })
