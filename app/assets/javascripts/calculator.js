@@ -43,8 +43,7 @@ var calculator = {
   },
   
   isCouple: function() {
-    var couple = $('#couple').attr('checked');
-    return couple == 'checked';
+    return $('#couple').is(':checked');
   },
   
   coupleFactor: function() {
@@ -109,7 +108,7 @@ $(function() {
   var calc
   
   function ownsProperty() {
-    return $('#property').attr('checked') == 'checked';
+    return $('#property').is(':checked');
   }
   
   function showOwnsProperty() {
