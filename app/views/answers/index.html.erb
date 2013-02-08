@@ -1,0 +1,44 @@
+<h1>Your answers</h1>
+
+<% @questionnaires.each do |questionnaire, answers| %>
+
+<table class="answers_by_questionnaire">
+  <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></caption>
+  <tr>
+    <th>Answer</th>
+    <th>Question</th>
+  </tr>
+  <% answers.each do |answer| %>  
+  <tr>
+    <td><%= answer.value %></td>
+    <td><%= answer.question.title %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% end %>
+
+<h2>Questionnaires that you have not used so far</h2>
+<ul class ="questionnaire_buttons">
+<% @unanswered.each do |questionnaire| %>
+  <%= content_tag(
+        'li',
+        :class => questionnaire_button_classes(questionnaire)
+      ) do %>
+  
+    <%= link_to(
+          image_tag(questionnaire.button_image.url(:link)), 
+          questionnaire_path(questionnaire),
+          :class => 'image_link'
+        ) 
+    %>
+    <%= link_to(
+          questionnaire.title, 
+          questionnaire_path(questionnaire),
+          :class => 'text_link'
+        ) 
+    %>
+  
+  <% end %>
+<% end %>
+</ul>

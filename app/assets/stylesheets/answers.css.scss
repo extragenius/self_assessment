@@ -1,0 +1,42 @@
+// Place all the styles related to the answers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colours';
+
+table.answers_by_questionnaire {
+  
+  border: $green 2px solid;
+  
+  border-spacing: 0.5em;
+  
+  margin: 0 auto 2em;
+  width: 80%;
+  caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: $green;
+    
+    a {
+      color: $white;
+    }
+  }
+  
+  th {
+    text-align: left; 
+  }
+  
+  tr td:first-child {
+    width: 25%;
+  }
+  
+  tr {
+    margin-bottom: 0.8em;
+  }
+  
+  td {
+    vertical-align: top; 
+  }
+    
+  
+}

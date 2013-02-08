@@ -36,6 +36,7 @@
             <span class="ui-icon ui-icon-close">Remove Tab</span>
           </li>
         <% end %>
+          <%= content_tag('li', link_to('Summary', '#summary')) if @rule_sets.present? %>
           <li><%= link_to('Directory', '#directory') %></li>
         </ul>
 
@@ -47,7 +48,7 @@
         <% @rule_sets.each do |rule_set| %>
         <%= tag_page("rule_set_#{rule_set.id}", rule_set_path(rule_set)) %>
         <% end %>
-
+        <%= tag_page('summary', answers_path) if @rule_sets.present? %>
         <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
       </div>
 
