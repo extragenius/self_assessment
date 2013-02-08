@@ -26,3 +26,10 @@
  }
  
  ul {list-style-type: none;}
+ 
+#body-wrapper .nav-buttons {
+  position: absolute;
+  right: 10px;
+  top: 55px;
+  z-index: 1;
+}
