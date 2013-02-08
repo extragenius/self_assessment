@@ -8,6 +8,49 @@ Answers are stored against a session id and therefore are held in memory
 for as long as the user's browser is open. This id can be used to retrieve
 the answer set at a later date.
 
-Rule sets are very simple, and there are no optional or OR comparisons.
-The rule set simply looks for matching answers. The rule only being matched
-if all the required answers are present.
+Rule logic allows combinations of answers to be identified using AND, OR, NOT,
+and IN options. When a questionnaire is submitted, the answers are compared
+against each rule set, and if the logic matches the answers to the rule set, a 
+link to the rule set url is displayed.
+
+Much of the functionality used in this project has been split into standalone
+gems:
+
+=== Qwester: Questionnaires, Questions, Answers, Rule sets
+
+https://github.com/reggieb/qwester
+
+These are the core objects that provide the questionnaire functionality at
+the core of Self assessment.
+
+The logic used in Qwester is provided by array logic:
+
+https://github.com/reggieb/array_logic
+
+=== Ominous: Warnings
+
+https://github.com/reggieb/ominous
+
+Displays warning messages based on triggers within the code. 
+
+Self Assessment contains code that integrates Ominous warnings with Qwester
+rules sets. That is, a warning can be associated with a rule set, so that when
+that rule set is matched, the warning is displayed.
+
+=== Disclaimer
+
+https://github.com/reggieb/Disclaimer
+
+Displays a disclaimer message. At time of writing, this is an across the board
+single disclaimer, but this can be limited to certain controllers and actions
+as required, with different disclaimers for each if required.
+
+In effect, this project gathers together the functionality from those
+gems and adds enough code to get them to work together.
+
+=== Dibber: database seeding
+
+https://github.com/reggieb/Dibber
+
+Packages up the code needed to pull data out of YAML files and seed the database
+with that data. 
