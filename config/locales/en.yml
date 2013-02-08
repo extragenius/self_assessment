@@ -59,7 +59,7 @@ en:
     confirm_understanding: Please confirm that you understand that this calculator is not definitive and it's result will not be considered part of the financial assessment process used by the council to determine your contribution to care costs.
     description: This reckoner indicates whether you will be expected to pay for care services you receive through Warwickshire County Council.
 
-    do_you_have_savings: Do you %{or_spouse} have any of the following savings/capital?
+    do_you_have_savings: If you %{or_spouse} have any of the following capital or savings, please give the amounts.
     or_spouse: or your spouse/partner
 
     instructions: Please enter the total amounts you %{and_spouse} have for each saving type and click calculate.
@@ -68,7 +68,7 @@ en:
     check_box_separator: AND
     labels:
       couple: Click here if you are married or part of a couple
-      property: Click here if you own the property you live in?
+      property: Click here if you own the property you live in
       bank: Money in the Bank
       building_society: Money in Building Societies
       savings_account: Money in savings accounts
