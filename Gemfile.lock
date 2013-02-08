@@ -111,7 +111,7 @@ GEM
       selenium-webdriver (>= 0.1.3)
     jasmine-core (1.3.1)
     journey (1.0.4)
-    jquery-rails (2.2.0)
+    jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (3.0.1)
@@ -144,7 +144,7 @@ GEM
     net-ssh (2.6.3)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    ominous (0.0.4)
+    ominous (0.0.5)
       acts_as_list
       jquery-rails
       rails (~> 3.2.8)
@@ -164,7 +164,7 @@ GEM
       array_logic
       paperclip (~> 3.0)
       rails (~> 3.2)
-    rack (1.4.4)
+    rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.3)
@@ -252,7 +252,7 @@ DEPENDENCIES
   jquery-ui-rails
   lazy_high_charts
   mysql2
-  ominous
+  ominous (~> 0.0.5)
   paperclip (~> 3.0)
   qwester (>= 0.0.4)
   rails (= 3.2.11)
