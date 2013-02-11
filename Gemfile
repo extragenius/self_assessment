@@ -28,6 +28,7 @@ group :development do
   gem 'capistrano', '2.13.4'     # Deployment tool
   gem "better_errors"       # Enhances standard rails error pages
   gem "binding_of_caller"   # Add lists of current variable to better_errors output
+  gem 'sinatra'
 end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
