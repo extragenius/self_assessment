@@ -23,6 +23,8 @@
     
     <div id="body-wrapper">
       
+      <h1>WCC Self Support</h1>
+      
       <div class="nav-buttons">
         <%= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/') %>
       </div>
@@ -52,7 +54,14 @@
         <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
       </div>
 
-    <%= content_tag('p', link_to('Clear answers and start again', reset_questionnaires_path)) if @rule_sets.present? %>
+    <%= content_tag(
+          'p', 
+          link_to(
+            'Clear answers and start again', 
+            reset_questionnaires_path,
+            :onclick => "return confirm('Are you sure you want to clear all your answers?')"
+          )
+        ) if @rule_sets.present? %>
     
     </div>  
     <%= render 'shared/wcc_footer' %>  

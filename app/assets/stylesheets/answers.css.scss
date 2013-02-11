@@ -11,7 +11,7 @@ table.answers_by_questionnaire {
   border-spacing: 0.5em;
   
   margin: 0 auto 2em;
-  width: 80%;
+  width: 95%;
   caption {
     font-size: 1.2em;
     font-weight: bold;
@@ -26,8 +26,8 @@ table.answers_by_questionnaire {
     text-align: left; 
   }
   
-  tr td:first-child {
-    width: 25%;
+  tr td:last-child {
+    width: 35%;
   }
   
   tr {
