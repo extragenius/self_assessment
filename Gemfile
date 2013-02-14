@@ -64,3 +64,5 @@ gem 'qwester', ">= 0.0.4"  # Adds questionnaires, questions, answers and rule se
 #gem 'disclaimer', :path => '~/web/Disclaimer'
 gem 'disclaimer' # Used for 'this is a test site disclaimer
 
+gem 'prawn'  # PDF generation
+

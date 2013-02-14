@@ -4,7 +4,7 @@
 <p>You have not answered any questionnaires</p>
 <% else %>
 
-<% @questionnaires.each do |questionnaire, answers| %>
+<%   @questionnaires.each do |questionnaire, answers| %>
 
 <table class="answers_by_questionnaire">
   <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></caption>
@@ -20,7 +20,7 @@
   <% end %>
 </table>
 
-<% end %>
+<%   end %>
 <% end %>
 
 <h2>Unused Questionnaires</h2>
