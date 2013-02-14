@@ -1,5 +1,9 @@
 <h1>Your answers</h1>
 
+<% if !@questionnaires or @questionnaires.empty? %>
+<p>You have not answered any questionnaires</p>
+<% else %>
+
 <% @questionnaires.each do |questionnaire, answers| %>
 
 <table class="answers_by_questionnaire">
@@ -17,6 +21,7 @@
 </table>
 
 <% end %>
+<% end %>
 
 <h2>Unused Questionnaires</h2>
 <ul class ="questionnaire_buttons">
@@ -29,13 +34,15 @@
     <%= link_to(
           image_tag(questionnaire.button_image.url(:link)), 
           questionnaire_path(questionnaire),
-          :class => 'image_link'
+          :class => 'image_link',
+          :target => '_top'
         ) 
     %>
     <%= link_to(
           questionnaire.title, 
           questionnaire_path(questionnaire),
-          :class => 'text_link'
+          :class => 'text_link',
+          :target => '_top'
         ) 
     %>
   
