@@ -6,7 +6,7 @@ class Summary < Prawn::Document
   attr_reader :answer_store, :request
   
   def initialize(request, answer_store = nil)
-    super()
+    super(:page_size => 'A4')
     default_font
     @request = request
     if answer_store
@@ -45,7 +45,7 @@ class Summary < Prawn::Document
         ) if rule_set.description
         
         text(
-          link_to(rule_set.link_text? ? rule_set.link_text : rule_set.url, rule_set.url),
+          link_to(rule_set.link_text? ? "#{rule_set.link_text} (click to view)" : rule_set.url, rule_set.url),
           :color => "0000FF",
           :inline_format => true 
         ) if rule_set.url
@@ -55,12 +55,15 @@ class Summary < Prawn::Document
   
   def display_answers
     bounding_box_with_space_before do
-      text "Below are the answers you submitted"
-      header = %w{Question Answer}
-      data = answer_store.answers.collect{|a| [a.question.title, a.value]}
-      data = [header] + data
-      table data, :header => true
+      use_font :size => 16
+      text "The answers you submitted"
     end
+    default_font
+    move_down 5
+    header = %w{Question Answer}
+    data = answer_store.answers.collect{|a| [a.question.title, a.value]}
+    data = [header] + data
+    table data, :header => true
   end
   
   def display_header
