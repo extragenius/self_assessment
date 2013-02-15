@@ -1,6 +1,6 @@
 class AnswerStoresController < ApplicationController
   
-  before_filter :get_answer_store
+  before_filter :get_answer_store_from_params
   
   def show
    
@@ -15,7 +15,7 @@ class AnswerStoresController < ApplicationController
   end
   
   private
-  def get_answer_store
+  def get_answer_store_from_params
      @answer_store = AnswerStore.find_by_session_id(params[:id])
   end
 end

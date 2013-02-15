@@ -1,10 +1,15 @@
-<h1>Restore previous settings</h1>
+<h1>Restore previous answers</h1>
 <p>
-  Continuing will remove your current answers and replace them with those stored
-  on <%= @answer_store.updated_at.to_s(:date) %>.
+  Continuing will 
+<% if @qwester_answer_store %>
+  remove your current answers and replace them with those 
+<% else %>
+  restore the answers
+<% end %>
+  stored on <%= @answer_store.updated_at.to_s(:date) %>.
 </p>
 <p>
-  Are you sure you wish to continue?
+  Do you wish to to continue?
 </p>
 <%= form_for(@answer_store) do |form| %>
   <%= form.submit('Yes') %>

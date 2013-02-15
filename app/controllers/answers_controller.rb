@@ -15,10 +15,10 @@ class AnswersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = Summary.new(@qwester_answer_store)
+        pdf = Summary.new(request, @qwester_answer_store)
         send_data(
           pdf.render, 
-          filename: "summary.pdf",
+          filename: "WCC_online_self_support_#{Time.now.to_s(:filename)}.pdf",
           type: "application/pdf"
         )
       end
