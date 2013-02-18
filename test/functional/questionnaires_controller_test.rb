@@ -22,6 +22,11 @@ class QuestionnairesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal(@questionnaire, assigns('questionnaire'))
   end
+  
+  def test_show_with_no_answers
+    @questionnaire.questionnaires_questions.delete_all
+    test_show
+  end
 
 
   def test_update

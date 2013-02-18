@@ -6,10 +6,11 @@
 <h2>Questions</h2>
 <% end %>
 
-<%= form_for(@questionnaire, :url => questionnaire_path(@questionnaire)) do |form| %>
+<%  if @questionnaire.answers.present? %>
+<%=   form_for(@questionnaire, :url => questionnaire_path(@questionnaire)) do |form| %>
 
 <ul class="selection">
-<%=   form.fields_for(@questionnaire.answers, Answer) do |answer_form| %>
+<%=     form.fields_for(@questionnaire.answers, Answer) do |answer_form| %>
 <%      @questionnaire.questions.each do |question| %>
   <li>
     <%= content_tag(
@@ -22,12 +23,18 @@
       <%= qwester_answers_selection_list(question) %>
     </ul>
   </li>
-<%       end %>
-<%    end %>
+<%         end %>
+<%      end %>
 </ul>
 
 <p>
   <%= form.submit('Submit') %>
   <%= link_to('Back to the menu', questionnaires_path) %>
 </p>
-<% end %>
+<%    end %>
+<%  else %>
+<p>There are no questions associated with this questionnaire</p>
+<p>
+  <%= link_to('Back to the menu', questionnaires_path) %>
+</p>
+<%  end %>
