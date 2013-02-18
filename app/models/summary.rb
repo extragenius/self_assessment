@@ -26,15 +26,15 @@ class Summary < Prawn::Document
   end
   
   def display_matching_rules
-    bounding_box_with_space_before do
-      use_font :size => 18
+    span_with_space_before do
+      h2_font
       text "Recommendations"
       default_font
       text "Based on your answers, the following was suggested:"
     end
     rule_sets.each do |rule_set|
-      indented_bounding_box do
-        use_font :size => 16
+      indented_span do
+        h3_font
           text(
             rule_set.title
           )
@@ -54,8 +54,8 @@ class Summary < Prawn::Document
   end
   
   def display_answers
-    bounding_box_with_space_before do
-      use_font :size => 16
+    span_with_space_before do
+      h2_font
       text "The answers you submitted"
     end
     default_font
@@ -67,27 +67,23 @@ class Summary < Prawn::Document
   end
   
   def display_header
-    bounding_box_with_space_before(0) do
+    span_with_space_before(0) do
       use_font :style => :italic
-      text "#{Time.now.to_s(:datetime)}", :align => :right
+      text Time.now.to_s(:datetime), :align => :right
       move_down 20
-      use_font :size => 22
-      text "Warwickshire County Council: Online Self Support"
-    end
-    indented_bounding_box do
-      default_font
-      text "Below are the details of the data submitted to the Online Self Support system"
+      h1_font
+      text "Warwickshire County Council: Online Self Support", :align => :center
     end
   end
   
   def display_link_to_restore
-    bounding_box_with_space_before do
-      use_font :size => 22
+    span_with_space_before(25) do
+      h2_font
       text "Return to questionnaire"
       default_font
       text "Use the link below to return to the self assessment site with these answers."
     end
-    indented_bounding_box do
+    indented_span do
       url = "#{request.protocol}#{request.host}:#{request.port}/answer_stores/#{@answer_store.session_id}"
       text(
         link_to(url, url),
@@ -113,13 +109,27 @@ class Summary < Prawn::Document
     15
   end
   
-  def bounding_box_with_space_before(before = default_space_between_boxes)
-    bounding_box([0, cursor - before], :width => bounds.width) { yield }
+  def h1_font
+    use_font :size => (default_font_size + 8)
   end
   
-  def indented_bounding_box
+  def h2_font
+    use_font :size => (default_font_size + 4)
+  end
+  
+  def h3_font
+    use_font :size => (default_font_size + 2)
+  end
+  
+  def span_with_space_before(before = default_space_between_boxes)
+    move_down before
+    span(bounds.width) { yield }
+  end
+  
+  def indented_span
     width = bounds.width - (2 * default_indent)
-    bounding_box([default_indent, cursor - default_space_between_boxes], :width => width) { yield }
+    move_down default_space_between_boxes 
+    span(width, :position => :center) { yield }
   end
   
   def default_font
