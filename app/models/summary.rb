@@ -84,7 +84,8 @@ class Summary < Prawn::Document
       text "Use the link below to return to the self assessment site with these answers."
     end
     indented_span do
-      url = "#{request.protocol}#{request.host}:#{request.port}/answer_stores/#{@answer_store.session_id}"
+      port = request.port.to_i == 80 ? nil : ":#{request.port}"
+      url = "#{request.protocol}#{request.host}#{port}/answer_stores/#{@answer_store.session_id}"
       text(
         link_to(url, url),
         :color => "0000FF",
