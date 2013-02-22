@@ -30,7 +30,6 @@ describe("calculator", function() {
   describe(".valueForField(field)", function() {
   
     it("should return the value in a field", function() {
-      loadFixtures("calculator.html");
       field = $('#input_one');
       expect(calculator.valueForField(field)).toEqual(4);
     });
@@ -41,14 +40,12 @@ describe("calculator", function() {
     });
     
     it("should return the value in a field from within text", function() {
-      loadFixtures("calculator.html");
       field = $('#input_one');
       field.val('a12.445 bns')
       expect(calculator.valueForField(field)).toEqual(12);
     });
     
     it("should return the value in a field ignoring commas", function() {
-      loadFixtures("calculator.html");
       field = $('#input_one');
       field.val('12,445')
       expect(calculator.valueForField(field)).toEqual(12445);
