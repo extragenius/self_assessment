@@ -4,6 +4,12 @@
 
 @import 'colours';
 
+#page {
+  .content {
+    padding: 10px;
+  }
+}
+
 table.answers_by_questionnaire {
   
   border: $green 2px solid;

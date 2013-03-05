@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   
-  layout 'tab_content'
+#  layout 'tabs'
+  
   
   def index
     @unanswered = Questionnaire.all

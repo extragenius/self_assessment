@@ -1,54 +1,67 @@
-<h1>Your answers</h1>
-
-<% if !@questionnaires or @questionnaires.empty? %>
-<p>You have not answered any questionnaires</p>
-<% else %>
-
-<%   @questionnaires.each do |questionnaire, answers| %>
-
-<table class="answers_by_questionnaire">
-  <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></caption>
-  <tr>
-    <th>Question</th>
-    <th>Answer</th>    
-  </tr>
-  <% answers.each do |answer| %>  
-  <tr>
-    <td><%= answer.question.title %></td>
-    <td><%= answer.value %></td>    
-  </tr>
-  <% end %>
-</table>
-
-<%   end %>
-
-<p><%= link_to 'View as PDF', answers_path(:format => :pdf) %></p>
-
-<% end %>
-
-<h2>Unused Questionnaires</h2>
-<ul class ="questionnaire_buttons">
-<% @unanswered.each do |questionnaire| %>
-  <%= content_tag(
-        'li',
-        :class => questionnaire_button_classes(questionnaire)
-      ) do %>
+<div id="page" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
   
-    <%= link_to(
-          image_tag(questionnaire.button_image.url(:link)), 
-          questionnaire_path(questionnaire),
-          :class => 'image_link',
-          :target => '_top'
-        ) 
-    %>
-    <%= link_to(
-          questionnaire.title, 
-          questionnaire_path(questionnaire),
-          :class => 'text_link',
-          :target => '_top'
-        ) 
-    %>
-  
-  <% end %>
-<% end %>
-</ul>
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li class="ui-state-default ui-corner-top">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active">
+      <a href="#">Summary</a>
+    </li>
+  </ul>
+  <div class="content">
+    <h1>Your answers</h1>
+
+    <% if !@questionnaires or @questionnaires.empty? %>
+    <p>You have not answered any questionnaires</p>
+    <% else %>
+
+    <%   @questionnaires.each do |questionnaire, answers| %>
+
+    <table class="answers_by_questionnaire">
+      <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></caption>
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>    
+      </tr>
+      <% answers.each do |answer| %>  
+      <tr>
+        <td><%= answer.question.title %></td>
+        <td><%= answer.value %></td>    
+      </tr>
+      <% end %>
+    </table>
+
+    <%   end %>
+
+    <p><%= link_to 'View as PDF', answers_path(:format => :pdf) %></p>
+
+    <% end %>
+
+    <h2>Unused Questionnaires</h2>
+    <ul class ="questionnaire_buttons">
+    <% @unanswered.each do |questionnaire| %>
+      <%= content_tag(
+            'li',
+            :class => questionnaire_button_classes(questionnaire)
+          ) do %>
+
+        <%= link_to(
+              image_tag(questionnaire.button_image.url(:link)), 
+              questionnaire_path(questionnaire),
+              :class => 'image_link',
+              :target => '_top'
+            ) 
+        %>
+        <%= link_to(
+              questionnaire.title, 
+              questionnaire_path(questionnaire),
+              :class => 'text_link',
+              :target => '_top'
+            ) 
+        %>
+
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+</div>
