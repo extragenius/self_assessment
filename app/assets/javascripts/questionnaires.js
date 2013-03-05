@@ -10,12 +10,16 @@ function showAsTabs(element) {
   });
   
   // close icon: removing the tab on click
-  $( "#tabs span.ui-icon-close" ).live( "click", function() {
+  $( "#tabs span.ui-icon-close" ).click(function() {
       var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
       $( "#" + panelId ).remove();
-      tabs.tabs( "refresh" );
   });
+  
+  // Changes tab behaviour so that link leads to external page rather than updating page content
+  $("li.link_to_external a").unbind('click');
 }
+
 $(function(){
   $(".tooltip").tipTip({defaultPosition:'right'});
+  
 });

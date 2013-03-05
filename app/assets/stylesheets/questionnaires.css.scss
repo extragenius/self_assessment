@@ -18,6 +18,13 @@
   width: 90%;   
 }
 
+#tabs {
+  li.rule_matches {
+    background-color: $visited;
+    background-image : none;
+  }
+}
+
 .questionnaire_buttons {
 
   $button_width: 190px;

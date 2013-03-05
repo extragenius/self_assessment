@@ -33,13 +33,13 @@
         <ul>
           <li><%= link_to('Home', '#questionnaires') %></li>
         <% @rule_sets.each do |rule_set| %>
-          <li>
+          <li class="rule_matches">
             <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
             <span class="ui-icon ui-icon-close">Remove Tab</span>
           </li>
         <% end %>
           <%= content_tag('li', link_to('Summary', '#summary')) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
-          <li><%= link_to('Directory', '#directory') %></li>
+          <li class="link_to_external"><%= link_to('Directory', 'https://directory.warwickshire.gov.uk/', :target => '_blank') %></li>
         </ul>
 
         <div id="questionnaires">
@@ -51,7 +51,6 @@
         <%= tag_page("rule_set_#{rule_set.id}", rule_set_path(rule_set)) %>
         <% end %>
         <%= tag_page('summary', answers_path) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
-        <%= tag_page('directory', 'https://directory.warwickshire.gov.uk/') %>
       </div>
 
     <%= content_tag(
