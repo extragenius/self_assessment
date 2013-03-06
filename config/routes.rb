@@ -18,7 +18,7 @@ SelfAssessment::Application.routes.draw do
     end
   end
   
-  resources :answer_stores, :only => [:show, :new, :update, :create]
+  resources :answer_stores, :only => [:show, :update]
   
   resources :reckoner, :only => [:index]
   
