@@ -25,5 +25,17 @@ class AnswerStoresControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  def test_cope_index_sum_with_no_answers
+    assert_equal(0, @answer_store.answers.sum(:cope_index))
+  end
+
+  def test_cope_index_sum
+    @answer_store.answers << Answer.find(1)
+    assert_equal(0, @answer_store.answers.sum(:cope_index))
+    number = 6
+    @answer_store.answers.first.update_attribute(:cope_index, number)
+    assert_equal(number, @answer_store.answers.sum(:cope_index))
+  end  
 
 end

@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def coping_score_exceeded?
-    @qwester_answer_store.cope_index_sum > Setting.for(:cope_index_threshold)
+    @qwester_answer_store.answers.sum(:cope_index) > Setting.for(:cope_index_threshold)
   end
 
 end
