@@ -67,13 +67,21 @@ class Summary < Prawn::Document
   end
   
   def display_header
+    image image_path("WorkingForWarwickshireLogoSmall.png"), :at => [360, (cursor - 20)]
+    image image_path("wcc_logo2005.png"), :position => :center
+
     span_with_space_before(0) do
-      use_font :style => :italic
-      text Time.now.to_s(:datetime), :align => :right
       move_down 20
       h1_font
       text "Warwickshire County Council: Online Self Support", :align => :center
+      default_font
+      move_down 5
+      text "Your on-line self-support details as recorded at #{Time.now.to_s(:datetime)}"
     end
+  end
+  
+  def image_path(filename)
+    "#{Rails.root}/app/assets/images/#{filename}"
   end
   
   def display_link_to_restore
@@ -111,11 +119,11 @@ class Summary < Prawn::Document
   end
   
   def h1_font
-    use_font :size => (default_font_size + 8)
+    use_font :size => (default_font_size + 6), :style => :bold
   end
   
   def h2_font
-    use_font :size => (default_font_size + 4)
+    use_font :size => (default_font_size + 2), :style => :bold
   end
   
   def h3_font

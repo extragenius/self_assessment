@@ -8,4 +8,9 @@ module ApplicationHelper
       content_tag('div', [title, list].join.html_safe, :class => 'error_explanation')
     end  
   end
+  
+  def page_title(root_text)
+    return root_text if current_page?(root_path)
+    [root_text, controller_name.humanize, params[:id]].compact.join(": ")
+  end
 end
