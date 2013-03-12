@@ -10,7 +10,8 @@ module ApplicationHelper
   end
   
   def page_title(root_text)
-    return root_text if current_page?(root_path)
-    [root_text, controller_name.humanize, params[:id]].compact.join(": ")
+    title = Setting.for(:site_name, root_text)
+    return title if current_page?(root_path)
+    [title, controller_name.humanize, params[:id]].compact.join(": ")
   end
 end

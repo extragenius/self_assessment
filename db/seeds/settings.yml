@@ -17,3 +17,8 @@ cope_index_threshold:
   value_type: number
   value: 20
   description: The sum of cope_index values at which a customer action occurs
+  
+site_name:
+  value_type: text
+  value: Questionnaire
+  description: The site name used as the title of the site (in page name and main headering)
