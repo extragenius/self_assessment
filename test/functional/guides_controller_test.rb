@@ -11,6 +11,12 @@ class GuidesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal([@guide], assigns('guides'))
   end
+  
+  def test_index_with_no_guides
+    @guide.destroy
+    get :index
+    assert_response :redirect
+  end
 
   def test_show
     get :show, :id => @guide.name
