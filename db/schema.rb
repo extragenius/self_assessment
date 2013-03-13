@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308131501) do
+ActiveRecord::Schema.define(:version => 20130313095017) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -193,8 +193,9 @@ ActiveRecord::Schema.define(:version => 20130308131501) do
     t.string   "value_type"
     t.string   "value"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "encrypted",   :default => false
   end
 
 end
