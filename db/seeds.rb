@@ -57,4 +57,6 @@ end
 
 Seeder.new(Disclaimer::Document, 'disclaimer/documents.yml').build
 
+Seeder.new(Guide, 'guides.yml').build
+
 puts Seeder.report

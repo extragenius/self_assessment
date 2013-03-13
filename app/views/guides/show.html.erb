@@ -1,0 +1,23 @@
+<div class="guides">
+  <div class="header">
+    <h1>Guides: <%= @guide.title %>
+  </div>
+  <div class="guide_list column narrow">
+    <ul>
+<% @guides.each do |guide| %>
+      <li><%= link_to_unless(@guide == guide, guide.title, guide_path(guide)) %>
+<% end %>
+    </ul>
+  </div>
+  <div class="guide column wide">
+    <div class="summary">
+      <%= @guide.summary %>
+    </div>
+    <div class="details">
+      <%= sanitize @guide.details %>
+    </div>
+  </div>
+  <div class="footer">
+    <%= link_to("Return to #{Setting.for(:site_name, 'Questionnaires')}", root_path) %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+// Place all the styles related to the guides controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colours';
+
+.guides {
+  background-color: $white;
+  
+  .column {
+    display: inline-block;
+    vertical-align: top;
+    margin: 2%;
+  }
+  
+  .narrow {
+    width: 25%;
+  }
+  
+  .wide {
+    width: 65%;
+  }
+  
+  .summary {
+    background-color: $dull-green;
+  }
+  
+  .footer {
+    text-align: right;
+  }
+  
+  .summary, .details, .footer {
+    padding: 1em;    
+  }
+}

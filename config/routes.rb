@@ -1,7 +1,5 @@
 SelfAssessment::Application.routes.draw do
-  
-
-
+ 
   mount Ckeditor::Engine => '/ckeditor'
   mount Ominous::Engine => "/ominous"
   mount Disclaimer::Engine => "/disclaimer"
@@ -31,6 +29,8 @@ SelfAssessment::Application.routes.draw do
   resources :reports, :only => [:show, :index]
   
   resources :answers, :only => [:index]
+  
+  resources :guides, :only => [:index, :show]
 
   namespace :admin do
     resources :questionnaires do
@@ -58,6 +58,13 @@ SelfAssessment::Application.routes.draw do
           put :add
           put :delete
         end
+      end
+    end
+    
+    resources :guides do
+      member do
+        get :move_up
+        get :move_down
       end
     end
   end
