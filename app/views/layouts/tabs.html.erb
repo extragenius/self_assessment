@@ -27,7 +27,8 @@
       
       <div class="nav-buttons">
         <%= link_to(image_tag('help.png'), guides_path) %>
-        <%= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
+        <%= link_to(image_tag('save.png'), answers_path(:format => :pdf)) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
+        <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
       </div>
 
       <div id="tabs">
