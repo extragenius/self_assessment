@@ -177,7 +177,7 @@ GEM
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
-    qwester (0.0.9)
+    qwester (0.1.0)
       acts_as_list
       array_logic
       paperclip (~> 3.0)
@@ -282,7 +282,7 @@ DEPENDENCIES
   ominous (~> 0.0.5)
   paperclip (~> 3.0)
   prawn
-  qwester (>= 0.0.8)
+  qwester (~> 0.1.0)
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sinatra

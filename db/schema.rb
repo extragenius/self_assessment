@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313104937) do
+ActiveRecord::Schema.define(:version => 20130318163829) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -124,6 +124,22 @@ ActiveRecord::Schema.define(:version => 20130313104937) do
     t.text     "description"
   end
 
+  create_table "presentation_questionnaires", :force => true do |t|
+    t.integer  "questionnaire_id"
+    t.integer  "presentation_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "presentations", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "default"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "qwester_answer_stores", :force => true do |t|
     t.string   "session_id"
     t.datetime "created_at", :null => false
@@ -153,6 +169,22 @@ ActiveRecord::Schema.define(:version => 20130313104937) do
   create_table "qwester_answers_rule_sets", :id => false, :force => true do |t|
     t.integer "answer_id"
     t.integer "rule_set_id"
+  end
+
+  create_table "qwester_presentation_questionnaires", :force => true do |t|
+    t.integer  "questionnaire_id"
+    t.integer  "presentation_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "qwester_presentations", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "default"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "qwester_questionnaires", :force => true do |t|
@@ -191,11 +223,12 @@ ActiveRecord::Schema.define(:version => 20130313104937) do
     t.string   "title"
     t.text     "description"
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.text     "rule"
     t.string   "link_text"
     t.integer  "warning_id"
+    t.string   "presentation"
   end
 
   create_table "settings", :force => true do |t|

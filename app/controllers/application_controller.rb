@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     get_qwester_answer_store(create_new)
   end
   
-    def get_rule_sets
+  def get_rule_sets
     @rule_sets = matching_rule_sets || []
     trigger_any_warnings_associated_with_rule_sets
   end
@@ -23,18 +23,18 @@ class ApplicationController < ActionController::Base
     @rule_sets.each{|r| Ominous::Warning.trigger(r.warning.name) if r.warning}
   end
   
-  def matching_rule_sets
-    if get_answer_store
-      RuleSet.matching(@qwester_answer_store.answers)
-    end
-  end
+#  def matching_rule_sets
+#    if get_answer_store
+#      RuleSet.matching(@qwester_answer_store.answers)
+#    end
+#  end
   
   def get_questions
     @questions = Question.all
   end
   
   def get_questionnaires
-    @questionnaires = Questionnaire.all
+    @questionnaires = current_questionnaires
   end
   
   def extract_questions_from_params

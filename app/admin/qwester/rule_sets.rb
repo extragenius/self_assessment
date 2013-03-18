@@ -20,6 +20,10 @@ module Qwester
         f.input :link_text        
       end
       
+      f.inputs "Change Presentation of Questionnaires" do
+        f.input :presentation, :as => :select, :collection => Presentation.all.collect(&:name), :include_blank => 'No effect on presentation'
+      end
+      
       f.inputs "Logic" do
         f.input :warning,  :as => :select,      :collection => Ominous::Warning.all
         f.input :rule, :input_html => { :rows => 3}
@@ -72,6 +76,15 @@ module Qwester
         h3 'Target url'
         para link_to qwester_rule_set.url
         para qwester_rule_set.link_text? ? qwester_rule_set.link_text : 'No link text specified'
+      end
+      
+      div do
+        h3 'Presentation'
+        if qwester_rule_set.presentation?
+          para "The presentations of questionnaires should change to: #{qwester_rule_set.presentation}"
+        else
+          para "The presentations of questionnaires should be unaffected by this rule"
+        end
       end
       
       if qwester_rule_set.warning
