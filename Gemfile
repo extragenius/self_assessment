@@ -4,7 +4,7 @@ else
   source 'https://rubygems.org'
 end 
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 gem 'mysql2'
 
