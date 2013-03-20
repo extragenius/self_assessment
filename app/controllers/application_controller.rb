@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :preload_tasks
@@ -20,7 +21,23 @@ class ApplicationController < ActionController::Base
   end
   
   def trigger_any_warnings_associated_with_rule_sets
-    @rule_sets.each{|r| Ominous::Warning.trigger(r.warning.name) if r.warning}
+    begin
+      @rule_sets.each{|r| Ominous::Warning.trigger(r.warning.name) if r.warning}
+    rescue NoMethodError => e
+      unless @reassociated_warning
+        reassociate_warning
+        retry
+      else
+        raise e
+      end
+    end
+  end
+  
+  def reassociate_warning
+    Qwester::RuleSet.class_eval do
+      belongs_to :warning, :class_name => 'Ominous::Warning'
+    end
+    @reassociated_warning = true
   end
   
 #  def matching_rule_sets

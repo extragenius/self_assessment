@@ -14,4 +14,16 @@ module ApplicationHelper
     return title if current_page?(root_path)
     [title, controller_name.humanize, params[:id]].compact.join(": ")
   end
+  
+  def presentation_description
+    if @presentation and @presentation.description.present?
+      content = content_tag(
+        'h2', 
+        @presentation.title, 
+        :class=> 'title tooltip', 
+        :title => sanitize(@presentation.description)
+      )
+      content_tag 'div', content.html_safe, :class => 'presentation'
+    end
+  end
 end

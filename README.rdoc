@@ -1,7 +1,7 @@
 == Self Assessment
 
-A proof of concept application that manages questionnaires, and the answers
-submitted to them. Answers are compared to rule sets, and a set of tabbed urls
+An application that manages questionnaires, and the answers submitted to them. 
+Answers are compared to rule sets, and a set of tabbed urls
 displayed to the user depending upon which rules are matched.
 
 Answers are stored against a session id and therefore are held in memory
@@ -16,7 +16,7 @@ link to the rule set url is displayed.
 Much of the functionality used in this project has been split into standalone
 gems:
 
-=== Qwester: Questionnaires, Questions, Answers, Rule sets
+=== Qwester: Questionnaires, Questions, Answers, Rule sets, Presentations
 
 https://github.com/reggieb/qwester
 
@@ -45,12 +45,12 @@ Displays a disclaimer message. At time of writing, this is an across the board
 single disclaimer, but this can be limited to certain controllers and actions
 as required, with different disclaimers for each if required.
 
-In effect, this project gathers together the functionality from those
-gems and adds enough code to get them to work together.
-
 === Dibber: database seeding
 
 https://github.com/reggieb/Dibber
 
 Packages up the code needed to pull data out of YAML files and seed the database
 with that data. 
+
+In effect, this project gathers together the functionality from those
+gems and adds enough code to get them to work together.
