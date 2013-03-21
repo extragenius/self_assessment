@@ -1,9 +1,5 @@
 //= require active_admin/application
 
-CKEDITOR.editorConfig = function( config ) { 
-  config.toolbar = 'Basic';
-}
-
 $(function() {
   if (!!$.prototype.tooltip) {
     $( '#questions' ).tooltip();
