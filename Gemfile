@@ -59,7 +59,7 @@ gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 
 #gem 'qwester', :path => '~/web/qwester'
-gem 'qwester', "~> 0.1.1"  # Adds questionnaires, questions, answers and rule sets.
+gem 'qwester', "~> 0.1.2"  # Adds questionnaires, questions, answers and rule sets.
 
 #gem 'disclaimer', :path => '~/web/Disclaimer'
 gem 'disclaimer' # Used for 'this is a test site disclaimer
