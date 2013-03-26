@@ -9,7 +9,7 @@ class CalculatorController < ApplicationController
       :isa_tessa,
       :cash,
       :premium_bonds,
-      :builings_and_land,
+      :property,
       :other
     ]
 

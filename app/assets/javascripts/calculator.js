@@ -68,20 +68,76 @@ var calculator = {
   maxSavings: function() {    
     var maxThreashold = calculator.getSetting('upper_savings_threshold');
     return maxThreashold * calculator.coupleFactor();
-  } 
-}
-
-
-$(function() {
+  },
   
-  function onClickShowAndHide(clickOn, reveal, remove) {
+  ownsProperty: function() {
+    return parseInt(calculator.propertyValue()) > 0;
+  },
+  
+  propertyValue: function() {
+    return $('#property').val();
+  },
+  
+  nonPropertySavings: function(){
+    return calculator.totalSavings() - calculator.propertyValue();
+  },
+  
+  nonPropertySavingsBelowMax: function() {
+    return calculator.nonPropertySavings() < calculator.maxSavings();
+  },
+  
+  showOwnsProperty: function() {
+    if (calculator.ownsProperty() && calculator.nonPropertySavingsBelowMax()) {
+      var calc = I18n.t('calculator.output.owns_property');
+      var selfFund = I18n.t('calculator.output.self_fund');
+      calculator.displayOutput(selfFund, calc);
+      return true;
+    } else {
+      return false;
+    }
+  },
+  
+  showSupported: function() {
+    if (calculator.totalSavings() < calculator.minSavings()) {
+      var calc = I18n.t('calculator.output.calc.below_lower_threshold', {amount: calculator.minSavings()});
+      var supported = I18n.t('calculator.output.supported');
+      calculator.displayOutput(supported, calculator.prependSavings(calc));
+      return true;
+    } else {
+      return false;
+    }
+  },
+  
+  showMayBeFunded: function() {
+    if (calculator.totalSavings() < calculator.maxSavings()) {
+      var calc = I18n.t('calculator.output.calc.between_thresholds', {lower: calculator.minSavings(), upper: calculator.maxSavings()})
+      var mayBeFunded = I18n.t('calculator.output.may_be_funded');
+      calculator.displayOutput(mayBeFunded, calculator.prependSavings(calc));
+      return true;
+    } else {
+      return false;
+    }     
+  },
+  
+  showSelfFund: function() {
+    var calc = I18n.t('calculator.output.calc.above_upper_threshold', {amount: calculator.maxSavings()});
+    var selfFund = I18n.t('calculator.output.self_fund');
+    calculator.displayOutput(selfFund, calculator.prependSavings(calc));
+    return true;
+  },
+  
+  prependSavings: function(text) {
+    return I18n.t('calculator.output.prepend_savings', {total_savings: calculator.totalSavings(), calc: text});
+  },
+  
+  onClickShowAndHide: function(clickOn, reveal, remove) {
     $(clickOn).click(function(){
       $(remove).hide();
       $(reveal).show();
     })
-  }
+  },
   
-  function whenSelectedShow(checkBox, reveal) {
+  whenSelectedShow: function(checkBox, reveal) {
     $(checkBox).click(function(){
       if (this.checked) {
         $(reveal).show("highlight", {color:'#C2EBFF'}, 1500)
@@ -90,74 +146,11 @@ $(function() {
       }
       
     })
-  }
+  },
   
-  onClickShowAndHide(
-    '#calculator #understand', 
-    '#calculator #two',
-    '#calculator #one'
-  );
+  displayOutput: function(outcome, calc) {
     
-  whenSelectedShow(
-    '#calculator #couple', 
-    '#calculator .spouse'
-  );
-  
-  var supported = I18n.t('calculator.output.supported');
-
-  var mayBeFunded = I18n.t('calculator.output.may_be_funded');
-  
-  var selfFund = I18n.t('calculator.output.self_fund');
-  
-  var disclaimer = I18n.t('calculator.output.disclaimer');
-
-  var calc
-  
-  function ownsProperty() {
-    return $('#property').is(':checked');
-  }
-  
-  function showOwnsProperty() {
-    if (ownsProperty()) {
-      calc = I18n.t('calculator.output.owns_property');
-      displayOutput(selfFund, calc);
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
-  function showSupported() {
-    if (calculator.totalSavings() < calculator.minSavings()) {
-      calc = I18n.t('calculator.output.calc.below_lower_threshold', {amount: calculator.minSavings()});
-      displayOutput(supported, prependSavings(calc));
-      return true;
-    } else {
-      return false;
-    }
-  }
-  
-  function showMayBeFunded() {
-    if (calculator.totalSavings() < calculator.maxSavings()) {
-      calc = I18n.t('calculator.output.calc.between_thresholds', {lower: calculator.minSavings(), upper: calculator.maxSavings()})
-      displayOutput(mayBeFunded, prependSavings(calc));
-      return true;
-    } else {
-      return false;
-    }     
-  }
-  
-  function showSelfFund() {
-    calc = calc = I18n.t('calculator.output.calc.above_upper_threshold', {amount: calculator.maxSavings()});
-    displayOutput(selfFund, prependSavings(calc));
-    return true;
-  }
-  
-  function prependSavings(text) {
-    return I18n.t('calculator.output.prepend_savings', {total_savings: calculator.totalSavings(), calc: text});
-  }
-  
-  function displayOutput(outcome, calc) {
+    var disclaimer = I18n.t('calculator.output.disclaimer');
     
     var output = '<p>' + calc + '</p>';
     output += '<p>' + outcome + '</p>';
@@ -168,17 +161,35 @@ $(function() {
     $('#output').show("highlight", {color:'#C2EBFF'});
     $('#calculator #two').hide('fade');
 
-    onClickShowAndHide(
+    calculator.onClickShowAndHide(
       '#calculator #restart',
       '#calculator #two',
       '#calculator #output'
     );
   }
   
+}
+
+
+$(function() {
+  
+  calculator.onClickShowAndHide(
+    '#calculator #understand', 
+    '#calculator #two',
+    '#calculator #one'
+  );
     
+  calculator.whenSelectedShow(
+    '#calculator #couple', 
+    '#calculator .spouse'
+  );
+  
   $('#calculate').click(function(){
     
-    showOwnsProperty() || showSupported() || showMayBeFunded() || showSelfFund();
+    calculator.showOwnsProperty()     || 
+      calculator.showSupported()      || 
+        calculator.showMayBeFunded()  || 
+          calculator.showSelfFund();
 
   });
   
