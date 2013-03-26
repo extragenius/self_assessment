@@ -92,9 +92,9 @@ var calculator = {
   
   showOwnsProperty: function() {
     if (calculator.savingsExeceedMax() && calculator.ownsProperty() && calculator.nonPropertySavingsBelowMax()) {
-      var calc = I18n.t('calculator.output.owns_property');
-      var selfFund = I18n.t('calculator.output.self_fund');
-      calculator.displayOutput(selfFund, calc);
+      var calc = I18n.t('calculator.output.property_pushes_saving_over_max');
+      var ownsProperty = I18n.t('calculator.output.owns_property');
+      calculator.displayOutput(ownsProperty, calc);
       return true;
     } else {
       return false;
@@ -156,10 +156,15 @@ var calculator = {
     
     var disclaimer = I18n.t('calculator.output.disclaimer');
     
+    var disclaimer_link = 'href="http://www.warwickshire.gov.uk/socialcarecharges"';
+    disclaimer_link = '<a ' + disclaimer_link + ' target="_blank">';
+    disclaimer_link += I18n.t('calculator.output.disclaimer_link');
+    disclaimer_link += '</a>'
+    
     var output = '<p>' + calc + '</p>';
     output += '<p>' + outcome + '</p>';
-    output += '<p>' + disclaimer + '</p>';
-    output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>'
+    output += '<p>' + disclaimer + ' ' + disclaimer_link + '</p>';
+    output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>';
 
     $('#output').html(output);
     $('#output').show("highlight", {color:'#C2EBFF'});

@@ -55,8 +55,10 @@ Seeder.objects_from("ominous/warnings.yml").each do |warning, closers|
   
 end
 
-Seeder.new(Disclaimer::Document, 'disclaimer/documents.yml').build
+unless Disclaimer::Document.exists?
+  Seeder.new(Disclaimer::Document, 'disclaimer/documents.yml').build
+end
 
-Seeder.new(Guide, 'guides.yml').build
+Seeder.new(Guide, 'guides.yml').build unless Guide.exists?
 
 puts Seeder.report
