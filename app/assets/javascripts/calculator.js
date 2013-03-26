@@ -28,10 +28,10 @@ var calculator = {
       dataType: 'json',
 
       success: function () {
-        //console.log('Successfully retrieved ' + name);
+        //console.log('Successfully retrieved ' + name); // Causes errors in IE if enabled
       },
       error: function () {
-        //console.log('Error retrieving ' + name);
+        //console.log('Error retrieving ' + name); // Causes errors in IE if enabled
       }
     }).responseText;
 
@@ -86,8 +86,12 @@ var calculator = {
     return calculator.nonPropertySavings() < calculator.maxSavings();
   },
   
+  savingsExeceedMax: function(){
+    return calculator.totalSavings() > calculator.maxSavings();
+  },
+  
   showOwnsProperty: function() {
-    if (calculator.ownsProperty() && calculator.nonPropertySavingsBelowMax()) {
+    if (calculator.savingsExeceedMax() && calculator.ownsProperty() && calculator.nonPropertySavingsBelowMax()) {
       var calc = I18n.t('calculator.output.owns_property');
       var selfFund = I18n.t('calculator.output.self_fund');
       calculator.displayOutput(selfFund, calc);

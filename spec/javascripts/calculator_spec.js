@@ -146,6 +146,19 @@ describe("calculator", function() {
     
   })
   
+  describe('.savingsExeceedMax', function(){
+    
+    it("should return false if total savings less than max savings", function(){
+      expect(calculator.savingsExeceedMax()).toBe(false);
+    })
+    
+    it("should return true if total savings more than max savings", function(){
+      var savings = calculator.maxSavings() + 1;
+      $('#input_one').val(savings);
+      expect(calculator.savingsExeceedMax()).toBe(true);
+    })
+  })
+  
   describe('.ownsProperty', function(){
     
     it("should return true if property field value is greater than zero", function(){
@@ -204,22 +217,27 @@ describe("calculator", function() {
   
   describe('.showOwnsProperty', function(){
     
+    it("should return true if savings total exceeds the upper limit only because of property value", function(){
+      var savings = calculator.maxSavings() + 1;
+      $('#property').val(savings);
+      expect(calculator.showOwnsProperty()).toBe(true);
+    })    
+    
     it("should return false if property field is zero", function(){
       $('#property').val('0');
       expect(calculator.showOwnsProperty()).toBe(false);
     })
     
-    it("should return false if property greater than zero, but other values exceed maximum threashold", function(){
+    it("should return false if property greater than zero, and other savings exceed maximum threashold", function(){
       $('#property').val('100');
       var savings = calculator.maxSavings() + 1;
       $('#input_one').val(savings);
       expect(calculator.showOwnsProperty()).toBe(false);
     })
     
-    it("should return true if property greater than zero, and other values do not exceed maximum threashold", function(){
-      var savings = calculator.maxSavings() + 1;
-      $('#property').val(savings);
-      expect(calculator.showOwnsProperty()).toBe(true);
+    it("should return false if property greater than zero, and total savings below max", function(){
+      $('#property').val(1);
+      expect(calculator.showOwnsProperty()).toBe(false);
     })
     
   })
