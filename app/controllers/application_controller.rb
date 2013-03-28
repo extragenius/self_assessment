@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   private
   def preload_tasks
     get_answer_store
-    check_cope_index
   end
   
   def get_answer_store(create_new = false)
@@ -40,12 +39,6 @@ class ApplicationController < ActionController::Base
     @reassociated_warning = true
   end
   
-#  def matching_rule_sets
-#    if get_answer_store
-#      RuleSet.matching(@qwester_answer_store.answers)
-#    end
-#  end
-  
   def get_questions
     @questions = Question.all
   end
@@ -65,16 +58,6 @@ class ApplicationController < ActionController::Base
       end
     end
     questions.uniq
-  end
-
-  def check_cope_index
-    if @qwester_answer_store and coping_score_exceeded?
-      Ominous::Warning.trigger :coping_index_threashold_exceeded
-    end
-  end
-
-  def coping_score_exceeded?
-    @qwester_answer_store.answers.sum(:cope_index) > Setting.for(:cope_index_threshold)
   end
 
 end

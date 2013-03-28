@@ -114,41 +114,40 @@ class QuestionnairesControllerTest < ActionController::TestCase
     assert_equal([@questionnaire], @qwester_answer_store.questionnaires)
   end
   
-  def test_cope_index_warning_not_shown
-    get :index
-    assert_warning_is_not_displayed
-  end
-
-  def test_coping_index
-    RuleSet.first.update_attribute(:rule, 'a1')
-    @answer.update_attribute(:cope_index, (cope_index_threshold + 1))
+  def test_warning
+    create_warning_for_rule('a1')
     test_update
     get :index
     assert_warning_displayed
   end
-
-  def test_warning
-    warning = Ominous::Warning.find(1)
-    rule_set = RuleSet.first
-    rule_set.rule = 'a1'
-    rule_set.warning = warning
-    rule_set.save
+  
+  def test_warning_based_on_sum_of_answer_cope_index
     test_update
+    create_warning_for_rule('sum(:cope_index) > 10')
+        
     get :index
-#    p session
+    assert_warning_is_not_displayed
+    
+    @answer.update_attribute(:cope_index, 20)
+    get :index
     assert_warning_displayed
   end
   
   def test_warning_not_normally_shown
     test_show
     assert_warning_is_not_displayed
-  end
+    
+    get :index
+    assert_warning_is_not_displayed
+  end 
   
   private
-  def cope_index_threshold
-    Setting.for(:cope_index_threshold)
+  def create_warning_for_rule(rule)
+    warning = Ominous::Warning.find(1)
+    rule_set = RuleSet.first
+    rule_set.rule = rule
+    rule_set.warning = warning
+    rule_set.save
   end
-  
-  
 
 end

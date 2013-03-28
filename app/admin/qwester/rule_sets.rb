@@ -2,6 +2,17 @@ module Qwester
 
   ActiveAdmin.register RuleSet do
     
+    index do
+      column :title
+      column :presentation
+      column :warning
+      column :rule
+      column :answers do |rule_set|
+        rule_set.answers.count
+      end
+      default_actions
+    end
+    
  
     form do |f|
       require "#{Rails.root}/app/decorators/models/qwester/rule_set_decorator" # Page fails to see qwester_rule_set.warning method on page refresh sometimes, unless this require is included in each declaration that rule_set.warning is needed!

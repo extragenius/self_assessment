@@ -43,8 +43,6 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-gem 'array_logic', '~> 0.1.0' # Used to identify patterns in RuleSet Answers
-
 #gem 'ominous', :path => "~/web/ominous" 
 gem 'ominous', '~> 0.0.5'
 
@@ -59,7 +57,7 @@ gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 
 #gem 'qwester', :path => '~/web/qwester'
-gem 'qwester', "~> 0.1.2"  # Adds questionnaires, questions, answers and rule sets.
+gem 'qwester', "~> 0.1.3"  # Adds questionnaires, questions, answers and rule sets.
 
 #gem 'disclaimer', :path => '~/web/Disclaimer'
 gem 'disclaimer' # Used for 'this is a test site disclaimer
