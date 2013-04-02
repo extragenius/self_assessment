@@ -4,7 +4,7 @@ module Report
 
     attr_reader :headings
     
-    ITEMS_TO_RETURN = 10
+    ITEMS_TO_RETURN = 20
 
     private
     def most_used_answers
