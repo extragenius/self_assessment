@@ -21,6 +21,7 @@ class QuestionnairesController < ApplicationController
   def reset
     get_answer_store
     @qwester_answer_store.reset
+    session[:presentations] = nil
     redirect_to :action => :index
   end
   
