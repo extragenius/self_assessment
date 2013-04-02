@@ -26,7 +26,7 @@ module Report
       @x_axis_label = 'Day'
       @y_axis_title = 'Questionnaires'
       @x_axis_rotation = 90
-      AnswerStore.joins(:questionnaires).group("DATE_FORMAT(qwester_answer_stores.updated_at, '%d-%b-%y')").count
+      AnswerStore.joins(:questionnaires).group("DATE_FORMAT(qwester_answer_stores.updated_at, '%d-%b-%y')").order('qwester_answer_stores.updated_at').count
     end
      
   end
