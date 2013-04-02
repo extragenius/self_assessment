@@ -10,3 +10,5 @@ RuleSet = Qwester::RuleSet
 Presentation = Qwester::Presentation
 
 Qwester.active_admin_menu = 'Questionnaire items'
+
+Qwester::Answer.weighting_alias = :cope_index

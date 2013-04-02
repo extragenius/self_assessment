@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318163829) do
+ActiveRecord::Schema.define(:version => 20130402095527) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(:version => 20130318163829) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "position"
-    t.integer  "cope_index",  :default => 0
+    t.integer  "weighting",   :default => 0
   end
 
   create_table "qwester_answers_rule_sets", :id => false, :force => true do |t|

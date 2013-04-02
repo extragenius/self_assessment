@@ -30,15 +30,16 @@ class AnswerStoresControllerTest < ActionController::TestCase
   end
 
   def test_cope_index_sum_with_no_answers
-    assert_equal(0, @answer_store.answers.sum(:cope_index))
+    assert_equal(0, @answer_store.answers.collect(&:cope_index).sum)
+    assert_equal(@answer_store.answers.sum(:weighting), @answer_store.answers.collect(&:cope_index).sum)
   end
 
   def test_cope_index_sum
     @answer_store.answers << Answer.find(1)
-    assert_equal(0, @answer_store.answers.sum(:cope_index))
     number = 6
-    @answer_store.answers.first.update_attribute(:cope_index, number)
-    assert_equal(number, @answer_store.answers.sum(:cope_index))
+    @answer_store.answers.first.update_attribute(:weighting, number)
+    assert_equal(number, @answer_store.answers.collect(&:cope_index).sum)
+    assert_equal(@answer_store.answers.sum(:weighting), @answer_store.answers.collect(&:cope_index).sum)
   end  
 
 end

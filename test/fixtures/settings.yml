@@ -38,13 +38,6 @@ upper_savings_threshold:
   value: 23250
   description: The amount of savings above which a users is likely to have to pay for ALL services
 
-cope_index_threshold:
-  id: 7
-  name: cope_index_threshold
-  value_type: number
-  value: 20
-  description: The sum of cope_index values at which a customer action occurs
-
 community_care_assessment_url:
   id: 8
   name: community_care_assessment_url

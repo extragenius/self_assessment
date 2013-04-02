@@ -128,7 +128,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     get :index
     assert_warning_is_not_displayed
     
-    @answer.update_attribute(:cope_index, 20)
+    @answer.update_attribute(:weighting, 20)
     get :index
     assert_warning_displayed
   end
