@@ -37,7 +37,7 @@ gem "ckeditor", "3.7.2"   # Adds rich text editor to input fields
 gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface
 
-gem 'dibber'  # Used in db/seeds to handle data retrieval from yml files
+gem 'dibber', "~> 0.2"  # Used in db/seeds to handle data retrieval from yml files
 
 gem 'i18n-js'  # Allows translation files to be used within JavaScript
 

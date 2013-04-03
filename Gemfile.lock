@@ -88,7 +88,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    dibber (0.1.1)
+    dibber (0.2.0)
     diff-lcs (1.1.3)
     disclaimer (0.0.4)
       acts_as_list
@@ -268,7 +268,7 @@ DEPENDENCIES
   ckeditor (= 3.7.2)
   coffee-script
   devise
-  dibber
+  dibber (~> 0.2)
   disclaimer
   i18n-active_record!
   i18n-js
