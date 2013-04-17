@@ -269,7 +269,7 @@ DEPENDENCIES
   coffee-script
   devise
   dibber (~> 0.2)
-  disclaimer
+  disclaimer (>= 0.0.4)
   i18n-active_record!
   i18n-js
   jasmine
