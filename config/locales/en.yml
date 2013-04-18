@@ -86,8 +86,8 @@ en:
       owns_property: According to your circumstances, the value of your property might count as capital, bringing your total capital and savings above the maximum threshold to be eligible for Warwickshire County Council funding, so you may have to pay the full cost of your care.
       property_pushes_saving_over_max: You have indicated that you own property. 
       reopen_button: Calculate again
-      disclaimer: This result is only an indication based on a few simple questions. There are other factors that can affect your contribution, but the rules are complex, so the calculations cannot be made instantly on-line. 
-      disclaimer_link: For more details click here
+      disclaimer: <p>This result is only an indication based on a few simple questions. There are other factors that can affect your contribution, but the rules are complex, so the calculations cannot be made instantly on-line.</p><p>To confirm your contribution, a full Community Care Assessment would be needed, including a financial assessment by the Financial Assessments & Benefits Advice team at Warwickshire County Council.</p>
+      disclaimer_link: For more details click here.
       prepend_savings: Your capital and savings of &pound;%{total_savings} are %{calc}
       calc:
         below_lower_threshold: below the lower limit of &pound;%{amount}.

@@ -4,7 +4,7 @@ describe("calculator", function() {
     'lower_savings_threshold': 110, 
     'upper_savings_threshold': 210, 
     'couple_factor' : 2
-  }
+  };
   
   beforeEach(function() {
     loadFixtures("calculator.html");
@@ -13,7 +13,7 @@ describe("calculator", function() {
       return mockSettings[params];
     });
     
-  })
+  });
   
   describe("Mocked methods - stuff that isn't easy to replicate in the test environment", function() {
   
@@ -23,7 +23,7 @@ describe("calculator", function() {
         expect(calculator.getSettingFromServer('upper_savings_threshold')).toEqual(mockSettings['upper_savings_threshold']);
       });
 
-    })
+    });
   
   });
   
@@ -41,17 +41,17 @@ describe("calculator", function() {
     
     it("should return the value in a field from within text", function() {
       field = $('#input_one');
-      field.val('a12.445 bns')
+      field.val('a12.445 bns');
       expect(calculator.valueForField(field)).toEqual(12);
     });
     
     it("should return the value in a field ignoring commas", function() {
       field = $('#input_one');
-      field.val('12,445')
+      field.val('12,445');
       expect(calculator.valueForField(field)).toEqual(12445);
     });
   
-  })
+  });
   
   describe(".totalSavings", function() {
     
@@ -60,11 +60,11 @@ describe("calculator", function() {
     });
     
     it("should return the sum of values ignoring prepended currency string", function() {
-      $('#input_one').val('£3')
+      $('#input_one').val('£3');
       expect(calculator.totalSavings()).toEqual(5);
     });
     
-  })
+  });
   
   describe(".cachedSettings", function() {
     
@@ -77,7 +77,7 @@ describe("calculator", function() {
       expect(typeof calculator.cachedSettings['something'] === 'undefined').toBe(true);
     });
     
-  })
+  });
   
   describe(".getSetting", function() {
     
@@ -90,7 +90,7 @@ describe("calculator", function() {
       expect(calculator.getSetting('something')).toEqual('else');
     });
     
-  })
+  });
   
   describe('.isCouple', function(){
     
@@ -103,7 +103,7 @@ describe("calculator", function() {
       expect(calculator.isCouple()).toBe(false);
     });
     
-  })
+  });
 
   describe('.coupleFactor', function(){
     
@@ -116,62 +116,62 @@ describe("calculator", function() {
       expect(calculator.coupleFactor()).toEqual(1);
     });
     
-  })
+  });
   
   describe('.minSavings', function(){
     
     it("should return lower_savings_threshold when #couple checkbox not ticked", function(){
       expect(calculator.minSavings()).toEqual(mockSettings['lower_savings_threshold']);
-    })
+    });
     
     it("should return lower_savings_threshold times couple_factor when #couple checkbox is ticked", function(){
       $('#couple').prop('checked', true);
-      var expected = mockSettings['lower_savings_threshold'] * mockSettings['couple_factor']
+      var expected = mockSettings['lower_savings_threshold'] * mockSettings['couple_factor'];
       expect(calculator.minSavings()).toEqual(expected);
-    })
+    });
     
-  })
+  });
   
   describe('.maxSavings', function(){
     
     it("should return upper_savings_threshold when #couple checkbox not ticked", function(){
-      expect(calculator.maxSavings()).toEqual(mockSettings['upper_savings_threshold'])
-    })
+      expect(calculator.maxSavings()).toEqual(mockSettings['upper_savings_threshold']);
+    });
     
     it("should return upper_savings_threshold times couple_factor when #couple checkbox is ticked", function(){
       $('#couple').prop('checked', true);
-      var expected = mockSettings['upper_savings_threshold'] * mockSettings['couple_factor']
+      var expected = mockSettings['upper_savings_threshold'] * mockSettings['couple_factor'];
       expect(calculator.maxSavings()).toEqual(expected);
-    })
+    });
     
-  })
+  });
   
   describe('.savingsExeceedMax', function(){
     
     it("should return false if total savings less than max savings", function(){
       expect(calculator.savingsExeceedMax()).toBe(false);
-    })
+    });
     
     it("should return true if total savings more than max savings", function(){
       var savings = calculator.maxSavings() + 1;
       $('#input_one').val(savings);
       expect(calculator.savingsExeceedMax()).toBe(true);
-    })
-  })
+    });
+  });
   
   describe('.ownsProperty', function(){
     
     it("should return true if property field value is greater than zero", function(){
       $('#property').val('10');
       expect(calculator.ownsProperty()).toBe(true);
-    })
+    });
     
     it("should false true if property field value is not greater than zero", function(){
       $('#property').val('0');
       expect(calculator.ownsProperty()).toBe(false);
-    })
+    });
     
-  })
+  });
   
   describe('.propertyValue', function(){
     
@@ -182,9 +182,9 @@ describe("calculator", function() {
         $('#property').val(value);
         expect(calculator.propertyValue()).toEqual(value);
       }
-    })
+    });
     
-  })
+  });
   
   describe('.nonPropertySavings', function(){
     
@@ -193,27 +193,27 @@ describe("calculator", function() {
       $('#property').val(property);
       var totalMinusProperty = calculator.totalSavings() - property;
       expect(calculator.nonPropertySavings()).toEqual(totalMinusProperty);
-    })
+    });
     
-  })
+  });
   
   describe('.nonPropertySavingsBelowMax', function(){
     
     beforeEach(function() {
       $('#property').val(calculator.maxSavings() + 1);
-    })
+    });
     
     it("should return true if savings other than property are below max", function(){
-      expect(calculator.nonPropertySavingsBelowMax()).toBe(true)
-    })
+      expect(calculator.nonPropertySavingsBelowMax()).toBe(true);
+    });
     
     it("should return false if savings other than property are above max", function(){
       var savings = calculator.maxSavings() + 1;
       $('#input_one').val(savings);
-      expect(calculator.nonPropertySavingsBelowMax()).toBe(false)
-    })
+      expect(calculator.nonPropertySavingsBelowMax()).toBe(false);
+    });
     
-  })
+  });
   
   describe('.showOwnsProperty', function(){
     
@@ -221,26 +221,26 @@ describe("calculator", function() {
       var savings = calculator.maxSavings() + 1;
       $('#property').val(savings);
       expect(calculator.showOwnsProperty()).toBe(true);
-    })    
+    });   
     
     it("should return false if property field is zero", function(){
       $('#property').val('0');
       expect(calculator.showOwnsProperty()).toBe(false);
-    })
+    });
     
     it("should return false if property greater than zero, and other savings exceed maximum threashold", function(){
       $('#property').val('100');
       var savings = calculator.maxSavings() + 1;
       $('#input_one').val(savings);
       expect(calculator.showOwnsProperty()).toBe(false);
-    })
+    });
     
     it("should return false if property greater than zero, and total savings below max", function(){
       $('#property').val(1);
       expect(calculator.showOwnsProperty()).toBe(false);
-    })
+    });
     
-  })
+  });
   
   describe('.showSupported', function(){
     
@@ -248,15 +248,15 @@ describe("calculator", function() {
       var savings = calculator.minSavings() - calculator.totalSavings() - 1;
       $('#input_one').val(savings);
       expect(calculator.showSupported()).toBe(true);
-    })
+    });
     
     it("should return false is total savings are more than lower threshold", function(){
       var savings = calculator.minSavings() + 1;
       $('#input_one').val(savings);
       expect(calculator.showSupported()).toBe(false);
-    })
+    });
     
-  })
+  });
   
   describe('.showMayBeFunded', function(){
     
@@ -264,23 +264,23 @@ describe("calculator", function() {
       var savings = calculator.maxSavings() - calculator.totalSavings() - 1;
       $('#input_one').val(savings);
       expect(calculator.showMayBeFunded()).toBe(true);
-    })
+    });
     
     it("should return false is total savings are more than upper threshold", function(){
       var savings = calculator.maxSavings() + 1;
       $('#input_one').val(savings);
       expect(calculator.showMayBeFunded()).toBe(false);
-    })
+    });
     
-  })
+  });
   
   describe('.showSelfFund', function(){
     
     it("should return true", function(){
       expect(calculator.showSelfFund()).toBe(true);
-    })
+    });
     
-  })
+  });
   
   describe('.onClickShowAndHide', function(){
     
@@ -288,23 +288,23 @@ describe("calculator", function() {
       $('#input_one').hide();
       calculator.onClickShowAndHide($('#couple'), $('#input_one'), $('#input_two'));
       $('#couple').click();
-    })
+    });
     
     it("should hide one element on click", function(){
       expect($('#input_two').is(':hidden')).toBe(true);
-    })
+    });
     
     it("should reveal one element on click", function(){
       expect($('#input_one').is(':hidden')).toBe(false);
-    })
+    });
     
-  })
+  });
   
   describe('.whenSelectedShow', function(){
     
     beforeEach(function(){
       calculator.whenSelectedShow($('#couple'), $('#input_one'));
-    })
+    });
     
     it("should reveal target if clicking checkbox makes it checked", function(){
       $('#input_one').hide();
@@ -312,7 +312,7 @@ describe("calculator", function() {
       $('#couple').click();
       expect($('#couple').is(':checked')).toBe(true);
       expect($('#input_one').is(':hidden')).toBe(false);
-    })
+    });
     
     it("should hide target if clicking checkbox makes it unchecked", function(){
       $('#input_one').show();
@@ -320,8 +320,26 @@ describe("calculator", function() {
       $('#couple').click();
       expect($('#couple').is(':checked')).toBe(false);
       expect($('#input_one').is(':hidden')).toBe(true);
-    })
+    });
     
-  })
+  });
+  
+  describe('.paragraph', function(){
+    it("should put text into p tags if none already", function(){
+      var text = 'thing';
+      var expected = '<p>' + text + '</p>';
+      expect(calculator.paragraph(text)).toEqual(expected);
+    });
+    
+    it("should not put text into p tags if p tags already enclose text", function(){
+      var text = '<p>thing</p>';
+      expect(calculator.paragraph(text)).toEqual(text);
+    });
+    
+    it("should not put text into p tags if p tags already enclose text, and are within text", function(){
+      var text = '<p>foo</p><p>bar</p>';
+      expect(calculator.paragraph(text)).toEqual(text);
+    });
+  });
   
 });

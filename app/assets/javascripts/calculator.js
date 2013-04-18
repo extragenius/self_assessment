@@ -114,7 +114,7 @@ var calculator = {
   
   showMayBeFunded: function() {
     if (calculator.totalSavings() < calculator.maxSavings()) {
-      var calc = I18n.t('calculator.output.calc.between_thresholds', {lower: calculator.minSavings(), upper: calculator.maxSavings()})
+      var calc = I18n.t('calculator.output.calc.between_thresholds', {lower: calculator.minSavings(), upper: calculator.maxSavings()});
       var mayBeFunded = I18n.t('calculator.output.may_be_funded');
       calculator.displayOutput(mayBeFunded, calculator.prependSavings(calc));
       return true;
@@ -138,33 +138,36 @@ var calculator = {
     $(clickOn).click(function(){
       $(remove).hide();
       $(reveal).show();
-    })
+    });
   },
   
   whenSelectedShow: function(checkBox, reveal) {
     $(checkBox).click(function(){
       if (this.checked) {
-        $(reveal).show("highlight", {color:'#C2EBFF'}, 1500)
+        $(reveal).show("highlight", {color:'#C2EBFF'}, 1500);
       } else {
         $(reveal).hide();
       }
       
-    })
+    });
   },
   
   displayOutput: function(outcome, calc) {
+    
+    var paragraph = calculator.paragraph;
     
     var disclaimer = I18n.t('calculator.output.disclaimer');
     
     var disclaimer_link = 'href="http://www.warwickshire.gov.uk/socialcarecharges"';
     disclaimer_link = '<a ' + disclaimer_link + ' target="_blank">';
     disclaimer_link += I18n.t('calculator.output.disclaimer_link');
-    disclaimer_link += '</a>'
+    disclaimer_link += '</a>';
     
-    var output = '<p>' + calc + '</p>';
-    output += '<p>' + outcome + '</p>';
-    output += '<p>' + disclaimer + ' ' + disclaimer_link + '</p>';
-    output += '<p><button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button></p>';
+    var output = paragraph(calc);
+    output += paragraph(outcome);
+    output += paragraph(disclaimer);
+    output += paragraph(disclaimer_link);
+    output += paragraph('<button id="restart">' + I18n.t('calculator.output.reopen_button') + '</button>');
 
     $('#output').html(output);
     $('#output').show("highlight", {color:'#C2EBFF'});
@@ -175,9 +178,17 @@ var calculator = {
       '#calculator #two',
       '#calculator #output'
     );
+  },
+          
+  paragraph: function(text) {
+    if (/^\s*<p>.*<\/p>\s*$/.test(text)) {
+      return text;
+    } else {
+      return '<p>' + text + '</p>';
+    };
   }
   
-}
+};
 
 
 $(function() {
