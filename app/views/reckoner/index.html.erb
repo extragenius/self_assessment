@@ -56,7 +56,10 @@
     </p>
 
     <p>
-      <%= link_to( t('reckoner.links.detailed_assessment'), 'http://www.warwickshire.gov.uk/assessments') %>
+      <%= link_to( 
+            t('reckoner.links.detailed_assessment'), 
+            'http://www.warwickshire.gov.uk/assessments',
+            :target => '_blank') %>
     </p>
 
     <p>
@@ -93,7 +96,10 @@
       <%= t 'reckoner.articles.self_assess.when_to' %>
     </p>
     <p>
-      <%=  link_to(t('reckoner.articles.self_assess.link'), questionnaires_path) %>
+      <%=  link_to(
+             t('reckoner.articles.self_assess.link'), 
+             questionnaires_path,
+            :target => '_blank') %>
     </p>
   </div>
 
