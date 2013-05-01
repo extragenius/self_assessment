@@ -104,7 +104,7 @@ GEM
     hash-deep-merge (0.1.1)
     hashery (2.1.0)
     highline (1.6.15)
-    hike (1.2.1)
+    hike (1.2.2)
     i18n (0.6.1)
     i18n-js (2.1.2)
       i18n
@@ -141,7 +141,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
-    mime-types (1.21)
+    mime-types (1.23)
     mournful_settings (0.1.0)
       activerecord
     multi_json (1.7.2)
@@ -153,7 +153,7 @@ GEM
     net-ssh (2.6.3)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    ominous (0.0.5)
+    ominous (0.1.0)
       acts_as_list
       jquery-rails
       rails (~> 3.2.8)
@@ -221,7 +221,7 @@ GEM
     rspec-mocks (2.12.1)
     ruby-rc4 (0.1.5)
     rubyzip (0.9.9)
-    sass (3.2.5)
+    sass (3.2.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -242,8 +242,8 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
-    thor (0.18.0)
-    tilt (1.3.6)
+    thor (0.18.1)
+    tilt (1.4.0)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -278,7 +278,7 @@ DEPENDENCIES
   lazy_high_charts
   mournful_settings (~> 0.1.0)
   mysql2
-  ominous (~> 0.0.5)
+  ominous (~> 0.1)
   paperclip (~> 3.0)
   prawn
   qwester (~> 0.2.0)

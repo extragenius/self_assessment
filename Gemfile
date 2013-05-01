@@ -44,7 +44,7 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
 #gem 'ominous', :path => "~/web/ominous" 
-gem 'ominous', '~> 0.0.5'
+gem 'ominous', '~> 0.1'
 
 gem(
   'i18n-active_record',

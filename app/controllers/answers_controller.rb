@@ -13,6 +13,8 @@ class AnswersController < ApplicationController
       @questionnaires = {}
     end
     
+    
+    
     respond_to do |format|
       format.html
       format.pdf do

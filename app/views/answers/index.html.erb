@@ -32,6 +32,19 @@
     </table>
 
     <%   end %>
+    
+    <%= content_tag('h1', 'Warnings') unless ominous_session_store.empty? %>
+    
+    <%   ominous_session_store.each do |warning, status| %>
+    <%     warning = Ominous::Warning.find_by_name(warning) %>
+    <div class="warning">
+      <h2><%= warning.title %></h2>
+      <div class="body">
+        <%= sanitize warning.description %>
+      </div>
+      <div class="footer">This warning has<%= ' not' if  status.to_s == 'show' %> been accepted.</div>
+    </div>
+    <%   end %>
 
     <p><%= link_to 'View as PDF', answers_path(:format => :pdf) %></p>
 

@@ -46,3 +46,26 @@ table.answers_by_questionnaire {
     
   
 }
+
+.warning {
+  border: $warning solid 2px;
+  padding: 0;
+  margin: 0 auto 2em;
+  width: 95%;
+  
+  h2, .footer {
+    margin: 0;
+    padding: 2px;
+    background-color: $warning;
+    color: $white;
+  }
+  
+  .footer {
+    text-align: right;
+    font-style: italic;
+  }
+    
+  .body {
+    padding: 5px;
+  }
+}
