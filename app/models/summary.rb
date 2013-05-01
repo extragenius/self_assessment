@@ -14,6 +14,7 @@ class Summary < Prawn::Document
       display_header
       display_matching_rules
       display_answers
+      display_warnings
       display_link_to_restore
     else
       display_no_answers
@@ -41,7 +42,7 @@ class Summary < Prawn::Document
 
         default_font
         text(
-          strip_tags(rule_set.description)
+          convert_html(rule_set.description)
         ) if rule_set.description
         
         text(
@@ -84,9 +85,28 @@ class Summary < Prawn::Document
     "#{Rails.root}/app/assets/images/#{filename}"
   end
   
+  def display_warnings
+    ominous_warnings = request.session["ominous_warnings"]
+    unless ominous_warnings.empty?
+      move_down 20
+      h1_font
+      text "Warnings"
+      default_font
+      move_down 5
+      ominous_warnings.each do |name, status|
+        warning = Ominous::Warning.find_by_name(name)
+        h2_font 
+        text warning.title
+        default_font
+        text "This warning has#{ ' not' if  status.to_s == 'show' } been accepted.", :style => :italic
+        text convert_html(warning.description)
+      end
+    end
+  end
+  
   def display_link_to_restore
     span_with_space_before(25) do
-      h2_font
+      h1_font
       text "Return to questionnaire"
       default_font
       text "Use the link below to return to the self assessment site with these answers."
@@ -148,6 +168,10 @@ class Summary < Prawn::Document
   def use_font(options = {})
     options[:size] ||= default_font_size
     font("Helvetica", options)
+  end
+  
+  def convert_html(html)
+    CGI::unescapeHTML strip_tags(html)
   end
   
 end

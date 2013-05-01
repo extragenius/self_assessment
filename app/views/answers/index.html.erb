@@ -35,8 +35,8 @@
     
     <%= content_tag('h1', 'Warnings') unless ominous_session_store.empty? %>
     
-    <%   ominous_session_store.each do |warning, status| %>
-    <%     warning = Ominous::Warning.find_by_name(warning) %>
+    <%   ominous_session_store.each do |name, status| %>
+    <%     warning = Ominous::Warning.find_by_name(name) %>
     <div class="warning">
       <h2><%= warning.title %></h2>
       <div class="body">
