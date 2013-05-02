@@ -33,33 +33,6 @@ SelfAssessment::Application.routes.draw do
   resources :guides, :only => [:index, :show]
 
   namespace :admin do
-    resources :questionnaires do
-      resources :questions, :only => [:move_up, :move_down] do
-        member do
-          get :move_up
-          get :move_down
-        end
-      end
-    end
-
-    resources :questions do
-      resources :answers, :only => [:move_up, :move_down, :remove] do
-        member do
-          get :move_up
-          get :move_down
-          get :remove
-        end
-      end
-    end
-    
-    resources :rule_sets do
-      resources :answers, :only => [:add, :delete] do
-        member do
-          put :add
-          put :delete
-        end
-      end
-    end
     
     resources :guides do
       member do
