@@ -1,4 +1,6 @@
 /*
+ * Based on original code from:
+ * 
  * jQuery jFontSize Plugin
  * Examples and documentation: http://jfontsize.com
  * Author: Frederico Soares Vanelli
@@ -14,30 +16,42 @@
  */
 
 (function($){
-    $.fn.jfontsize = function(opcoes) {
+    $.fn.jfontsize = function(options) {
         var $this=$(this);
 	    var defaults = {
 		    btnMinusClasseId: '#jfontsize-minus',
 		    btnDefaultClasseId: '#jfontsize-default',
 		    btnPlusClasseId: '#jfontsize-plus',
-            btnMinusMaxHits: 10,
-            btnPlusMaxHits: 10,
-            sizeChange: 1
+        btnMinusMaxHits: 10,
+        btnPlusMaxHits: 10,
+        sizeChange: 1
 	    };
+      
+      var increase = +1;
+      var decrease = -1;
+      
+      function changeSize(context, currentIndex, changeType) {
+        fontsize=$(context).css('font-size');
+        fontsize=parseInt(fontsize);
+        fontsize_standard[currentIndex]=fontsize-(limit[currentIndex]*options.sizeChange);
+        fontsize=fontsize+(changeType*options.sizeChange);               
+        limit[currentIndex] = limit[currentIndex] + changeType;
+        $(context).css('font-size', fontsize+'px');
+      };
 
-	    if(($.isArray(opcoes))||(!opcoes)){
-            opcoes = $.extend(defaults, opcoes);
+	    if(($.isArray(options))||(!options)){
+            options = $.extend(defaults, options);
 	    } else {
-            defaults.sizeChange = opcoes;
-		    opcoes = defaults;
+            defaults.sizeChange = options;
+		    options = defaults;
 	    }
 
-        var limite=new Array();
-        var fontsize_padrao=new Array();
+        var limit=new Array();
+        var fontsize_standard=new Array();
 
         $(this).each(function(i){
-            limite[i]=0;
-            fontsize_padrao[i];
+            limit[i]=0;
+            fontsize_standard[i];
         });
 
         $('#jfontsize-minus, #jfontsize-default, #jfontsize-plus').removeAttr('href');
@@ -45,37 +59,23 @@
 
         $('#jfontsize-minus').click(function(){
             $this.each(function(i){
-                if (limite[i]>(-(opcoes.btnMinusMaxHits))){
-                    fontsize_padrao[i]=$(this).css('font-size');
-                    fontsize_padrao[i]=fontsize_padrao[i].replace('px', '');
-                    fontsize=$(this).css('font-size');
-                    fontsize=parseInt(fontsize.replace('px', ''));
-                    fontsize=fontsize-(opcoes.sizeChange);
-                    fontsize_padrao[i]=fontsize_padrao[i]-(limite[i]*opcoes.sizeChange);
-                    limite[i]--;
-                    $(this).css('font-size', fontsize+'px');
+                if (limit[i]>(-(options.btnMinusMaxHits))){
+                    changeSize(this, i, decrease);
                 }
             });
         });
 
         $('#jfontsize-default').click(function(){
             $this.each(function(i){
-                limite[i]=0;
-                $(this).css('font-size', fontsize_padrao[i]+'px');
+                limit[i]=0;
+                $(this).css('font-size', fontsize_standard[i]+'px');
             });
         });
 
         $('#jfontsize-plus').click(function(){
             $this.each(function(i){
-                if (limite[i]<opcoes.btnPlusMaxHits){
-                    fontsize_padrao[i]=$(this).css('font-size');
-                    fontsize_padrao[i]=fontsize_padrao[i].replace('px', '');
-                    fontsize=$(this).css('font-size');
-                    fontsize=parseInt(fontsize.replace('px', ''));
-                    fontsize=fontsize+opcoes.sizeChange;
-                    fontsize_padrao[i]=fontsize_padrao[i]-(limite[i]*opcoes.sizeChange);
-                    limite[i]++;
-                    $(this).css('font-size', fontsize+'px');
+                if (limit[i]<options.btnPlusMaxHits){
+                    changeSize(this, i, increase);
                 }
             });
         });
