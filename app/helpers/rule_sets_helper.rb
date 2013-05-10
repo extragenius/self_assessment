@@ -26,4 +26,13 @@ module RuleSetsHelper
     link_to(text, rule_set.url, :target => '_blank')
   end
   
+  def display_rule_set(rule_set, name = nil)
+    answers = @answers = rule_set.answers & @qwester_answer_store.answers
+      content_tag(
+        'div',
+        render(:partial => 'rule_sets/rule_set', :locals => {:rule_set => rule_set, :answers => answers}),
+        :id => name
+      )
+  end
+  
 end

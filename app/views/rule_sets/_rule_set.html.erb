@@ -1,0 +1,22 @@
+<div class="rule_set">
+
+  <%= content_tag('div', sanitize(rule_set.description), :class => :description) if rule_set.description.present? %>
+
+<% if answers.present?  %>
+  <table class="answers">
+    <tr>
+      <th>We asked:</th>
+      <th>You answered:</th>
+    </tr>
+<%   answers.each do |answer| %>
+    <tr>
+      <td><%= answer.question.title %></td>
+      <td><%= answer.value %></td>
+    </tr>
+<%   end %>
+  </table>
+<% end %>
+
+  <p><%= link_to_rule_set_url(rule_set) %></p>
+
+</div>
