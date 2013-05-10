@@ -9,11 +9,26 @@
 </head>
 <body>
   <%= ominous_warnings %>
+  
+  <%= javascript_tag do %>
+    $(function() {
+      $('#wrapper').jfontsize();
+    });
+  <% end %>
+  
   <div id="wrapper">
     
     <%= render 'shared/wcc_top_nav' %> 
 
     <div id="body-wrapper">
+      <div class="nav-buttons">
+        <a id="jfontsize-minus" href="#"><%= image_tag('decrease_font.png') %></a>
+        <a id="jfontsize-default" href="#"><%= image_tag('default_font.png') %></a>
+        <a id="jfontsize-plus" href="#"><%= image_tag('increase_font.png') %></a>
+        <%= link_to(image_tag('help.png'), guides_path) %>
+        <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
+      </div>
+      
       <%= render 'shared/flash_messages' %>
 
       <%= yield %>
