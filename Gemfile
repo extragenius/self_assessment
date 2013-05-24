@@ -46,12 +46,6 @@ gem 'acts_as_list' # Added to allow questions to be ordered within questionnaire
 #gem 'ominous', :path => "~/web/ominous" 
 gem 'ominous', '~> 0.1'
 
-gem(
-  'i18n-active_record',
-  :path => File.expand_path("../vendor/local_gem_store/", __FILE__),
-  :require => 'i18n/active_record'
-) # Allows translations to be stored in database
-
 gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
 gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
