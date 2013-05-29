@@ -41,6 +41,14 @@
       <h2><%= warning.title %></h2>
       <div class="body">
         <%= sanitize warning.description %>
+      <ul>
+        <%   warning.closers.each do |closer| %> 
+        <%     next if closer.start_hidden? %>
+        <li>
+          <%= sanitize closer.message %>
+        </li>
+        <%   end %>
+      </ul>
       </div>
       <div class="footer">This warning has<%= ' not' if  status.to_s == 'show' %> been accepted.</div>
     </div>

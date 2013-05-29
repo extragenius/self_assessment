@@ -100,6 +100,10 @@ class Summary < Prawn::Document
         default_font
         text "This warning has#{ ' not' if  status.to_s == 'show' } been accepted.", :style => :italic
         text convert_html(warning.description)
+        warning.closers.each do |closer|
+          next if closer.start_hidden?
+          text convert_html(closer.message)
+        end
       end
     end
   end
