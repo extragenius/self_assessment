@@ -19,11 +19,16 @@
   
   div.column_pair {
      display: inline-block;
-     margin: 5px 30px;
+     margin: 5px 8px;
      
      label {
        font-weight: bold;
+       font-size: 0.9em;
      }
+     
+    input {
+      width: 80%;
+    }
      
   }
   
