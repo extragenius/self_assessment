@@ -61,4 +61,4 @@ gem 'prawn'  # PDF generation
 # gem 'mournful_settings', :path => '~/web/mournful_settings'
 gem 'mournful_settings', '~> 0.1.0'   # Provides settings functionality
 
-gem 'simplecov', :require => false, :group => :test
+gem 'simplecov', :require => false, :group => :test # Test coverage tool
