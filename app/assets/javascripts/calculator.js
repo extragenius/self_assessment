@@ -23,7 +23,7 @@ var calculator = {
   getSettingFromServer: function(name) {
     var json = $.ajax({
       type: "GET",
-      url: '/settings/' + name + '.json',
+      url: 'settings/' + name + '.json',
       async: false,  // Without this rest of process continues before the data is returned
       dataType: 'json',
 
@@ -213,7 +213,5 @@ $(function() {
 
   });
   
-
-
   
 });
