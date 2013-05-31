@@ -70,4 +70,7 @@ SelfAssessment::Application.configure do
   
   # Define location of ImageMagick commands on server
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # Forces secure only access to admin
+  config.middleware.use Rack::SslEnforcer, :only => /^(.*\/)?admin\//
 end
