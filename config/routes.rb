@@ -1,6 +1,5 @@
 SelfAssessment::Application.routes.draw do
- 
-  mount Ckeditor::Engine => 'ckeditor'
+
   mount Ominous::Engine => "ominous"
   mount Disclaimer::Engine => "disclaimer"
 
