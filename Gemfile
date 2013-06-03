@@ -32,7 +32,9 @@ group :development do
 end
 
 gem "paperclip", "~> 3.0" # Adds attachment functions
-gem "ckeditor", "3.7.2"   # Adds rich text editor to input fields
+
+#gem 'ckeditor', :path => '~/web/ckeditor'
+gem "ckeditor", :git => "https://github.com/reggieb/ckeditor"   # Adds rich text editor to input fields
 
 gem 'devise'         # Authentication
 gem 'activeadmin'    # Admin interface

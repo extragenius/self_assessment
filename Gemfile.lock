@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/reggieb/ckeditor
+  revision: 779012d6b01b5b9e0951d00fb7247daa6144d832
+  specs:
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,9 +73,6 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
-    ckeditor (3.7.2)
-      mime-types
-      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -264,7 +269,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capistrano (= 2.13.4)
-  ckeditor (= 3.7.2)
+  ckeditor!
   coffee-script
   devise
   dibber (~> 0.2)
