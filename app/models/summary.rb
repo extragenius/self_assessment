@@ -117,13 +117,35 @@ class Summary < Prawn::Document
     end
     indented_span do
       port = request.port.to_i == 80 ? nil : ":#{request.port}"
-      url = "#{request.protocol}#{request.host}#{port}/answer_stores/#{@answer_store.session_id}"
+      url = "#{url_start}/answer_stores/#{@answer_store.session_id}"
       text(
         link_to(url, url),
         :color => "0000FF",
         :inline_format => true 
       )
     end
+  end
+
+  def url_start
+    case_insensitive = true
+    if Regexp.new(url_root_and_subdomain, case_insensitive) =~ request.url
+      url_root_and_subdomain
+    else
+      url_root
+    end
+  end
+
+  def subdomain
+    Rails.root.to_s.match(/\/\w+$/)[0]
+  end
+
+  def url_root
+    port = request.port.to_i == 80 ? nil : ":#{request.port}"
+    "#{request.protocol}#{request.host}#{port}"
+  end
+
+  def url_root_and_subdomain
+    url_root + subdomain
   end
   
   def rule_sets
