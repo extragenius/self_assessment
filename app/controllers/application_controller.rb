@@ -2,8 +2,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :preload_tasks
+
+  def self.disclaimer_name
+    if Disclaimer::Document.table_exists?
+      disclaimer_names.each do |name|
+        if Disclaimer::Document.exists?(:name => name)
+          @disclaimer_name = name
+          break
+        end
+      end
+    end
+    return @disclaimer_name
+  end
+
+  def self.disclaimer_names
+    [:disclaimer, :main, :one, :wcc, :demo]
+  end
   
-  disclaimer(:demo) if Disclaimer::Document.table_exists?
+  disclaimer(disclaimer_name) if disclaimer_name
   
   private
   def preload_tasks
