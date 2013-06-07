@@ -53,7 +53,7 @@ gem 'lazy_high_charts' # High charts plugin: creates graphs via JavaScript
 gem 'qwester', "~> 0.2.1"  # Adds questionnaires, questions, answers and rule sets.
 
 #gem 'disclaimer', :path => '~/web/disclaimer'
-gem 'disclaimer', ">= 0.0.6" # Used for 'this is a test site disclaimer
+gem 'disclaimer', ">= 0.1" # Used for 'this is a test site disclaimer
 
 gem 'prawn'  # PDF generation
 
