@@ -69,5 +69,5 @@ SelfAssessment::Application.configure do
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Forces secure only access to admin
-  config.middleware.use Rack::SslEnforcer, :only => /^(.*\/)?admin\//
+  # config.middleware.use Rack::SslEnforcer, :only => /^(.*\/)?admin\//
 end
