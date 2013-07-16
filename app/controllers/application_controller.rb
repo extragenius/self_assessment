@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def self.disclaimer_names
-    [:disclaimer, :main, :one, :wcc, :demo]
+    [:welcome, :disclaimer, :main, :one, :wcc, :demo]
   end
   
   disclaimer(disclaimer_name) if disclaimer_name
