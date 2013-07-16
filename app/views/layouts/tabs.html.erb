@@ -2,14 +2,12 @@
 <html>
 <head>
   <title><%= page_title 'Questionnaire' %></title>
-  <%#= render 'shared/wcc_head' %>
+  <%= render 'shared/wcc_head' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="style-1">
-
-  <%= render_remote_partial 'tpbarsa' %>
+<body>
 
   <%= javascript_tag do %>
     $(function() {
@@ -20,16 +18,13 @@
     
   <%= ominous_warnings %>  
   
-  <div class="container" id=""wrapper>
+  <div id="wrapper">
+
+    <%= render 'shared/wcc_top_nav' %>
       
     <div id="body-wrapper">
 
-        jQuery <span id='jquery_version'></span>
-  <%= javascript_tag do %>
-  var jQueryVersion = jQuery.fn.jquery;
-  $('#jquery_version').html(jQueryVersion);
-  <% end %>
-      
+     
       <h1>On-line Self-Support</h1>
       
       <div class="nav-buttons">
@@ -82,7 +77,7 @@
         ) if @rule_sets.present? %>
     
     </div>  
-    <%= render_remote_partial 'tpfootersa' %>
+    <%= render 'shared/wcc_footer' %>
   </div>
 </body>
 </html>
