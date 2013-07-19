@@ -8,14 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <%= javascript_tag do %>
-    $(function() {
-      showAsTabs('#tabs');
-      $('#wrapper').jfontsize();
-    });
-  <% end %>
-    
+   
   <%= ominous_warnings %>  
   
   <div id="wrapper">
@@ -79,5 +72,14 @@
     </div>  
     <%= render 'shared/wcc_footer' %>
   </div>
+
+  <%= javascript_tag do %>
+    $(function() {
+      showAsTabs('#tabs');
+      closeTabActions();
+
+      $('#wrapper').jfontsize();
+    });
+  <% end %>
 </body>
 </html>

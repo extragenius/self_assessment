@@ -1,3 +1,11 @@
+PATH
+  remote: ~/web/remote_partial
+  specs:
+    remote_partial (0.3.2)
+      hashie
+      nokogiri
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -204,10 +212,6 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    remote_partial (0.3.1)
-      hashie
-      nokogiri
-      rails
     responders (0.9.3)
       railties (~> 3.1)
     rspec (2.12.0)
@@ -285,7 +289,7 @@ DEPENDENCIES
   qwester (~> 0.2.2)
   rack-ssl-enforcer
   rails (= 3.2.13)
-  remote_partial
+  remote_partial!
   sass-rails (~> 3.2.3)
   simplecov
   sinatra

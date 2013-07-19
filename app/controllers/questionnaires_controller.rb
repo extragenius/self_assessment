@@ -1,5 +1,5 @@
 class QuestionnairesController < ApplicationController
-  before_filter :get_questionnaire, :except => [:index, :reset]
+  before_filter :get_questionnaire, :except => [:index, :reset, :hide_tab]
   before_filter :get_rule_sets, :only => [:index, :show]
   before_filter :get_questionnaires, :only => [:index]
   
@@ -40,4 +40,5 @@ class QuestionnairesController < ApplicationController
     @questionnaire.questions = extract_questions_from_params
     @questionnaire.save
   end
+
 end

@@ -89,16 +89,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
 
     assert_equal([answer, other_answer], @qwester_answer_store.answers)
   end  
-  
-  def test_rule_set_match_after_update
-    test_update
-    rule_set = RuleSet.first
-    rule_set.answers << @qwester_answer_store.answers.first
-    rule_set.save
-    get :index
-    assert_equal([rule_set], assigns['rule_sets'])
-  end
-  
+   
   def test_reset
     test_update
     assert_no_difference 'Answer.count' do
@@ -139,8 +130,8 @@ class QuestionnairesControllerTest < ActionController::TestCase
     
     get :index
     assert_warning_is_not_displayed
-  end 
-  
+  end
+
   private
   def create_warning_for_rule(rule)
     warning = Ominous::Warning.find(1)
