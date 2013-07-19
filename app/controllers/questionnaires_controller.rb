@@ -21,7 +21,8 @@ class QuestionnairesController < ApplicationController
   def reset
     get_answer_store
     @qwester_answer_store.reset
-    session[:presentations] = nil
+    reset_presentations
+    reset_rule_sets_to_hide
     redirect_to :action => :index
   end
   
@@ -39,6 +40,10 @@ class QuestionnairesController < ApplicationController
     @questionnaire.attributes = params[:questionnaire]
     @questionnaire.questions = extract_questions_from_params
     @questionnaire.save
+  end
+
+  def reset_presentations
+    session[:presentations] = nil
   end
 
 end

@@ -93,12 +93,15 @@ class QuestionnairesControllerTest < ActionController::TestCase
   def test_reset
     test_update
     assert_no_difference 'Answer.count' do
-      get :reset
+      get :reset, {}, {rule_sets_to_hide: [1]}
       assert_response :redirect
       assert_equal([], @qwester_answer_store.reload.answers)
       assert_equal([], @qwester_answer_store.reload.questionnaires)
+      assert_equal(nil, session[:rule_sets_to_hide])
     end
   end
+
+
   
   def test_update_adds_questionnaire_to_answer_store
     test_update

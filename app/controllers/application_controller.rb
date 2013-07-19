@@ -53,6 +53,10 @@ class ApplicationController < ActionController::Base
     session[:rule_sets_to_hide] ||= []
   end
 
+  def reset_rule_sets_to_hide
+    session[:rule_sets_to_hide] = nil
+  end
+
 
   def remove_rule_sets_to_hide
     hide_ids = rule_sets_to_hide.collect(&:to_i)
