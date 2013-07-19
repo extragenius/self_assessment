@@ -64,4 +64,4 @@ gem 'simplecov', :require => false, :group => :test # Test coverage tool
 
 gem 'rack-ssl-enforcer' # allows part of the application to be forced to use a secure connection
 
-gem 'remote_partial', :path => '~/web/remote_partial'   # Used to import and display WCC headers and footers
+gem 'remote_partial', '~> 0.4'  # Used to import and display WCC headers and footers

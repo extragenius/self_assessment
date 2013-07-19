@@ -2,23 +2,19 @@
 <html>
 <head>
   <title><%= page_title 'Questionnaire' %></title>
-  <%= render 'shared/wcc_head' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='style-1'>
    
-  <%= ominous_warnings %>  
+  <%= render_remote_partial 'tpheadersa1' %>
   
-  <div id="wrapper">
+  <div class='container'>
 
-    <%= render 'shared/wcc_top_nav' %>
-      
-    <div id="body-wrapper">
-
-     
-      <h1>On-line Self-Support</h1>
+      <%= ominous_warnings %>
+    
+      <h1 class='headline'>On-line Self-Support</h1>
       
       <div class="nav-buttons">
         <a id="jfontsize-minus" href="#"><%= image_tag('decrease_font.png') %></a>
@@ -65,20 +61,22 @@
           link_to(
             'Clear answers and start again', 
             reset_questionnaires_path,
-            :onclick => "return confirm('Are you sure you want to clear all your answers?')"
+            :onclick => "return confirm('Are you sure you want to clear all your answers?')",
+            :class => 'btn'
           )
         ) if @rule_sets.present? %>
     
     </div>  
-    <%= render 'shared/wcc_footer' %>
   </div>
+
+  <%= render_remote_partial 'tpfootersa' %>
 
   <%= javascript_tag do %>
     $(function() {
       showAsTabs('#tabs');
       closeTabActions();
 
-      $('#wrapper').jfontsize();
+      $('.container').jfontsize();
     });
   <% end %>
 </body>

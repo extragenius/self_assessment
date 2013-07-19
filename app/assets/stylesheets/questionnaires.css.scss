@@ -26,7 +26,19 @@
 }
 
 #questionnaires {
-  font-size: 0.8em;
+  
+  .label {
+    font-size: 1.1em;
+    text-shadow: none;
+    background-color: inherit;
+    color: $black;
+    opacity: 1;
+    position: inherit;
+  }
+  .tooltip {
+    padding-right: 30px;
+  }
+
 }
 
 .questionnaire_buttons {
@@ -68,7 +80,7 @@
       text-align: center;
     }
 
-    &.visited {
+    &.visited a {
       background-color: $visited; 
     }
 

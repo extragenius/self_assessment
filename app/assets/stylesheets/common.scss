@@ -4,10 +4,22 @@
   background: $green ; 
 }
 
-h1 {
+.container {
+  position: relative;
+}
+
+.container .nav-buttons {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 1;
+}
+
+h1.headline {
   background-color: $green;
   color: $white;
-  padding: 3px 5px;
+  margin: 0;
+  padding: 10px 20px;
 }
 
 ul.selection {
@@ -26,23 +38,20 @@ ul.selection {
         
     span.options {
       display: inline-block;
-      //position: absolute;
-      //right: 2px;
-      //top: 0;
-      //width: 230px;
       margin-left: 20px;
       
       input {
         margin-right: 12px;
+        vertical-align: top;
       }
       
     }
     
-    ul.options {
+    ul.qwester_options {
       padding: 5px 5px 5px 25px;
       
       li {
-        margin: 0;
+        margin: 5px 0;
       }
       
       input {

@@ -23,7 +23,7 @@ module RuleSetsHelper
   
   def link_to_rule_set_url(rule_set)
     text = rule_set.link_text? ? rule_set.link_text : t('rule_set.default_url_text')
-    link_to(text, rule_set.url, :target => '_blank')
+    link_to(text, rule_set.url, :target => '_blank', :class => 'btn')
   end
   
   def display_rule_set(rule_set, name = nil)

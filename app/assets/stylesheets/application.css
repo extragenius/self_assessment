@@ -12,9 +12,9 @@
  *= require_self
  *= require_tree .
  */
- body, body a, #wrapper {
+ body.style-1 .container {
    font-family: Verdana, Geneva, sans-serif;
-   font-size: 1em;
+   padding: 0;
  }
  
  #main {
@@ -26,10 +26,8 @@
  }
  
  ul {list-style-type: none;}
- 
-#body-wrapper .nav-buttons {
-  position: absolute;
-  right: 10px;
-  top: 23px;
-  z-index: 1;
-}
+
+ body.style-1 {
+   padding-top: 21px;
+ }
+
