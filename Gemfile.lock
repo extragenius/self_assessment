@@ -1,3 +1,11 @@
+PATH
+  remote: ~/web/remote_partial
+  specs:
+    remote_partial (0.3.2)
+      hashie
+      nokogiri
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,8 +102,9 @@ GEM
     has_scope (0.5.1)
     hash-deep-merge (0.1.1)
     hashery (2.1.0)
+    hashie (2.0.5)
     highline (1.6.15)
-    hike (1.2.2)
+    hike (1.2.3)
     i18n (0.6.1)
     i18n-js (2.1.2)
       i18n
@@ -115,7 +124,7 @@ GEM
     jquery-ui-rails (3.0.1)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.7.7)
+    json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -123,8 +132,7 @@ GEM
       bundler (~> 1.0)
       hash-deep-merge
     libv8 (3.3.10.4)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     meta_search (1.1.3)
@@ -133,9 +141,10 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.23)
+    mini_portile (0.5.1)
     mournful_settings (0.1.0)
       activerecord
-    multi_json (1.7.2)
+    multi_json (1.7.7)
     mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -144,6 +153,8 @@ GEM
     net-ssh (2.6.3)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     ominous (0.1.0)
       acts_as_list
       jquery-rails
@@ -198,7 +209,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.4)
+    rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
     responders (0.9.3)
@@ -239,8 +250,8 @@ GEM
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
     thor (0.18.1)
-    tilt (1.4.0)
-    treetop (1.4.12)
+    tilt (1.4.1)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
@@ -278,6 +289,7 @@ DEPENDENCIES
   qwester (~> 0.2.2)
   rack-ssl-enforcer
   rails (= 3.2.13)
+  remote_partial!
   sass-rails (~> 3.2.3)
   simplecov
   sinatra

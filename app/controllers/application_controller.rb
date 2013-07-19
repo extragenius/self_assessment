@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def self.disclaimer_names
-    [:disclaimer, :main, :one, :wcc, :demo]
+    [:welcome, :disclaimer, :main, :one, :wcc, :demo]
   end
   
   disclaimer(disclaimer_name) if disclaimer_name
@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   def get_rule_sets
     @rule_sets = matching_rule_sets || []
     trigger_any_warnings_associated_with_rule_sets
+    remove_rule_sets_to_hide
   end
   
   def trigger_any_warnings_associated_with_rule_sets
@@ -46,6 +47,16 @@ class ApplicationController < ActionController::Base
         raise e
       end
     end
+  end
+
+  def rule_sets_to_hide
+    session[:rule_sets_to_hide] ||= []
+  end
+
+
+  def remove_rule_sets_to_hide
+    hide_ids = rule_sets_to_hide.collect(&:to_i)
+    @rule_sets.reject!{|r| hide_ids.include? r.id} if rule_sets_to_hide.present?
   end
   
   def reassociate_warning

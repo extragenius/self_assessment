@@ -23,7 +23,11 @@ SelfAssessment::Application.routes.draw do
 
   resources :settings, :only => [:show]
 
-  resources :rule_sets, :only => [:show]
+  resources :rule_sets, :only => [:show] do
+    member do
+      post :hide_tab
+    end
+  end
   
   resources :reports, :only => [:show, :index]
   
