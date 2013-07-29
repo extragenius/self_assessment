@@ -67,7 +67,7 @@
             reset_questionnaires_path,
             :onclick => "return confirm('Are you sure you want to clear all your answers?')"
           )
-        ) if @rule_sets.present? %>
+        ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
     
     </div>  
     <%= render 'shared/wcc_footer' %>

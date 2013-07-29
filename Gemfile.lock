@@ -1,7 +1,7 @@
 PATH
   remote: ~/web/remote_partial
   specs:
-    remote_partial (0.3.2)
+    remote_partial (0.4.0)
       hashie
       nokogiri
       rails
@@ -155,7 +155,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    ominous (0.1.0)
+    ominous (0.1.1)
       acts_as_list
       jquery-rails
       rails (~> 3.2.8)
@@ -283,7 +283,7 @@ DEPENDENCIES
   lazy_high_charts
   mournful_settings (~> 0.1.0)
   mysql2
-  ominous (~> 0.1)
+  ominous (~> 0.1.1)
   paperclip (~> 3.0)
   prawn
   qwester (~> 0.2.2)
