@@ -26,4 +26,8 @@ module ApplicationHelper
       content_tag 'div', content.html_safe, :class => 'presentation'
     end
   end
+
+  def google_analytics
+    render 'shared/google_analytics' if Rails.env == 'production'
+  end
 end

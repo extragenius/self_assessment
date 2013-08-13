@@ -15,7 +15,7 @@
       $('#wrapper').jfontsize();
     });
   <% end %>
-  
+
   <div id="wrapper">
     
     <%= render 'shared/wcc_top_nav' %> 
@@ -33,7 +33,9 @@
 
       <%= yield %>
     </div>
-    <%= render 'shared/wcc_footer' %> 
+    <%= render 'shared/wcc_footer' %>
+
+      <%= google_analytics %>
 
   </div>
 </body>
