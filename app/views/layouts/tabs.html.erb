@@ -6,9 +6,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class='style-1'>
+<body class='<%= WccStyling.style_class %>'>
    
-  <%= render_remote_partial 'tpheadersa1' %>
+  <%= render WccStyling.header_for(request) %>
   
   <div class='container'>
 
@@ -65,11 +65,10 @@
             :class => 'btn'
           )
         ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
-    
-    </div>  
+     
   </div>
 
-  <%= render_remote_partial 'tpfootersa' %>
+  <%= render WccStyling.footer %>
 
   <%= javascript_tag do %>
     $(function() {

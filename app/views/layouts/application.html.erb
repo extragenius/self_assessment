@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class='style-1'>
+<body class='<%= WccStyling.style_class %>'>
 
-  <%= render_remote_partial 'tpheadersa1' %>
+  <%= render WccStyling.header_for(request) %>
 
   <%= ominous_warnings %>
   
@@ -21,7 +21,7 @@
 
   <div id="wrapper">
     
-  <div class='container'>
+    <div class='container'>
 
     <%= ominous_warnings %>
 
@@ -39,11 +39,11 @@
 
     </div>
 
-      <%= google_analytics %>
+    <%= google_analytics %>
 
   </div>
   
-  <%= render_remote_partial 'tpfootersa' %>
+  <%= render WccStyling.footer %>
 
   <%= javascript_tag do %>
     $(function() {
