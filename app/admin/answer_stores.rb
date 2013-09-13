@@ -7,7 +7,7 @@ ActiveAdmin.register AnswerStore do
   actions :index
 
   index :download_links => [:csv] do
-    column :questionnairws do |answer_store|
+    column :questionnaires do |answer_store|
       answer_store.questionnaires.collect{|q| q.title}.join(', ')
     end
     column :answers do |answer_store|
@@ -18,14 +18,18 @@ ActiveAdmin.register AnswerStore do
   end
 
   csv do
-    column :questionnairws do |answer_store|
+    column :questionnaires do |answer_store|
       answer_store.questionnaires.collect{|q| q.title}.join(', ')
     end
     column :answers do |answer_store|
       answer_store.answers.collect{|a| "a#{a.id}"}.join(', ')
     end
-    column :created_at
-    column :preserved
+    column :created_at do |answer_store|
+      answer_store.created_at.to_s(:google)
+    end
+    column :preserved do |answer_store|
+      answer_store.preserved.to_s(:google) if answer_store.preserved?
+    end
   end
 
 

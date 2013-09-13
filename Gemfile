@@ -42,8 +42,8 @@ gem 'i18n-js'  # Allows translation files to be used within JavaScript
 
 gem 'acts_as_list' # Added to allow questions to be ordered within questionnaires
 
-#gem 'ominous', :path => "~/web/ominous" 
-gem 'ominous', '~> 0.1'
+#gem 'ominous', :path => "~/web/ominous"
+gem 'ominous', '~> 0.1.1'
 
 gem 'jasmine', :group => [:development, :test] # JavaScript test environment
 
@@ -64,4 +64,5 @@ gem 'simplecov', :require => false, :group => :test # Test coverage tool
 
 gem 'rack-ssl-enforcer' # allows part of the application to be forced to use a secure connection
 
-gem 'remote_partial', '~> 0.4'  # Used to import and display WCC headers and footers
+gem 'remote_partial', '~> 0.7'  # Used to import and display WCC headers and footers
+

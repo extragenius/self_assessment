@@ -147,7 +147,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    ominous (0.1.0)
+    ominous (0.1.1)
       acts_as_list
       jquery-rails
       rails (~> 3.2.8)
@@ -204,10 +204,9 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    remote_partial (0.4.0)
+    remote_partial (0.7.1)
       hashie
       nokogiri
-      rails
     responders (0.9.3)
       railties (~> 3.1)
     rspec (2.12.0)
@@ -279,13 +278,13 @@ DEPENDENCIES
   lazy_high_charts
   mournful_settings (~> 0.1.0)
   mysql2
-  ominous (~> 0.1)
+  ominous (~> 0.1.1)
   paperclip (~> 3.0)
   prawn
   qwester (~> 0.2.2)
   rack-ssl-enforcer
   rails (= 3.2.13)
-  remote_partial (~> 0.4)
+  remote_partial (~> 0.7)
   sass-rails (~> 3.2.3)
   simplecov
   sinatra

@@ -64,7 +64,7 @@
             :onclick => "return confirm('Are you sure you want to clear all your answers?')",
             :class => 'btn'
           )
-        ) if @rule_sets.present? %>
+        ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
     
     </div>  
   </div>
@@ -79,5 +79,7 @@
       $('.container').jfontsize();
     });
   <% end %>
+
+  <%= google_analytics %>
 </body>
 </html>

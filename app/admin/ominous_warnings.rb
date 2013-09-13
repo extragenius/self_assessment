@@ -94,13 +94,13 @@ ActiveAdmin.register Ominous::Warning do
     f.buttons
   end
   
-#  controller do
-#    
-#    def new
-#      @ominous_warning = Ominous::Warning.new
-#      @ominous_warning.closers = [Ominous::Closer.new]
-#    end
-#    
-#  end
+  controller do
+    
+    def new
+      @ominous_warning = Ominous::Warning.new
+      @ominous_warning.closers = [Ominous::Closer.new]
+    end
+    
+  end
   
 end

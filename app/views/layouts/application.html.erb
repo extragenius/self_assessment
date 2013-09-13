@@ -6,9 +6,20 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body class='style-1'>
 
   <%= render_remote_partial 'tpheadersa1' %>
+
+  <%= ominous_warnings %>
+  
+  <%= javascript_tag do %>
+    $(function() {
+      $('#wrapper').jfontsize();
+    });
+  <% end %>
+
+  <div id="wrapper">
     
   <div class='container'>
 
@@ -25,6 +36,10 @@
       <%= render 'shared/flash_messages' %>
 
       <%= yield %>
+
+    </div>
+
+      <%= google_analytics %>
 
   </div>
   
