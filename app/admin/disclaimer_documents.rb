@@ -19,12 +19,49 @@ ActiveAdmin.register Disclaimer::Document do
   show do
     h2 disclaimer_document.title
     div sanitize(disclaimer_document.header)
-    disclaimer_document.segments.each do |s|
+    disclaimer_document.segments.each do |segment|
       div do
-        "#{content_tag(:strong, s.title)}<br>#{sanitize(s.body)}".html_safe
+        links = ['Move: ']
+        links << link_to(
+                   'Up',
+                   move_up_admin_disclaimer_document_path(
+                     disclaimer_document,
+                     segment_id: segment
+                   ),
+                   class: 'btn'
+                 ) unless disclaimer_document.first?(segment)
+        links << link_to(
+                   'Down',
+                   move_down_admin_disclaimer_document_path(
+                     disclaimer_document,
+                     segment_id: segment
+                   ),
+                   class: 'btn'
+                 ) unless disclaimer_document.last?(segment)
+        header = [content_tag(:strong, segment.title)]
+        header << "("
+        header << links.join("\n").html_safe
+        header << ")"
+        html = [header]
+        html << content_tag('div', sanitize(segment.body))
+        html.join("\n").html_safe
       end
     end
     div sanitize(disclaimer_document.footer)
+  end
+
+  member_action :move_up do
+    document = Disclaimer::Document.find_by_name(params[:id])
+    segment = Disclaimer::Segment.find_by_name(params[:segment_id])
+    document.move_higher(segment)
+    redirect_to admin_disclaimer_document_path(document)
+  end
+
+  member_action :move_down do
+    document = Disclaimer::Document.find_by_name(params[:id])
+    segment = Disclaimer::Segment.find_by_name(params[:segment_id])
+    document.move_lower(segment)
+    redirect_to admin_disclaimer_document_path(document)
   end
   
   form do |f|

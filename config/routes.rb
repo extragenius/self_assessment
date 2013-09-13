@@ -43,6 +43,13 @@ SelfAssessment::Application.routes.draw do
         get :move_down
       end
     end
+
+    resources :disclaimer_documents do
+      member do
+        get :move_up
+        get :move_down
+      end
+    end
   end
 
 end
