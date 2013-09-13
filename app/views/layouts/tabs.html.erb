@@ -9,11 +9,11 @@
 <body class='<%= WccStyling.style_class %>'>
    
   <%= render WccStyling.header_for(request) %>
+
+  <%= ominous_warnings %>
   
   <div class='container'>
-
-      <%= ominous_warnings %>
-    
+   
       <h1 class='headline'>On-line Self-Support</h1>
       
       <div class="nav-buttons">
@@ -24,47 +24,50 @@
         <%= link_to(image_tag('save.png'), answers_path(:format => :pdf)) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
         <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
       </div>
-      
-      <%= presentation_description %>
 
-      <div id="tabs">
-        <ul>
-          <li><%= link_to('Home', '#questionnaires') %></li>
-        <% @rule_sets.each do |rule_set| %>
-          <li class="rule_matches">
-            <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
-            <span class="ui-icon ui-icon-close">Remove Tab</span>
-          </li>
-        <% end %>
-          <%= content_tag(
-                'li', 
-                link_to('Summary', answers_path), 
-                :class => "link_to_external"
-              ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
-          <li class="link_to_external">
-            <%= link_to('Directory', 'https://directory.warwickshire.gov.uk/', :target => '_blank') %>
-          </li>
-        </ul>
+      <div class="resizeable">
+        <%= presentation_description %>
 
-        <div id="questionnaires">
-          <%= render 'shared/flash_messages' %>
-          <%= yield %>
+        <div id="tabs">
+          <ul>
+            <li><%= link_to('Home', '#questionnaires') %></li>
+          <% @rule_sets.each do |rule_set| %>
+            <li class="rule_matches">
+              <%= link_to(rule_set.title, "#rule_set_#{rule_set.id}") %>
+              <span class="ui-icon ui-icon-close">Remove Tab</span>
+            </li>
+          <% end %>
+            <%= content_tag(
+                  'li',
+                  link_to('Summary', answers_path),
+                  :class => "link_to_external"
+                ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
+            <li class="link_to_external">
+              <%= link_to('Directory', 'https://directory.warwickshire.gov.uk/', :target => '_blank') %>
+            </li>
+          </ul>
+
+          <div id="questionnaires">
+            <%= render 'shared/flash_messages' %>
+            <%= yield %>
+          </div>
+
+          <% @rule_sets.each do |rule_set| %>
+          <%= display_rule_set(rule_set, "rule_set_#{rule_set.id}") %>
+          <% end %>
         </div>
 
-        <% @rule_sets.each do |rule_set| %>
-        <%= display_rule_set(rule_set, "rule_set_#{rule_set.id}") %>
-        <% end %>
+        <%= content_tag(
+              'p',
+              link_to(
+                'Clear answers and start again',
+                reset_questionnaires_path,
+                :onclick => "return confirm('Are you sure you want to clear all your answers?')",
+                :class => 'btn'
+              )
+            ) if @qwester_answer_store and @qwester_answer_store.answers.present?
+        %>
       </div>
-
-    <%= content_tag(
-          'p', 
-          link_to(
-            'Clear answers and start again', 
-            reset_questionnaires_path,
-            :onclick => "return confirm('Are you sure you want to clear all your answers?')",
-            :class => 'btn'
-          )
-        ) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
      
   </div>
 
@@ -74,8 +77,7 @@
     $(function() {
       showAsTabs('#tabs');
       closeTabActions();
-
-      $('.container').jfontsize();
+      $('.resizeable').jfontsize();
     });
   <% end %>
 

@@ -1,9 +1,5 @@
-// Corrects WCC styling defaults
-/*
-form {
-  height: inherit; 
-}
+// Modifies WCC styling defaults
 
-.ui-dialog {
-  max-width: inherit !important;
-}*/
+body.style-1 .container > footer {
+  margin: 0;
+}

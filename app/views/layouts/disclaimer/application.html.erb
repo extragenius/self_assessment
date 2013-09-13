@@ -2,24 +2,29 @@
 <html>
 <head>
   <title>WCC Self Support</title>
-  <%= render 'shared/wcc_head' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= WccStyling.style_class %>'>
 
-  <div id="wrapper">
+  <%= render WccStyling.header_for(request) %>
+
+  <div class='container'>
+
+    <%= render 'shared/flash_messages' %>
+
+    <%= yield %>
     
-    <div id="body-wrapper">
-      <%= render 'shared/flash_messages' %>
-
-      <%= yield %>
-    </div>
-
   </div>
 
   <%= render 'shared/google_analytics' if Rails.env == 'production' %>
+
+  <%= render WccStyling.footer %>
+
+  <%= javascript_tag do %>
+    $('input[type="submit"]').addClass('btn btn-primary');
+  <% end %>
 
 </body>
 </html>

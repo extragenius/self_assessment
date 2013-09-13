@@ -13,41 +13,31 @@
 
   <%= ominous_warnings %>
   
-  <%= javascript_tag do %>
-    $(function() {
-      $('#wrapper').jfontsize();
-    });
-  <% end %>
+  <div class='container'>
 
-  <div id="wrapper">
-    
-    <div class='container'>
+    <div class="nav-buttons">
+      <a id="jfontsize-minus" href="#"><%= image_tag('decrease_font.png') %></a>
+      <a id="jfontsize-default" href="#"><%= image_tag('default_font.png') %></a>
+      <a id="jfontsize-plus" href="#"><%= image_tag('increase_font.png') %></a>
+      <%= link_to(image_tag('help.png'), guides_path) %>
+      <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
+    </div>
 
-    <%= ominous_warnings %>
-
-      <div class="nav-buttons">
-        <a id="jfontsize-minus" href="#"><%= image_tag('decrease_font.png') %></a>
-        <a id="jfontsize-default" href="#"><%= image_tag('default_font.png') %></a>
-        <a id="jfontsize-plus" href="#"><%= image_tag('increase_font.png') %></a>
-        <%= link_to(image_tag('help.png'), guides_path) %>
-        <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
-      </div>
-      
+    <div class="resizeable">
       <%= render 'shared/flash_messages' %>
 
       <%= yield %>
-
     </div>
 
-    <%= google_analytics %>
-
   </div>
+
+  <%= google_analytics %>
   
   <%= render WccStyling.footer %>
 
   <%= javascript_tag do %>
     $(function() {
-      $('.container').jfontsize();
+      $('.resizeable').jfontsize();
     });
   <% end %>
 </body>

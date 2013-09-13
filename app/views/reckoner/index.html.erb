@@ -1,22 +1,8 @@
 <div class="header">
   <h1 class='headline'><%= t 'reckoner.header.text' %></h1>
-  <%= link_to(
-        t('reckoner.links.make_bigger'),
-        '#',
-        :id => 'make_bigger',
-        :class => 'btn'
-      )
-  %>
-  <%= link_to(
-        t('reckoner.links.make_smaller'),
-        '#',
-        :id => 'make_smaller',
-        :class => 'btn'
-      )
-  %>
 </div>
 <div id="articles" class="normal">
-  <div class="article current">
+  <div class="article">
     <h2><%= t 'reckoner.articles.intro.title' %></h2>
     <p><%= t 'reckoner.articles.intro.generalise_who_is_funded' %></p>
     <p><%= t 'reckoner.articles.intro.care_assessment_needed' %></p>
@@ -105,9 +91,5 @@
   </div>
 
 
-</div>
-<div class="nav">
-  <a href="#" id="previous" class='btn'><%= t 'reckoner.links.nav.previous' %></a>
-  <a href="#" id="next" class='btn'><%= t 'reckoner.links.nav.next' %></a>
-</div>   
+</div> 
 

@@ -22,7 +22,7 @@
 
 (function($){
     $.fn.jfontsize = function(options) {
-        var $this=$(this);
+      var $this=$(this);
 	    var defaults = {
 		    btnMinusClasseId: '#jfontsize-minus',
 		    btnDefaultClasseId: '#jfontsize-default',
