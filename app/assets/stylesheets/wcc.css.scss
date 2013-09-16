@@ -1,5 +1,19 @@
 // Modifies WCC styling defaults
 
-body.style-1 .container > footer {
-  margin: 0;
+body.style-1 
+{
+  .container > footer {
+      margin: 0;
+  }
+
+  .btn-info, a.btn:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  input.btn {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
 }

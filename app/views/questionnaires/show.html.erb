@@ -28,13 +28,13 @@
 </ul>
 
 <p>
-  <%= form.submit('Submit') %>
-  <%= link_to('Back to the menu', questionnaires_path) %>
+  <%= form.submit('Submit', :class => 'btn btn-primary') %>
+  <%= link_to('Back to the menu', questionnaires_path, :class => 'btn btn-info') %>
 </p>
 <%    end %>
 <%  else %>
 <p>There are no questions associated with this questionnaire</p>
 <p>
-  <%= link_to('Back to the menu', questionnaires_path) %>
+  <%= link_to('Back to the menu', questionnaires_path, :class => 'btn btn-info') %>
 </p>
 <%  end %>
