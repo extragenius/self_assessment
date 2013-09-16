@@ -1,4 +1,7 @@
 
-.presentation h2.tooltip {
-  display: inline;
+div.presentation {
+  padding: 1em;
+  .desc_hide_show {
+    float: right;
+  }
 }

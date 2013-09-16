@@ -20,4 +20,19 @@ module QuestionnairesHelper
     classes.join(" ")
   end
 
+  def presentation_description
+    if @presentation and @presentation.description?
+      content = [content_tag(
+        'h2',
+        @presentation.title
+      )]
+      content << content_tag(
+                   'div',
+                   sanitize(@presentation.description),
+                   :class => 'description'
+                 ) if @presentation.description?
+      content_tag 'div', content.join("\n").html_safe, :class => 'presentation'
+    end
+  end
+
 end
