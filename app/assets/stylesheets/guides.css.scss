@@ -14,11 +14,11 @@
   }
   
   .narrow {
-    width: 25%;
+    width: 20%;
   }
   
   .wide {
-    width: 65%;
+    width: 70%;
   }
   
   .summary {
@@ -26,10 +26,34 @@
   }
   
   .footer {
-    text-align: right;
+
   }
   
   .summary, .details, .footer {
     padding: 1em;    
+  }
+
+  .guide_list {
+    h2 {
+      font-size: 1.2em;
+      background-color: $green;
+      color: $white;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    li {
+      margin: 5px 2px 5px 0px;
+      a {
+        width: 90%;
+        text-align: left;
+      }
+
+    }
   }
 }

@@ -1,13 +1,6 @@
 <div class="guides">
   <div class="header">
-    <h1>Guides: <%= @guide.title %></h1>
-  </div>
-  <div class="guide_list column narrow">
-    <ul>
-<% @guides.each do |guide| %>
-      <li><%= link_to_unless(@guide == guide, guide.title, guide_path(guide)) %>
-<% end %>
-    </ul>
+    <h1 class="headline">Guides: <%= @guide.title %></h1>
   </div>
   <div class="guide column wide">
     <div class="summary">
@@ -17,7 +10,22 @@
       <%= sanitize @guide.details %>
     </div>
   </div>
+  <div class="guide_list column narrow">
+<% if @guides.length > 1 %>
+    <%= content_tag('h2', 'Other guides') %>
+    <ul>
+<%   @guides.each do |guide| %>
+      <li>
+        <%= link_to(
+             guide.title, guide_path(guide), class: 'btn btn-info'
+           ) unless @guide == guide
+        %>
+      </li>
+<%   end %>
+    </ul>
+<% end %>
+  </div>
   <div class="footer">
-    <%= link_to("Return to #{Setting.for(:site_name, 'Questionnaires')}", root_path) %>
+    <%= link_to("Return to #{Setting.for(:site_name, 'Questionnaires')}", root_path, class: 'btn btn-primary') %>
   </div>
 </div>
