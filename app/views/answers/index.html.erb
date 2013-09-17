@@ -17,8 +17,8 @@
 
     <%   @questionnaires.each do |questionnaire, answers| %>
 
-    <table class="answers_by_questionnaire">
-      <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></caption>
+    <table class="answers_by_questionnaire table">
+      <caption><%= link_to questionnaire.title, questionnaire_path(questionnaire), class: 'btn' %></caption>
       <tr>
         <th>Question</th>
         <th>Answer</th>    
@@ -54,7 +54,7 @@
     </div>
     <%   end %>
 
-    <p><%= link_to 'View as PDF', answers_path(:format => :pdf) %></p>
+    <p><%= link_to 'View as PDF', answers_path(:format => :pdf), class: 'btn btn-info' %></p>
 
     <% end %>
 

@@ -22,10 +22,8 @@ table.answers_by_questionnaire {
     font-size: 1.2em;
     font-weight: bold;
     background-color: $green;
-    
-    a {
-      color: $white;
-    }
+    border-bottom: $dull-green 1px solid;
+    padding: 6px;
   }
   
   th {

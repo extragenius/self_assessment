@@ -6,7 +6,9 @@ body.style-1
       margin: 0;
   }
 
-  .btn-info, .btn-info:hover, .btn-success, .btn-success:hover {
+  .btn-info, .btn-info:hover, 
+  .btn-success, .btn-success:hover,
+  .btn-primary, .btn-primary:hover {
     color: white;
     text-decoration: none;
   }
