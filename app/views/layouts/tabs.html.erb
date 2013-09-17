@@ -17,11 +17,11 @@
       <h1 class='headline'>On-line Self-Support</h1>
       
       <div class="nav-buttons">
-        <a id="jfontsize-minus" href="#"><%= image_tag('decrease_font.png') %></a>
-        <a id="jfontsize-default" href="#"><%= image_tag('default_font.png') %></a>
-        <a id="jfontsize-plus" href="#"><%= image_tag('increase_font.png') %></a>
-        <%= link_to(image_tag('help.png'), guides_path) %>
-        <%= link_to(image_tag('save.png'), answers_path(:format => :pdf)) if @qwester_answer_store and @qwester_answer_store.answers.present? %>
+        <a id="jfontsize-minus" href="#" class="btn small_text">&#45;A</a>
+        <a id="jfontsize-default" href="#" class="btn">A</a>
+        <a id="jfontsize-plus" href="#" class="btn large_text">&#43;A</a>
+        <%= link_to('Help', guides_path, class: "btn btn-success") %>
+        <%= link_to('Save', answers_path(format: :pdf), class: "btn btn-info") if @qwester_answer_store and @qwester_answer_store.answers.present? %>
         <%#= link_to(image_tag('mydex-logo.png'), 'https://sbx.mydex.org/', :target => '_blank') %>
       </div>
 
