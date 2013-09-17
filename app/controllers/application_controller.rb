@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :preload_tasks
@@ -76,6 +75,8 @@ class ApplicationController < ActionController::Base
   
   def get_questionnaires
     @questionnaires = current_questionnaires
+  rescue NoMethodError
+    retry if require 'qwester'
   end
   
   def extract_questions_from_params

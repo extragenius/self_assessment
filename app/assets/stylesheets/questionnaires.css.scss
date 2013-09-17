@@ -22,6 +22,9 @@
   li.rule_matches {
     background-color: $visited;
     background-image : none;
+    a {
+      color: $white;
+    }
   }
 }
 
@@ -43,9 +46,10 @@
 
 .questionnaire_buttons {
 
+  $btn-correction: 30px;
   $button_width: 190px;
   $button_margin_left: 0;
-  $button_margin_right: 30px;
+  $button_margin_right: 10px;
   $button_margin_width: $button_margin_left + $button_margin_right;
   $buttons_per_line: 4;
   
@@ -58,13 +62,8 @@
 
     display: inline-block;
     height: 165px;
-    width: $button_width - $button_margin_width;
+    width: $button_width - $button_margin_width - $btn-correction;
     margin: 0 $button_margin_right 10px $button_margin_left;
-
-    a {
-      position: absolute;
-      width: 100%;
-    }
 
     a.image_link {
       bottom: 35px;
@@ -72,6 +71,7 @@
       img {
         display: block;
         margin: 0 auto;
+        height: 125px;
       }
     }
 
@@ -81,7 +81,7 @@
     }
 
     &.visited a {
-      background-color: $visited; 
+      color: $white;
     }
 
   }

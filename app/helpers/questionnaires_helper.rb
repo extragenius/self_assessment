@@ -15,8 +15,8 @@ module QuestionnairesHelper
   end
   
   def questionnaire_button_classes(questionnaire)
-    classes = %w{button}
-    classes << 'visited' if @qwester_answer_store and @qwester_answer_store.questionnaires.include? questionnaire
+    classes = %w{button btn}
+    classes << 'visited btn-success' if @qwester_answer_store and @qwester_answer_store.questionnaires.include? questionnaire
     classes.join(" ")
   end
 
