@@ -25,10 +25,6 @@ $(function(){
       $.cookie(nextAction, 'hide', {path: '/'});
       $.cookie(lastAction, 'show', {path: '/'});
     }
-
-    console.log('This action = ' + action);
-    console.log('Last action = ' + $.cookie(lastAction));
-    console.log('Next action = ' + $.cookie(nextAction));
   }
   
   $('.presentation .' + buttonClass).click(function() {
